@@ -1,9 +1,48 @@
-from bottle import Bottle, route, run, template, get, post, request
-#from server_manager import ServerManager
+from bottle import Bottle, route, run, template, get, post, request, static_file
 from server_status import ServerStatus 
-from app import app
+from get_sys_info import SysInfo
 
 app = Bottle()
+    
+
+@route('/css/<filepath:path>')
+def server_static_css(filepath = None):
+
+    css_paths = [
+        'bootstrap.css',
+        'bootstrap.min.css',
+        'sb-admin.css',
+    ]
+    print filepath
+
+    if filepath is not None and filepath in css_paths:
+        return static_file(filename= filepath, root='/home/likewise-open/TXSTATE/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/css/')
+
+@route('/js/<filepath:path>')
+def server_static_js(filepath = None):
+
+    js_paths = {
+        'jquery' : 'jquery-1.10.2.js',
+        'bootstrap': 'bootstrap.js',
+        'bootstrap.min' : 'bootstrap.min.js',
+    }
+
+    if filepath is not None and filepath in js_paths.keys():
+        return static_file(filename= js_paths[filepath], root='./js/')
+
+@route('/images/<filepath:path>')
+def server_static_images(filepath = None):
+
+    if filepath is not None:
+        return static_file( filename = filepath, root='./views/images/')
+        
+
+@route('/')
+@route('/index/')
+@route('/myapp/index/')
+def favorite():
+    return template('app/static/index')
+
 
 @get("/status")
 def status():
@@ -15,7 +54,7 @@ def status():
 		'''
 
 
-@post('/status') 
+@post("/status") 
 def get_status():
 	
 	s = ServerStatus()
@@ -26,8 +65,32 @@ def get_status():
 	else:
 		return "<p>ip is down.</p>"
 		
+		
+@get("/sys_info")
+def info():
+	return  '''
+		<form action="/status" method="post">
+			<h30>Get System Info</h3>
+			<input value="Get" type="submit" />
+		</form>
+		'''
 
-run(host='localhost', port=8081, debug=True)
+
+@post("/sys_info") 
+def getInfo():
+	
+	s = SysInfo()
+	i = s.getSysInfo()
+	
+	return i
+	if p == 0:
+		return "<p>ip is up.</p>"
+	else:
+		return "<p>ip is down.</p>"
+
+
+run(host='localhost', port=8082, debug=True)
 
 if __name__ == '__main__':
 	app.run
+

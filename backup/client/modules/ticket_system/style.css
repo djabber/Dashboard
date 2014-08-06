@@ -1,0 +1,138 @@
+/* --------- Ticket System styles -------------- */
+#tickets {}
+
+  #tickets h2 {
+    text-align: center;
+    padding: 0.3em 0;
+    text-shadow: none;
+    border-bottom:1px solid #151617;
+  }
+
+    #tickets h2 span {
+      margin-right: 0.2em;
+    }
+
+    #tickets h2 .red {
+      color: #F00;
+    }
+
+  #tickets ul.header {
+    margin: 0;
+    border-bottom:1px solid #151617;
+    border-top:1px solid #303334;
+    padding: 0.3em 1em;
+  }
+
+    #tickets ul.header li {
+      list-style: none;
+      float: left;
+      text-shadow: none;
+      text-align: center;
+      width: 35%;
+    }
+
+      #tickets ul.header li:first-child {
+        width: 50px;
+        margin-right: 2em;
+      }
+
+  #tickets .user {
+    padding: 0.6em 1em;
+    border-bottom:1px solid #151617;
+    border-top:1px solid #303334;
+  }
+
+    #tickets .user:first-child { border-top: 1px solid #303334; }
+    #tickets .user:last-child { border-bottom: none; }
+
+    #tickets .user span {
+      display: block;
+      float: left;
+    }
+
+      #tickets .user .avatar {
+        width: 50px;
+        margin-right: 2em;
+      }
+
+      #tickets .user .tickets, #tickets .user .comments {
+        font-size: 2em;
+        line-height: 40px;
+        width: 35%;
+        text-align: center;
+      }
+
+  #tickets .anim-green {
+    -webkit-animation: green 60s ease-in 0 1;
+    -moz-animation: green 60s ease-in 0 1;
+    -animation: green 60s ease-in 0 1;
+  }
+
+  #tickets .anim-red {
+    -webkit-animation: red 60s ease-in 0 1;
+    -moz-animation: red 60s ease-in 0 1;
+    -animation: red 60s ease-in 0 1;
+  }
+
+/*
+ * Ticket change animations
+ */
+@-webkit-keyframes green {
+  0% {
+    color: #0F0;
+  }
+
+  100% {
+    color: inherit;
+  }
+}
+
+@-moz-keyframes green {
+  0% {
+    color: #0F0;
+  }
+
+  100% {
+    color: inherit;
+  }
+}
+
+@keyframes green {
+  0% {
+    color: #0F0;
+  }
+
+  100% {
+    color: inherit;
+  }
+}
+
+@-webkit-keyframes red {
+  0% {
+    color: #F00;
+  }
+
+  100% {
+    color: inherit;
+  }
+}
+
+@-moz-keyframes red {
+  0% {
+    color: #F00;
+  }
+
+  100% {
+    color: inherit;
+  }
+}
+
+@keyframes red {
+  0% {
+    color: #F00;
+  }
+
+  100% {
+    color: inherit;
+  }
+}

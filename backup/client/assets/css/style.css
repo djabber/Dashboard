@@ -1,0 +1,59 @@
+/* -------- Global styles -------- */
+body {
+  height: 100%;
+  overflow:hidden;
+  background: #111314;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container-fluid {
+  padding: 0.25%;
+}
+
+/* -------- Module containers -------- */
+
+.module {
+  float: left;
+  margin: 0.25%;
+  background: #232526;
+  color: #d3d4d4;
+  border-top:1px solid #323434;
+  text-shadow: 1px 1px 1px #3f3f3f, -1px -1px 1px #3f3f3f;
+  box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
+  -moz-box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
+  -webkit-box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
+}
+
+  /* Clearfix - Automatically clear after a module */
+  .module:after, .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+
+/* -------- Module sizes -------- */
+
+.full {
+  width: 99.5%;
+}
+
+.tall {
+  width: 24.5%;
+  height: 655px;
+  overflow: hidden;
+}
+
+.half {
+  width: 49.5%;
+  height: 655px;
+  overflow: hidden;
+}
+
+.small {
+  width: 24.5%;
+  height: 324px;
+  overflow: hidden;
+}
