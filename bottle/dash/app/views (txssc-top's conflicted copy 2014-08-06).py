@@ -72,8 +72,7 @@ def getInfo():
 	
 	s = SysInfo()
 	i = s.getSysInfo()
-	output = template('app/static/sys_info', info=i)
-	return output
+	return template(info=i)
 	
 
 run(host='localhost', port=8082, debug=True)
