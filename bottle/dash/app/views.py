@@ -1,6 +1,6 @@
 from bottle import Bottle, route, run, template, get, post, request, static_file
 from server_status import ServerStatus 
-from get_sys_info import SysInfo
+from get_all_info import GetAllInfo
 import json
 
 app = Bottle()
@@ -70,8 +70,8 @@ def get_status():
 @get("/sys_info") 
 def getInfo():
 	
-	s = SysInfo()
-	i = s.getSysInfo()
+	s = GetAllInfo()
+	i = s.getAllInfo()
 	output = template('app/static/sys_info', info=i)
 	return output
 	

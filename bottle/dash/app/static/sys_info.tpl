@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blank Page - SB Admin</title>
+    <title>System Information - TxSSC Admin</title>
 
 	<!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css">
@@ -124,10 +124,14 @@
             <h1>System Information <small> </small></h1>
             <ol class="breadcrumb">
               <li><a href="index.html"><i class="icon-dashboard"></i> Dashboard</a></li>
-              <li class="active"><i class="icon-file-alt"></i> Blank Page</li>
+              <li class="active"><i class="icon-file-alt"></i> System Information</li>
             </ol>
-            <table border="1">
-				<tr><td>{{info}}</td></tr>
+           <table>
+			   %for i in info:
+				<tr>
+					<td>{{i}}</td>
+				</tr>
+				%end
 			</table>
           </div>
         </div><!-- /.row -->
