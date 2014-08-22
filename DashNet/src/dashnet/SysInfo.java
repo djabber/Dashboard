@@ -1,43 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package dashnet;
 
-/**
- *
- * @author TXSTATE\dd27
- */
-public class SysInfo {
-    
+import java.io.IOException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class SysInfo{
+       
     public SysInfo(){
-        printSysInfo();
-    }
-    
-    public void getSysInfo(){
-        
      
-        
+        try{
+            OSInfo os = new OSInfo();
+            CPUInfo cpu = new CPUInfo(os.getName().toLowerCase());
+            UserInfo user = new UserInfo();
+            NetInfo net = new NetInfo();
+            
+        }catch (UnknownHostException | SocketException ex){
+            Logger.getLogger(DashNet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SysInfo.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }
-    
-    public void printSysInfo(){
-        
-        System.out.println("OS Name = " + getPlatform());
-        System.out.println("Architecture = " + getArchitecture());
-    }
-    
-    public String getPlatform(){
-        
-        return System.getProperty("os.name");
-    }
-    
-    public String getArchitecture(){
-        
-        return System.getProperty("sun.arch.data.model");
-    }
-    
-   
-    
 }
