@@ -36,14 +36,11 @@ public class CPUInfo{
          
         list.add("cpu_info");
         if(os == "windows"){
-            list.add("num_of_cores");
-            list.add(getNumProcessors());
-            list.add("architecture");
-            list.add(getArchitecture());
+            getWindowsCPUInfo();
         }/*else if(os == "mac" || os == "apple"){
             continue;
         }*/else{
-            getAllLinuxCPUInfo();            
+            getLinuxCPUInfo();            
         }
  
         return list;
@@ -64,8 +61,11 @@ public class CPUInfo{
     
     public void printWindowsCPUInfo(){
         
+        System.out.println("\tID: " + System.getenv("PROCESSOR_IDENTIFIER"));
+        System.out.println("\tArchitecture: " + System.getenv("PROCESSOR_ARCHITECTURE"));
+        System.out.println("\tArchitecture 64 bit: " + System.getenv("PROCESSOR_ARCHITEW6432"));
+        System.out.println("\tNumber of Processors: " + System.getenv("NUMBER_OF_PROCESSORS"));
         System.out.println("\tNumber of Cores: " + getNumProcessors());
-        System.out.println("\tArchitecture: " + getArchitecture());
     }
     
     public void printLinuxCPUInfo(){
@@ -81,7 +81,23 @@ public class CPUInfo{
         System.out.println("\tCache Size: " + info.cacheSize + "\n");
     }
     
+    public void getWindowsCPUInfo(){
+          
+        processWindowsCPUInfo();
+        list.add("architecture");
+        list.add(System.getenv("PROCESSOR_ARCHITECTURE"));
+        list.add("architecture_64");
+        list.add(System.getenv("PROCESSOR_ARCHITEW6432"));
+        list.add("num_of_cores");
+        list.add(System.getenv("NUMBER_OF_PROCESSORS"));
+    }
     
+    private void processWindowsCPUInfo(){
+        
+        String id = System.getenv("PROCESSOR_IDENTIFIER");
+        System.out.println("id = " + id);
+           
+    }
     
     public String getNumProcessors(){
         return String.valueOf(osBean.getAvailableProcessors());
@@ -91,7 +107,7 @@ public class CPUInfo{
         return System.getProperty("sun.arch.data.model");
     }
     
-    public void getAllLinuxCPUInfo() throws IOException{
+    public void getLinuxCPUInfo() throws IOException{
      
         findLinuxCPUInfo();
         
