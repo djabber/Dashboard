@@ -12,13 +12,18 @@ public class OSInfo{
     OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
 
     public OSInfo(){
-        printSysInfo();
+        //printSysInfo();
+        //getSysInfo();
     }
     
     public List<String> getSysInfo(){
          
+        list.add("operating_system_info");
+        list.add("name");
         list.add(getName());
+        list.add("Version");
         list.add(getVersion());
+        list.add("Architecture");
         list.add(getArchitecture());
      
         return list;
@@ -33,14 +38,14 @@ public class OSInfo{
     }
     
     public String getName(){
-        return System.getProperty("os.name");   //return osBean.getName();
+        return ("Name: " + System.getProperty("os.name"));
     }
     
     public String getArchitecture(){
-        return System.getProperty("sun.arch.data.model");
+        return (System.getProperty("sun.arch.data.model"));
     }
     
     public String getVersion(){
-        return System.getProperty("os.version");    // return osBean.getVersion();
+        return (System.getProperty("os.version"));  
     }    
 }

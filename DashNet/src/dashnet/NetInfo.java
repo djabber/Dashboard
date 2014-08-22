@@ -26,21 +26,24 @@ public class NetInfo {
     
     public NetInfo() throws UnknownHostException, SocketException{
        
-        printNetInfo();
+        //printNetInfo();
+        //getNetInfo();
     }
     
     public void printNetInfo() throws UnknownHostException, SocketException{
         
-        System.out.println("Interface Info:");
+        System.out.println("Network Info:");
         getAllInterfaceInfo();
      
         ipcnt /= 2;
+        ipcnt--;
+        
         for(int i = 0; i < ipcnt; i++){
             
             System.out.println("\tDisplay Name: " + netArr[i].dname);
             System.out.println("\tInterface Name: " + netArr[i].name);
-            System.out.println("\tIpv4: " + netArr[i].ip4);
-            System.out.println("\tIpv6: " + netArr[i].ip6 + "\n");
+            System.out.println("\tIPv4: " + netArr[i].ip4);
+            System.out.println("\tIPv6: " + netArr[i].ip6 + "\n");
         }
     }
     
@@ -53,10 +56,24 @@ public class NetInfo {
         }
     }
     
-    public InterfaceInfo[] getNetInfo() throws SocketException, UnknownHostException{
+    public List<String> getNetInfo() throws SocketException, UnknownHostException{
         
         getAllInterfaceInfo();
-        return netArr;
+        List<String> list = new ArrayList<String>();
+        
+        list.add("network_info");
+        for(int i = 0; i < ipcnt/2; i++){
+            
+            list.add("display_name");
+            list.add(netArr[i].dname);
+            list.add("interface_name");
+            list.add(netArr[i].name);
+            list.add("ipv4");
+            list.add(netArr[i].ip4);
+            list.add("ipv6");
+            list.add(netArr[i].ip6);
+        }
+        return list;
     }
     
     public String getHostname() throws UnknownHostException, SocketException{

@@ -28,22 +28,25 @@ public class CPUInfo{
     OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
     
     public CPUInfo(String os) throws IOException{
-        getCPUInfo(os);
-        printCPUInfo(os);
+        //getCPUInfo(os);
+        //printCPUInfo(os);
     }
     
-    public void getCPUInfo(String os) throws IOException{
+    public List<String> getCPUInfo(String os) throws IOException{
          
+        list.add("cpu_info");
         if(os == "windows"){
+            list.add("num_of_cores");
             list.add(getNumProcessors());
+            list.add("architecture");
             list.add(getArchitecture());
         }/*else if(os == "mac" || os == "apple"){
             continue;
         }*/else{
-            getAllLinuxCPUInfo();
+            getAllLinuxCPUInfo();            
         }
  
-       // return list;
+        return list;
     }
     
     public void printCPUInfo(String os){
@@ -90,6 +93,31 @@ public class CPUInfo{
     
     public void getAllLinuxCPUInfo() throws IOException{
      
+        findLinuxCPUInfo();
+        
+        list.add("architecture");
+        list.add(getArchitecture());
+        list.add("make");
+        list.add(info.make);
+        list.add("model_name");
+        list.add(info.modelName);
+        list.add("model");
+        list.add(String.valueOf(info.model));
+        list.add("family");
+        list.add(String.valueOf(info.cpuFamily));
+        list.add("num_of_processors");
+        list.add(String.valueOf(info.processorCnt));
+        list.add("num_of_cores");
+        list.add(String.valueOf(info.numCores));
+        list.add("core_speed");
+        list.add(String.valueOf(info.speed));
+        list.add("cache_size");
+        list.add(String.valueOf(info.cacheSize));
+            
+    }
+    
+    private void findLinuxCPUInfo() throws IOException{
+        
         FileSearch fileSearch = new FileSearch("cpuinfo");
  
 	File found = fileSearch.search(new File("/proc/"));
@@ -105,7 +133,7 @@ public class CPUInfo{
         }
     }
     
-    public void processLinuxCPUInfo(String str){
+    private void processLinuxCPUInfo(String str){
         
         str = str.trim();
         if(str.startsWith("processor")){
