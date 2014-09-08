@@ -12,12 +12,11 @@ class Client{
         BufferedReader inReader = new BufferedReader(new InputStreamReader(in));
 	OutputStream out = socket.getOutputStream();
         
-        message += "\n";
 	out.write(message.getBytes());
         out.flush();
         
         String data = inReader.readLine();
-        System.out.println("Server response: " + data);
+       // System.out.println("Server response: " + data);
         
         in.close();
         inReader.close();

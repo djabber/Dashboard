@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -24,26 +22,48 @@ public class CPUInfo{
     }
    
     ProcessorInfo info = new ProcessorInfo();
-    List<String> list = new ArrayList<String>();
     OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
     
-    public CPUInfo(String os) throws IOException{
-        //getCPUInfo(os);
-        //printCPUInfo(os);
-    }
-    
-    public List<String> getCPUInfo(String os) throws IOException{
+    public String getCPUInfo(String os) throws IOException{
          
-        list.add("cpu_info");
         if(os == "windows"){
             getWindowsCPUInfo();
+            return jsonifyWindowsCPUInfo();
+            
         }/*else if(os == "mac" || os == "apple"){
             continue;
         }*/else{
             getLinuxCPUInfo();            
+            return jsonifyLinuxCPUInfo();
         }
- 
-        return list;
+    }
+    
+    private String jsonifyWindowsCPUInfo(){
+        
+        String json = "\"CPU_Info\": ["
+            + "{\"ID\":\"" + System.getenv("PROCESSOR_IDENTIFIER") + "\"},"
+            + "{\"Architecture\":\"" + System.getenv("PROCESSOR_ARCHITECTURE") + "\"},"
+            + "{\"Architecture64\":\"" + System.getenv("PROCESSOR_ARCHITEW6432") + "\"},"
+            + "{\"Number_of_Processors\":\"" + System.getenv("NUMBER_OF_PROCESSORS") + "\"},"
+            + "{\"Number_of_Cores\":\"" + getNumProcessors() + "\"}"
+            + "]";
+        return json;
+    }
+    
+    private String jsonifyLinuxCPUInfo(){
+        
+        String json = "\"CPU_Info\":["
+            + "{\"Architecture\":\"" + getArchitecture() + "\"},"
+            + "{\"Make\":\"" + info.make + "\"},"
+            + "{\"Model_Name\":\"" + info.modelName + "\"},"
+            + "{\"Model\":\"" + info.model + "\"},"
+            + "{\"Family\":\"" + info.cpuFamily + "\"},"
+            + "{\"Number_of_Processors\":\"" + info.processorCnt + "\"},"
+            + "{\"Number_of_Cores\":\"" + info.numCores + "\"},"
+            + "{\"Core_Speed\":\"" + info.speed + "\"},"
+            + "{\"Cache_Size\":\"" + info.cacheSize + "\"}"
+            + "]";
+        return json;
     }
     
     public void printCPUInfo(String os){
@@ -58,8 +78,7 @@ public class CPUInfo{
         }
     }
     
-    
-    public void printWindowsCPUInfo(){
+    private void printWindowsCPUInfo(){
         
         System.out.println("\tID: " + System.getenv("PROCESSOR_IDENTIFIER"));
         System.out.println("\tArchitecture: " + System.getenv("PROCESSOR_ARCHITECTURE"));
@@ -68,7 +87,7 @@ public class CPUInfo{
         System.out.println("\tNumber of Cores: " + getNumProcessors());
     }
     
-    public void printLinuxCPUInfo(){
+    private void printLinuxCPUInfo(){
         
         System.out.println("\tArchitecture: " + getArchitecture());
         System.out.println("\tMake: " + info.make);
@@ -84,12 +103,6 @@ public class CPUInfo{
     public void getWindowsCPUInfo(){
           
         processWindowsCPUInfo();
-        list.add("architecture");
-        list.add(System.getenv("PROCESSOR_ARCHITECTURE"));
-        list.add("architecture_64");
-        list.add(System.getenv("PROCESSOR_ARCHITEW6432"));
-        list.add("num_of_cores");
-        list.add(System.getenv("NUMBER_OF_PROCESSORS"));
     }
     
     private void processWindowsCPUInfo(){
@@ -99,37 +112,17 @@ public class CPUInfo{
            
     }
     
-    public String getNumProcessors(){
+    private String getNumProcessors(){
         return String.valueOf(osBean.getAvailableProcessors());
     }
     
-    public String getArchitecture(){
+    private String getArchitecture(){
         return System.getProperty("sun.arch.data.model");
     }
     
     public void getLinuxCPUInfo() throws IOException{
      
-        findLinuxCPUInfo();
-        
-        list.add("architecture");
-        list.add(getArchitecture());
-        list.add("make");
-        list.add(info.make);
-        list.add("model_name");
-        list.add(info.modelName);
-        list.add("model");
-        list.add(String.valueOf(info.model));
-        list.add("family");
-        list.add(String.valueOf(info.cpuFamily));
-        list.add("num_of_processors");
-        list.add(String.valueOf(info.processorCnt));
-        list.add("num_of_cores");
-        list.add(String.valueOf(info.numCores));
-        list.add("core_speed");
-        list.add(String.valueOf(info.speed));
-        list.add("cache_size");
-        list.add(String.valueOf(info.cacheSize));
-            
+        findLinuxCPUInfo();    
     }
     
     private void findLinuxCPUInfo() throws IOException{

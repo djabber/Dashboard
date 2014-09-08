@@ -1,32 +1,21 @@
 package dashnet;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
-
 
 public class OSInfo{
-    
-    List<String> list = new ArrayList<String>();
-    OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
 
-    public OSInfo(){
-        //printSysInfo();
-        //getSysInfo();
+    public String getOSInfo(){
+         
+        return jsonifyOSInfo();
     }
     
-    public List<String> getSysInfo(){
-         
-        list.add("operating_system_info");
-        list.add("name");
-        list.add(getName());
-        list.add("Version");
-        list.add(getVersion());
-        list.add("Architecture");
-        list.add(getArchitecture());
-     
-        return list;
+    private String jsonifyOSInfo(){
+        
+        String json = "\"Operating_System_Info\":["
+            + "{\"Name\":\"" + getName() + "\"},"
+            + "{\"Version\":\"" + getVersion() + "\"},"
+            + "{\"Architecture\":\"" + getArchitecture() + "\"}"
+            + "]";
+        return json;
     }
     
     public void printSysInfo(){
@@ -38,7 +27,7 @@ public class OSInfo{
     }
     
     public String getName(){
-        return ("Name: " + System.getProperty("os.name"));
+        return (System.getProperty("os.name"));
     }
     
     public String getArchitecture(){

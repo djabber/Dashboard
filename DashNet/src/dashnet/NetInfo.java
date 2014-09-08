@@ -24,12 +24,6 @@ public class NetInfo {
     InetAddress addr;
     InterfaceInfo[] netArr = new InterfaceInfo[25];
     
-    public NetInfo() throws UnknownHostException, SocketException{
-       
-        //printNetInfo();
-        //getNetInfo();
-    }
-    
     public void printNetInfo() throws UnknownHostException, SocketException{
         
         System.out.println("Network Info:");
@@ -56,24 +50,25 @@ public class NetInfo {
         }
     }
     
-    public List<String> getNetInfo() throws SocketException, UnknownHostException{
+    public String getNetInfo() throws SocketException, UnknownHostException{
         
         getAllInterfaceInfo();
-        List<String> list = new ArrayList<String>();
+        return jsonifyNetInfo();
+    }
+    
+    private String jsonifyNetInfo(){
         
-        list.add("network_info");
+        String json = "\"Network_Info\":[";
+        
         for(int i = 0; i < ipcnt/2; i++){
-            
-            list.add("display_name");
-            list.add(netArr[i].dname);
-            list.add("interface_name");
-            list.add(netArr[i].name);
-            list.add("ipv4");
-            list.add(netArr[i].ip4);
-            list.add("ipv6");
-            list.add(netArr[i].ip6);
+            json += "{\"Display_Name\":\"" + netArr[i].dname + "\"},";
+            json += "{\"Interface_Name\":\"" + netArr[i].name + "\"},";       
+            json += "{\"IPv4\":\"" + netArr[i].ip4 + "\"},";
+            json += "{\"IPv6\":\"" + netArr[i].ip6 + "\"},";
         }
-        return list;
+        json = json.substring(0, json.length()-1);
+        json += "]";
+        return json;
     }
     
     public String getHostname() throws UnknownHostException, SocketException{

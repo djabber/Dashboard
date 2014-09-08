@@ -127,10 +127,15 @@
               <li class="active"><i class="icon-file-alt"></i> System Information</li>
             </ol>
            <table>
-			   %for i in info:
-				<tr>
-					<td>{{i}}</td>
-				</tr>
+			   %for head in headers:
+			   		<h3>{{head}}</h3>
+					%for list in info:
+						%for item in list: 
+							{{item}}
+							<br/>
+						%end
+						<br/>
+					%end
 				%end
 			</table>
           </div>

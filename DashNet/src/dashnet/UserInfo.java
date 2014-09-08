@@ -8,21 +8,23 @@ public class UserInfo {
     
     List<String> list = new ArrayList<String>();
     
-    public UserInfo(){
-        //printUserInfo();
-        //getUserInfo();
-    }
-    
-    public List<String> getUserInfo(){
+    public String getUserInfo(){
         
-        list.add("user_info");
-        list.add("username");
-        list.add(getUsername());
-        list.add("home_directory");
-        list.add(getHomeDirectory());
-        return list;
+        return jsonifyUserInfo();
     }
     
+    private String jsonifyUserInfo(){
+        
+        String username = getUsername();
+        username = username.replaceAll("\\\\","\\\\\\\\");
+         
+        String json = "\"User_Info\":["
+            + "{\"Username\":\"" + username + "\"},"
+            + "{\"Home_Directory\":\"" + getHomeDirectory() + "\"}"
+            + "]";
+        return json;
+    }
+     
     public void printUserInfo(){
         
         System.out.println("User Info:");
