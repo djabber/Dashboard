@@ -14,6 +14,7 @@
     <!-- Add custom CSS here -->
     <link rel="stylesheet" href="/css/sb-admin.css">
     <link rel="stylesheet" rel="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/myStyle.css">
    
   </head>
 
@@ -126,15 +127,14 @@
               <li><a href="index.html"><i class="icon-dashboard"></i> Dashboard</a></li>
               <li class="active"><i class="icon-file-alt"></i> System Information</li>
             </ol>
-           <table>
-			   %for head in headers:
-			   		<h3>{{head}}</h3>
-					%for list in info:
-						%for item in list: 
-							{{item}}
-							<br/>
+           <table>	
+				%for list in info:
+					%for tup in list: 
+						%if tup[1] == "":
+							<br/><div id="myStyle" class="myHeader">{{tup[0]}}</div>
+						%else:
+							<div id="myStyle" class="mySubHead"><b>{{tup[0]}}:</b> {{tup[1]}}</div>
 						%end
-						<br/>
 					%end
 				%end
 			</table>

@@ -13,6 +13,7 @@ def server_static_css(filepath = None):
         'bootstrap.css',
         'bootstrap.min.css',
         'sb-admin.css',
+        'myStyle.css',
     ]
     print filepath
 
@@ -72,8 +73,7 @@ def getInfo():
 	
 	s = SysInfoProcessor()
 	info = s.decodeJson()
-	headers = s.getHeadings()
-	output = template('app/static/sys_info', headers=headers, info=info)
+	output = template('app/static/sys_info', info=info)
 	
 	return output
 	

@@ -24,9 +24,13 @@ class SysInfoProcessor:
 		global net
 		global pattern
 
-		lol = []
+		lod = []
+		osDict = []
+		cpuDict = []
+		userDict = []
+		netDict = []
 		
-		myStr = re.sub("\[|\]|\{|\}|\"|\"|\s", "", data)
+		myStr = re.sub("\[|\]|\{|\}|\"|\"", "", data)
 		
 		cpuLoc = myStr.find(self.cpu)
 		userLoc = myStr.find(self.user)
@@ -36,20 +40,56 @@ class SysInfoProcessor:
 		cpuStr = myStr[ (cpuLoc + len(self.cpu) + 1) : (userLoc - 1)]
 		userStr = myStr[ (userLoc + len(self.user) + 1) : (netLoc - 1) ]
 		netStr = myStr[ (netLoc + len(self.net) + 1) : ]
-
-		lol.append(osStr.split(","))
-		lol.append(cpuStr.split(","))
-		lol.append(userStr.split(","))
-		lol.append(netStr.split(","))	
-					
-		return lol
 		
-	def getHeadings(self):
+		osList = osStr.split(",")
+		cpuList = cpuStr.split(",")
+		userList = userStr.split(",")
+		netList = netStr.split(",")
+		
+		#osDict[self.os] = ""
+		#cpuDict[self.cpu] = ""
+		#userDict[self.user] = ""
+		#netDict[self.net] = ""
+		
+		osDict.append( (re.sub("\_", " ", self.os), "") )
+		cpuDict.append( (re.sub("\_", " ", self.cpu), "") )
+		userDict.append( (re.sub("\_", " ", self.user), "") )
+		netDict.append( (re.sub("\_", " ", self.net), "") )
+		
+		for item in osList:
+			tmpList = item.split(":")
+			tmpList[0] = re.sub("\_", " ", tmpList[0])
+			tmpList[1] = re.sub("\_", " ", tmpList[1])
+			osDict.append( (tmpList[0], tmpList[1]) )
+		
+		for item in cpuList:
+			tmpList = item.split(":")
+			tmpList[0] = re.sub("\_", " ", tmpList[0])
+			tmpList[1] = re.sub("\_", " ", tmpList[1])
+			cpuDict.append( (tmpList[0], tmpList[1]) )
+		
+		for item in userList:
+			tmpList = item.split(":")
+			tmpList[0] = re.sub("\_", " ", tmpList[0])
+			tmpList[1] = re.sub("\_", " ", tmpList[1])
+			userDict.append( (tmpList[0], tmpList[1]) )
 			
-		aList = []	
-		aList.append(re.sub("\_", " ", self.os))
-		aList.append(re.sub("\_", " ", self.cpu))	
-		aList.append(re.sub("\_", " ", self.user))	
-		aList.append(re.sub("\_", " ", self.net))	
+		for item in netList:
+			tmpList = item.split(":")
+			tmpList[0] = re.sub("\_", " ", tmpList[0])
+			tmpList[1] = re.sub("\_", " ", tmpList[1])
+			netDict.append( (tmpList[0], tmpList[1]) )
+			
+		lod.append(osDict)
+		lod.append(cpuDict)
+		lod.append(userDict)
+		lod.append(netDict)	
 		
-		return aList
+		print "*** LOD ***"
+		for list in lod:
+			for item in list:
+				print item
+			print "\nEnd of dict\n"
+		
+					
+		return lod
