@@ -1,4 +1,4 @@
-from bottle import Bottle, route, run, template, get, post, request, static_file
+from bottle import Bottle, route, run, template, get, post, request, static_file, error
 from server import Server
 from sys_info_processor import SysInfoProcessor
 import json
@@ -6,7 +6,6 @@ import json
 app = Bottle()
 
     
-
 @route('/css/<filepath:path>')
 def server_static_css(filepath = None):
 
@@ -43,7 +42,7 @@ def server_static_images(filepath = None):
 @route('/')
 @route('/index/')
 @route('/myapp/index/')
-def favorite():
+def home():
     return template('app/static/index')
 
 def getInfo():
@@ -52,7 +51,7 @@ def getInfo():
 	
 	return s.decodeJson()
 	
-@get("/sys_info") 
+@route("/sys_info") 
 def sysInfo():
 	
 	info = getInfo()
@@ -60,6 +59,10 @@ def sysInfo():
 	
 	return output
 	
+@error(404)
+def error404(error):
+    return template('app/static/index')
+
 
 run(host='localhost', port=8082, debug=True)
 

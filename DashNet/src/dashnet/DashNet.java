@@ -10,6 +10,7 @@ public class DashNet{
     public static void main(String[] args){
         
         try{
+            
             Client client = new Client();
             SysInfo sys = new SysInfo();
             String data = sys.getSysInfo();
@@ -17,7 +18,6 @@ public class DashNet{
             client.sendInfo(data);
             
         }catch(IOException ex){
-            System.out.println("EX = " + ex);
             Logger.getLogger(DashNet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }   

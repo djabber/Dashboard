@@ -14,11 +14,11 @@ class Server:
 		port = 10000               
 		s.bind((host, port))       
 
-		print 'Waiting for client connection...'
+		#print 'Waiting for client connection...'
 		s.listen(5)
 		
 		c, addr = s.accept()   
-		print 'Connection established...'
+		#print 'Connection established...'
 		data = c.recv(2048).strip()
 		c.close()
 		return data
