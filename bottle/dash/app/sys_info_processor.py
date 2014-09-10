@@ -1,5 +1,5 @@
 from server import Server
-import json, re
+import json, re, subprocess
 
 
 class SysInfoProcessor:
@@ -12,9 +12,13 @@ class SysInfoProcessor:
 	pattern = "(((\d{1,3}\.){3})((\d{1,3})))|(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})|\w"
 	
 	def __init__(self): 
-		s = Server()
+		
 		global data
+				
+		s = Server()
 		data = s.startServer()
+		
+		subprocess.call(["java", "-jar", "/home/likewise-open/TXSTATE/dd27/Dropbox/Development/Projects/Dashboard/DashNet/dist/DashNet.jar"])
 
 	def decodeJson(self):
 			
@@ -45,11 +49,6 @@ class SysInfoProcessor:
 		cpuList = cpuStr.split(",")
 		userList = userStr.split(",")
 		netList = netStr.split(",")
-		
-		#osDict[self.os] = ""
-		#cpuDict[self.cpu] = ""
-		#userDict[self.user] = ""
-		#netDict[self.net] = ""
 		
 		osDict.append( (re.sub("\_", " ", self.os), "") )
 		cpuDict.append( (re.sub("\_", " ", self.cpu), "") )

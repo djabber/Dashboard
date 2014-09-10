@@ -17,6 +17,7 @@ public class DashNet{
             client.sendInfo(data);
             
         }catch(IOException ex){
+            System.out.println("EX = " + ex);
             Logger.getLogger(DashNet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }   

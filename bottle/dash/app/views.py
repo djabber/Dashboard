@@ -4,6 +4,7 @@ from sys_info_processor import SysInfoProcessor
 import json
 
 app = Bottle()
+
     
 
 @route('/css/<filepath:path>')
@@ -45,34 +46,16 @@ def server_static_images(filepath = None):
 def favorite():
     return template('app/static/index')
 
-
-@get("/status")
-def status():
-	return  '''
-		<form action="/status" method="post">
-			<h3>Ping Server</h3>
-			<input value="Refresh" type="submit" />
-		</form>
-		'''
-
-
-@post("/status") 
-def get_status():
-	
-	s = ServerStatus()
-	p = s.ping('147.26.195.210')
-	
-	if p == 0:
-		return "<p>ip is up.</p>"
-	else:
-		return "<p>ip is down.</p>"
-
-
-@get("/sys_info") 
 def getInfo():
 	
 	s = SysInfoProcessor()
-	info = s.decodeJson()
+	
+	return s.decodeJson()
+	
+@get("/sys_info") 
+def sysInfo():
+	
+	info = getInfo()
 	output = template('app/static/sys_info', info=info)
 	
 	return output
@@ -82,4 +65,3 @@ run(host='localhost', port=8082, debug=True)
 
 if __name__ == '__main__':
 	app.run
-
