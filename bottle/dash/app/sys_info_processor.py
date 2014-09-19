@@ -1,4 +1,5 @@
 from server import Server
+from client import Client
 import json, re, subprocess
 
 
@@ -14,9 +15,11 @@ class SysInfoProcessor:
 	def __init__(self): 
 		
 		global data
-				
+
 		s = Server()
 		data = s.startServer()
+		#c = Client()
+		#c.startClient("localhost", 10000)
 
 	def decodeJson(self):
 			
@@ -82,11 +85,4 @@ class SysInfoProcessor:
 		lod.append(userDict)
 		lod.append(netDict)	
 		
-		print "*** LOD ***"
-		for list in lod:
-			for item in list:
-				print item
-			print "\nEnd of dict\n"
-		
-					
 		return lod

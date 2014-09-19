@@ -1,0 +1,422 @@
+2007-06-12 14:01:06,580 INFO  lpdnet.queue.QueueMonitor - Started.
+2007-06-12 14:01:06,596 INFO  lpdnet.queue.QueueMonitor - Started.
+2007-06-12 14:01:06,596 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:01:06,596 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:01:09,557 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 3 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 1 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 2 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 4 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 5 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 6 going to sleep...
+2007-06-12 14:01:09,573 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 8 going to sleep...
+2007-06-12 14:01:09,588 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 7 going to sleep...
+2007-06-12 14:01:09,651 DEBUG lpdnet.LPD - Invoking OnStartServer event delegates.
+2007-06-12 14:01:09,651 DEBUG lpdnet.LPD - Trying to accept new socket connection.
+2007-06-12 14:01:09,651 INFO  lpdnet.LPD - LPD Server started on port 515
+2007-06-12 14:01:24,613 DEBUG lpdnet.LPD - Connection accepted.
+2007-06-12 14:01:24,613 DEBUG lpdnet.LPD - Trying to accept new socket connection.
+2007-06-12 14:01:24,613 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 is awake...
+2007-06-12 14:01:24,613 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 start processing
+2007-06-12 14:01:24,707 DEBUG lpdnet.ConnectionHandler - FILE
+
+2007-06-12 14:01:24,707 DEBUG lpdnet.command.LPDCommands - Receive Job Command
+2007-06-12 14:01:24,707 DEBUG lpdnet.command.CommandReceiveJob - Receive Job Command
+2007-06-12 14:01:24,722 DEBUG lpdnet.command.CommandReceiveJob - Control File=HD106MARTINEZJ2
+PMartinezJ2
+Jtodo.txt - Notepad
+ldfA003D106MARTINEZJ2
+UdfA003D106MARTINEZJ2
+Ntodo.txt - Notepad
+
+2007-06-12 14:01:24,738 DEBUG lpdnet.command.CommandReceiveJob - Control File Commands=lpdnet.common.ControlFileCommands
+2007-06-12 14:01:24,738 DEBUG lpdnet.command.CommandReceiveJob - DataFile size=125899906843000
+2007-06-12 14:01:26,226 ERROR lpdnet.command.CommandReceiveJob - Value was either too large or too small for an Int32.
+2007-06-12 14:01:26,226 DEBUG lpdnet.command.CommandReceiveJob - Data File=
+
+
+
+
+
+                                      todo.txt
+       1. LPD conversion (java > C#) - The java application has been 
+       converted 100% to C# (100%)
+       2. Multithreaded -  The application now uses a pool of threads for 
+       managing client connections (100%)
+       3. Minimal documentation - Almost every property and method has been 
+       documented. (98%)
+       4. Events or hooks for files received - I have Implemented 2 handlers 
+       (saveToFile and printRedirect handlers). Custom handlers can be 
+       created by implementing the HandlerInterface interface. (100%)
+       5. Support any type of document - I have tested the system printing 
+       images, word documents and ASCII files, the output will depend on the 
+       print driver used for sending the print job. (100%)
+       6. ASA and SCS control codes. (0%)
+       7. EBCDIC to ASCII. (0%)
+       8. Full Implementation of RFC1179 - Missing LPD commands on the java 
+       lpdspooler are related on how the print job is going to be printed. 
+       Basically they affect the format of the print job (header, width, 
+       indentation, font) and specifies other jobs like sending an email and 
+       create a symolic link. This commands can be implemented using 
+       handlers.
+       9. Linux and Windows examples - Im working on it (100%)
+       10. Net framework 1.1 - (100%)
+       11. LPD can redirect jobs to other printers - This option is 
+       implemented in the class PrintRedirectHandler. I order to test it you 
+       need to define a new queue with PrintRedirectHandler assigned to it. 
+       (100%)
+       12. Provide a GUI for managing the LPD server and queues - This will 
+       show how to use lpdnet.dll form another project. (100%)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                       Page 1
+2007-06-12 14:01:26,242 DEBUG lpdnet.queue.Queues - Queue: FILE
+2007-06-12 14:01:26,242 DEBUG lpdnet.queue.Queues - Queue lock: FILE
+2007-06-12 14:01:26,446 DEBUG lpdnet.queue.Queue - Object added: 0
+2007-06-12 14:01:26,446 DEBUG lpdnet.queue.Queues - Invoking OnAddJob event delegates: FILE, 0
+2007-06-12 14:01:26,822 INFO  lpdnet.queue.Queues - PrintJob 0 was added to queue FILE
+2007-06-12 14:01:26,822 DEBUG lpdnet.queue.Queues - Notify all to Lock object for queue: FILE
+2007-06-12 14:01:26,822 DEBUG lpdnet.ConnectionHandler - Closing connection.
+2007-06-12 14:01:26,822 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: FILE
+2007-06-12 14:01:26,822 DEBUG lpdnet.ConnectionHandler - Closing reader.
+2007-06-12 14:01:26,822 DEBUG lpdnet.ConnectionHandler - Closing writer.
+2007-06-12 14:01:26,822 DEBUG lpdnet.ConnectionHandler - Closing stream.
+2007-06-12 14:01:26,822 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 finish processing
+2007-06-12 14:01:26,822 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 going to sleep...
+2007-06-12 14:01:26,822 DEBUG lpdnet.queue.Queue - Next object in queue: 0
+2007-06-12 14:01:26,822 INFO  lpdnet.queue.QueueMonitor - About to processing print job: lpdnet.queue.QueuedPrintJob
+2007-06-12 14:01:26,837 INFO  lpdnet.queue.QueueMonitor - Finished processing print job: 0
+2007-06-12 14:01:26,869 DEBUG lpdnet.queue.Queue - Object removed: 0
+2007-06-12 14:01:26,869 DEBUG lpdnet.queue.Queues - Invoking OnRemoveJob event delegates: FILE, 0
+2007-06-12 14:01:27,025 INFO  lpdnet.queue.Queues - PrintJob 0 was removed from the queue FILE
+2007-06-12 14:01:27,025 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:02:15,999 DEBUG lpdnet.LPD - Connection accepted.
+2007-06-12 14:02:15,999 DEBUG lpdnet.LPD - Trying to accept new socket connection.
+2007-06-12 14:02:15,999 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 is awake...
+2007-06-12 14:02:15,999 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 start processing
+2007-06-12 14:02:16,109 DEBUG lpdnet.ConnectionHandler - FILE
+
+2007-06-12 14:02:16,109 DEBUG lpdnet.command.LPDCommands - Receive Job Command
+2007-06-12 14:02:16,109 DEBUG lpdnet.command.CommandReceiveJob - Receive Job Command
+2007-06-12 14:02:16,109 DEBUG lpdnet.command.CommandReceiveJob - Control File=HD106MARTINEZJ2
+PMartinezJ2
+J<untitled>
+ldfA004D106MARTINEZJ2
+UdfA004D106MARTINEZJ2
+N<untitled>
+
+2007-06-12 14:02:16,109 DEBUG lpdnet.command.CommandReceiveJob - Control File Commands=lpdnet.common.ControlFileCommands
+2007-06-12 14:02:16,109 DEBUG lpdnet.command.CommandReceiveJob - DataFile size=125899906843000
+2007-06-12 14:02:16,109 ERROR lpdnet.command.CommandReceiveJob - Value was either too large or too small for an Int32.
+2007-06-12 14:02:16,109 DEBUG lpdnet.command.CommandReceiveJob - Data File=
+
+
+
+
+                                                                            1
+2007-06-12 14:02:16,109 DEBUG lpdnet.queue.Queues - Queue: FILE
+2007-06-12 14:02:16,109 DEBUG lpdnet.queue.Queues - Queue lock: FILE
+2007-06-12 14:02:16,109 DEBUG lpdnet.queue.Queue - Object added: 1
+2007-06-12 14:02:16,109 DEBUG lpdnet.queue.Queues - Invoking OnAddJob event delegates: FILE, 1
+2007-06-12 14:02:16,125 INFO  lpdnet.queue.Queues - PrintJob 1 was added to queue FILE
+2007-06-12 14:02:16,125 DEBUG lpdnet.queue.Queues - Notify all to Lock object for queue: FILE
+2007-06-12 14:02:16,234 DEBUG lpdnet.ConnectionHandler - Closing connection.
+2007-06-12 14:02:16,234 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: FILE
+2007-06-12 14:02:16,234 DEBUG lpdnet.queue.Queue - Next object in queue: 1
+2007-06-12 14:02:16,234 INFO  lpdnet.queue.QueueMonitor - About to processing print job: lpdnet.queue.QueuedPrintJob
+2007-06-12 14:02:16,234 DEBUG lpdnet.ConnectionHandler - Closing reader.
+2007-06-12 14:02:16,234 DEBUG lpdnet.ConnectionHandler - Closing writer.
+2007-06-12 14:02:16,234 DEBUG lpdnet.ConnectionHandler - Closing stream.
+2007-06-12 14:02:16,234 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 finish processing
+2007-06-12 14:02:16,234 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 going to sleep...
+2007-06-12 14:02:16,234 INFO  lpdnet.queue.QueueMonitor - Finished processing print job: 1
+2007-06-12 14:02:16,234 DEBUG lpdnet.queue.Queue - Object removed: 1
+2007-06-12 14:02:16,234 DEBUG lpdnet.queue.Queues - Invoking OnRemoveJob event delegates: FILE, 1
+2007-06-12 14:02:16,250 INFO  lpdnet.queue.Queues - PrintJob 1 was removed from the queue FILE
+2007-06-12 14:02:16,250 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:02:33,781 DEBUG lpdnet.LPD - Shutting down LPD server.
+2007-06-12 14:02:33,938 WARN  lpdnet.LPD - A blocking operation was interrupted by a call to WSACancelBlockingCall
+Exception: System.Net.Sockets.SocketException
+Message: A blocking operation was interrupted by a call to WSACancelBlockingCall
+Source: System
+   at System.Net.Sockets.Socket.Accept()
+   at System.Net.Sockets.TcpListener.AcceptSocket()
+   at lpdnet.LPD.acceptConnectionsThread() in E:\usr\tmp\lpdnet\1.1\lpdnet\LPD.cs:line 185
+
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 0 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 1 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 2 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 3 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 4 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 5 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 6 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 7 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 8 to stop
+2007-06-12 14:02:33,953 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 9 to stop
+2007-06-12 14:02:34,016 DEBUG lpdnet.LPD - Invoking OnStopServer event delegates.
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 3 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 3 stopped
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 2 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 2 stopped
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 4 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 8 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 8 stopped
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 stopped
+2007-06-12 14:02:34,016 DEBUG lpdnet.LPD - LPD server stopped gracefully.
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 6 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 6 stopped
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 1 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 1 stopped
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 5 is awake...
+2007-06-12 14:02:34,016 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 4 stopped
+2007-06-12 14:02:34,220 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 7 is awake...
+2007-06-12 14:02:34,220 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 7 stopped
+2007-06-12 14:02:34,220 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 is awake...
+2007-06-12 14:02:34,220 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 stopped
+2007-06-12 14:02:34,220 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 5 stopped
+2007-06-12 14:02:35,254 DEBUG lpdnet.queue.QueueMonitor - Stopping.
+2007-06-12 14:02:35,254 DEBUG lpdnet.queue.QueueMonitor - Stopping.
+2007-06-12 14:02:35,254 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: FILE
+2007-06-12 14:02:35,254 INFO  lpdnet.queue.QueueMonitor - Stopped.
+2007-06-12 14:02:35,254 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: RAW
+2007-06-12 14:02:35,254 INFO  lpdnet.queue.QueueMonitor - Stopped.
+2007-06-12 14:03:03,391 INFO  lpdnet.queue.QueueMonitor - Started.
+2007-06-12 14:03:03,391 INFO  lpdnet.queue.QueueMonitor - Started.
+2007-06-12 14:03:03,407 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:03:03,407 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:03:05,381 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 going to sleep...
+2007-06-12 14:03:05,381 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 1 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 2 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 4 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 3 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 5 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 6 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 7 going to sleep...
+2007-06-12 14:03:05,397 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 8 going to sleep...
+2007-06-12 14:03:05,412 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 going to sleep...
+2007-06-12 14:03:05,459 DEBUG lpdnet.LPD - Invoking OnStartServer event delegates.
+2007-06-12 14:03:05,459 DEBUG lpdnet.LPD - Trying to accept new socket connection.
+2007-06-12 14:03:05,459 INFO  lpdnet.LPD - LPD Server started on port 515
+2007-06-12 14:03:21,518 DEBUG lpdnet.LPD - Connection accepted.
+2007-06-12 14:03:21,518 DEBUG lpdnet.LPD - Trying to accept new socket connection.
+2007-06-12 14:03:21,518 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 is awake...
+2007-06-12 14:03:21,518 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 start processing
+2007-06-12 14:03:21,533 DEBUG lpdnet.ConnectionHandler - FILE
+
+2007-06-12 14:03:21,533 DEBUG lpdnet.command.LPDCommands - Receive Job Command
+2007-06-12 14:03:21,533 DEBUG lpdnet.command.CommandReceiveJob - Receive Job Command
+2007-06-12 14:03:21,533 DEBUG lpdnet.command.CommandReceiveJob - Control File=HD106MARTINEZJ2
+PMartinezJ2
+J003D10.pjb - SciTE
+ldfA005D106MARTINEZJ2
+UdfA005D106MARTINEZJ2
+N003D10.pjb - SciTE
+
+2007-06-12 14:03:21,533 DEBUG lpdnet.command.CommandReceiveJob - Control File Commands=lpdnet.common.ControlFileCommands
+2007-06-12 14:03:21,533 DEBUG lpdnet.command.CommandReceiveJob - DataFile size=125899906843000
+2007-06-12 14:03:22,849 ERROR lpdnet.command.CommandReceiveJob - Value was either too large or too small for an Int32.
+2007-06-12 14:03:22,849 DEBUG lpdnet.command.CommandReceiveJob - Data File=
+
+
+
+
+
+               003D10.pjb  Printed on 6/12/2007, 2:03:21 PM  Page 1
+
+
+
+
+
+                                                     todo.txt
+                      1. LPD conversion (java > C#) - The java 
+               application has been 
+                      converted 100% to C# (100%)
+                      2. Multithreaded -  The application now uses a 
+               pool of threads for 
+                      managing client connections (100%)
+                      3. Minimal documentation - Almost every property 
+               and method has been 
+                      documented. (98%)
+                      4. Events or hooks for files received - I have 
+               Implemented 2 handlers 
+                      (saveToFile and printRedirect handlers). Custom 
+               handlers can be 
+                      created by implementing the HandlerInterface 
+               interface. (100%)
+                      5. Support any type of document - I have tested 
+               the system printing 
+                      images, word documents and ASCII files, the output 
+               will depend on the 
+                      print driver used for sending the print job. (100%)
+                      6. ASA and SCS control codes. (0%)
+                      7. EBCDIC to ASCII. (0%)
+                      8. Full Implementation of RFC1179 - Missing LPD 
+               commands on the java 
+                      lpdspooler are related on how the print job is 
+               going to be printed. 
+                      Basically they affect the format of the print job 
+               (header, width, 
+                      indentation, font) and specifies other jobs like 
+               sending an email and 
+                      create a symolic link. This commands can be 
+               implemented using 
+                      handlers.
+                      9. Linux and Windows examples - Im working on it 
+               (100%)
+                      10. Net framework 1.1 - (100%)
+                      11. LPD can redirect jobs to other printers - This 
+               option is 
+                      implemented in the class PrintRedirectHandler. I 
+               order to test it you 
+                      need to define a new queue with 
+               PrintRedirectHandler assigned to it. 
+                      (100%)
+                      12. Provide a GUI for managing the LPD server and 
+               queues - This will 
+                      show how to use lpdnet.dll form another project. 
+               (100%)
+
+
+
+               C:\003D10.pjb  File date: 6/12/2007  File time: 2:01:26 PM
+
+
+
+
+
+               003D10.pjb  Printed on 6/12/2007, 2:03:21 PM  Page 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                      Page 1FF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               C:\003D10.pjb  File date: 6/12/2007  File time: 2:01:26 PM
+2007-06-12 14:03:23,272 DEBUG lpdnet.queue.Queues - Queue: FILE
+2007-06-12 14:03:23,272 DEBUG lpdnet.queue.Queues - Queue lock: FILE
+2007-06-12 14:03:23,272 DEBUG lpdnet.queue.Queue - Object added: 0
+2007-06-12 14:03:23,272 DEBUG lpdnet.queue.Queues - Invoking OnAddJob event delegates: FILE, 0
+2007-06-12 14:03:23,288 INFO  lpdnet.queue.Queues - PrintJob 0 was added to queue FILE
+2007-06-12 14:03:23,288 DEBUG lpdnet.queue.Queues - Notify all to Lock object for queue: FILE
+2007-06-12 14:03:23,288 DEBUG lpdnet.ConnectionHandler - Closing connection.
+2007-06-12 14:03:23,288 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: FILE
+2007-06-12 14:03:23,288 DEBUG lpdnet.ConnectionHandler - Closing reader.
+2007-06-12 14:03:23,288 DEBUG lpdnet.ConnectionHandler - Closing writer.
+2007-06-12 14:03:23,288 DEBUG lpdnet.ConnectionHandler - Closing stream.
+2007-06-12 14:03:23,288 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 finish processing
+2007-06-12 14:03:23,288 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 going to sleep...
+2007-06-12 14:03:23,288 DEBUG lpdnet.queue.Queue - Next object in queue: 0
+2007-06-12 14:03:23,288 INFO  lpdnet.queue.QueueMonitor - About to processing print job: lpdnet.queue.QueuedPrintJob
+2007-06-12 14:03:23,288 INFO  lpdnet.queue.QueueMonitor - Finished processing print job: 0
+2007-06-12 14:03:23,476 DEBUG lpdnet.queue.Queue - Object removed: 0
+2007-06-12 14:03:23,476 DEBUG lpdnet.queue.Queues - Invoking OnRemoveJob event delegates: FILE, 0
+2007-06-12 14:03:23,507 INFO  lpdnet.queue.Queues - PrintJob 0 was removed from the queue FILE
+2007-06-12 14:03:23,507 DEBUG lpdnet.queue.QueueMonitor - Nothing to process going to sleep.
+2007-06-12 14:03:28,176 DEBUG lpdnet.LPD - Shutting down LPD server.
+2007-06-12 14:03:28,223 WARN  lpdnet.LPD - A blocking operation was interrupted by a call to WSACancelBlockingCall
+Exception: System.Net.Sockets.SocketException
+Message: A blocking operation was interrupted by a call to WSACancelBlockingCall
+Source: System
+   at System.Net.Sockets.Socket.Accept()
+   at System.Net.Sockets.TcpListener.AcceptSocket()
+   at lpdnet.LPD.acceptConnectionsThread() in E:\usr\tmp\lpdnet\1.1\lpdnet\LPD.cs:line 185
+
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 0 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 1 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 2 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 3 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 4 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 5 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 6 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 7 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 8 to stop
+2007-06-12 14:03:28,239 DEBUG lpdnet.thread.LPDThreadPool - Signaling Thread 9 to stop
+2007-06-12 14:03:28,380 DEBUG lpdnet.LPD - Invoking OnStopServer event delegates.
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 2 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 2 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 1 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 1 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 3 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 3 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 5 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 5 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 7 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 7 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 9 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 4 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 4 stopped
+2007-06-12 14:03:28,395 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 6 is awake...
+2007-06-12 14:03:28,395 DEBUG lpdnet.LPD - LPD server stopped gracefully.
+2007-06-12 14:03:28,583 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 is awake...
+2007-06-12 14:03:28,599 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 8 is awake...
+2007-06-12 14:03:28,599 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 8 stopped
+2007-06-12 14:03:28,599 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 0 stopped
+2007-06-12 14:03:28,583 DEBUG lpdnet.thread.LPDThreadPoolThread - Thread 6 stopped
+2007-06-12 14:03:30,886 DEBUG lpdnet.queue.QueueMonitor - Stopping.
+2007-06-12 14:03:30,886 DEBUG lpdnet.queue.QueueMonitor - Stopping.
+2007-06-12 14:03:30,886 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: FILE
+2007-06-12 14:03:30,886 INFO  lpdnet.queue.QueueMonitor - Stopped.
+2007-06-12 14:03:30,886 DEBUG lpdnet.queue.QueueMonitor - Somebody woke me up, cheking Queue: RAW
+2007-06-12 14:03:30,886 INFO  lpdnet.queue.QueueMonitor - Stopped.

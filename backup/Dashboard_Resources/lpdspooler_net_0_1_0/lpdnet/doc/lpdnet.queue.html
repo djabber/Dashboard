@@ -1,0 +1,109 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>lpdnet.queue</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">LPD.Net Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">lpdnet.queue Namespace</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>
+        <a href="lpdnet.queueHierarchy.html">Namespace hierarchy</a>
+      </p>
+      <h3 class="dtH3">Classes</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Class</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.PrintQueue.html">PrintQueue</a>
+            </td>
+            <td width="50%"> The PrintQueue is just a queue that only accepts print jobs. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.Queue.html">Queue</a>
+            </td>
+            <td width="50%"> Queue of objects </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.QueuedObject.html">QueuedObject</a>
+            </td>
+            <td width="50%"> Encapsulates any Object that is stored in a Queue </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.QueuedPrintJob.html">QueuedPrintJob</a>
+            </td>
+            <td width="50%"> A copy of a printJob plus the jobId used by the PrintQueue to store the opriginal copy of this PrintJob. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.QueuedPrintJobInfo.html">QueuedPrintJobInfo</a>
+            </td>
+            <td width="50%"> Encapsulates the PrintJob that is stored in the Queue. A copy of the actual stored PrintJob is returned. This class makes it easy to expose more attibutes of the Print Job as necessary. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.QueueMonitor.html">QueueMonitor</a>
+            </td>
+            <td width="50%"> Monitors a single print queue and process all queued jobs using the queue job handler. A new QueueMonitor should be defined for each <a href="lpdnet.queue.PrintQueue.html">PrintQueue</a>. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.Queues.html">Queues</a>
+            </td>
+            <td width="50%"> This class maintains all of the Print queues and contains all of the logic for performing operations on them. </td>
+          </tr>
+        </table>
+      </div>
+      <h3 class="dtH3">Delegates</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Delegate</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.Queues.addJobDelegate.html">Queues.addJobDelegate</a>
+            </td>
+            <td width="50%"> Delegate for adding a new print job </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.Queues.removeAllJobsDelegate.html">Queues.removeAllJobsDelegate</a>
+            </td>
+            <td width="50%"> Delegate for removing all print jobs from queue </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.queue.Queues.removeJobDelegate.html">Queues.removeJobDelegate</a>
+            </td>
+            <td width="50%"> Delegate for removing a job from queue </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

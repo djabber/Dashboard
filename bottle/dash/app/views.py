@@ -5,6 +5,8 @@ import json
 
 app = Bottle()
 
+s = SysInfoProcessor()
+#s.decodeJson()
     
 @route('/css/<filepath:path>')
 def server_static_css(filepath = None):
@@ -43,21 +45,28 @@ def server_static_images(filepath = None):
 @route('/index/')
 @route('/myapp/index/')
 def home():
+	
     return template('app/static/index')
 
-def getInfo():
+def getInfo(host):
 	
 	s = SysInfoProcessor()
 	
 	return s.decodeJson()
 	
-@route("/sys_info") 
-def sysInfo():
+@route('/hello/<name>')
+def greet(name='Stranger'):
+    return template('Hello {{name}}, how are you?', name=name)	
+		
+@route("/sys_info/<host>") 
+def sysInfo(host = "localhost"):
 	
-	info = getInfo()
+	info = getInfo(host)
 	output = template('app/static/sys_info', info=info)
 	
 	return output
+	
+
 	
 @error(404)
 def error404(error):

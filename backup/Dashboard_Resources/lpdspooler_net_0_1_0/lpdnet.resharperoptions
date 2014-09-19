@@ -1,0 +1,262 @@
+<Configuration>
+  <RecentFilesTracker>
+    <RecentFilesTracker>
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\queue\QueueMonitor.cs" offset="1644" line="79" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\queue\QueuedPrintJob.cs" offset="0" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\queue\Queue.cs" offset="0" line="128" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\queue\PrintQueue.cs" offset="0" line="49" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\thread\LPDThread.cs" offset="0" line="36" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\StringUtil.cs" offset="3625" line="16" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\ByteUtil.cs" offset="606" line="19" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\ConfigUtil.cs" offset="602" line="52" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\DateUtil.cs" offset="0" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\FileUtil.cs" offset="729" line="0" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\LogUtil.cs" offset="0" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\PrintUtil.cs" offset="7093" line="158" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\ObjectUtil.cs" offset="917" line="122" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\LPD.cs" offset="2204" line="154" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\util\NetUtil.cs" offset="1333" line="0" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnetmanager\StatusViewerForm.cs" offset="0" line="0" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\BootLoader.cs" offset="0" line="3" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\command\CommandReceiveJob.cs" offset="0" line="190" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\command\CommandHandler.cs" offset="0" line="2" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\command\LPDCommands.cs" offset="0" line="56" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\ConnectionHandler.cs" offset="0" line="27" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\App.config" offset="0" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnetmanager\App.config" offset="0" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\thread\ThreadPoolRequest.cs" offset="0" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\thread\Runnable.cs" offset="295" line="-1" column="-1" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\command\CommandReportQueueStateShort.cs" offset="392" line="0" column="0" />
+      <TrackedFile location="E:\reference\lpdnet\lpdnet\command\CommandReportQueueStateLong.cs" offset="0" line="45" column="0" />
+    </RecentFilesTracker>
+  </RecentFilesTracker>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean />
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Qualified:lpdnet.thread.ThreadPool">
+      <Item value="Workers" priority="4" />
+      <Item value="add" priority="0" />
+      <Item value="closePool" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:string">
+      <Item value="ToUpper" priority="1" />
+      <Item value="Equals" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.thread.ThreadPoolThread[]">
+      <Item value="Length" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.LPD">
+      <Item value="startServerEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:int">
+      <Item value="ToString" priority="2" />
+      <Item value="Equals" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListViewItem.ListViewSubItemCollection">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.thread.Runnable">
+      <Item value="run" priority="0" />
+      <Item value="isRunning" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.MenuItem">
+      <Item value="Enabled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListView">
+      <Item value="Refresh" priority="0" />
+      <Item value="Clear" priority="1" />
+      <Item value="Items" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Printing.PrintDocument">
+      <Item value="PrinterSettings" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.thread.LPDThread">
+      <Item value="resume" priority="0" />
+      <Item value="start" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.common.DataFile">
+      <Item value="Contents" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@lpdnet.handler">
+      <Item value="FileHandler" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceProcess.ServiceProcessInstaller">
+      <Item value="Account" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListView.ListViewItemCollection">
+      <Item value="Insert" priority="0" />
+      <Item value="Add" priority="0" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.gui.QueuedPrintJobModel">
+      <Item value="JobInfo" priority="0" />
+      <Item value="Status" priority="2" />
+      <Item value="IsDirty" priority="1" />
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ICollection">
+      <Item value="CopyTo" priority="0" />
+      <Item value="Count" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceProcess.ServiceInstaller">
+      <Item value="StartType" priority="0" />
+      <Item value="HelpText" priority="0" />
+      <Item value="DisplayName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Hashtable">
+      <Item value="Clear" priority="0" />
+      <Item value="Contains" priority="0" />
+      <Item value="Count" priority="1" />
+      <Item value="ContainsKey" priority="0" />
+      <Item value="Remove" priority="2" />
+      <Item value="Add" priority="1" />
+      <Item value="Keys" priority="1" />
+      <Item value="GetEnumerator" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.QueuedPrintJobInfo">
+      <Item value="Id" priority="3" />
+      <Item value="Owner" priority="0" />
+      <Item value="TimeStamp" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:log4net.ILog">
+      <Item value="Error" priority="2" />
+      <Item value="Info" priority="0" />
+      <Item value="Warn" priority="0" />
+      <Item value="Debug" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@lpdnet.thread">
+      <Item value="Thread" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.thread.Thread">
+      <Item value="start" priority="4" />
+      <Item value="isAlive" priority="1" />
+      <Item value="stop" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.core.queue.Queues">
+      <Item value="createQueue" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="StartupPath" priority="0" />
+      <Item value="Run" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.QueueMonitor">
+      <Item value="run" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.CancelEventArgs">
+      <Item value="Cancel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.QueuedObject">
+      <Item value="Obj" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.utils.ConfigUtil">
+      <Item value="getString" priority="0" />
+      <Item value="getInteger" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.handler.FileHandler">
+      <Item value="OutputDirectory" priority="0" />
+      <Item value="Extension" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Printing.PrintPageEventArgs">
+      <Item value="Graphics" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@lpdnet.BootLoader.threads">
+      <Item value="Add" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@">
+      <Item value="getBoolean" priority="0" />
+      <Item value="getString" priority="0" />
+      <Item value="OutputDirectory" priority="0" />
+      <Item value="Extension" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.Queue">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.QueuedPrintJob">
+      <Item value="JobId" priority="0" />
+      <Item value="PrintJob" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@lpdnet.utils.PrintUtil.log">
+      <Item value="Debug" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@lpdnet">
+      <Item value="BootLoader" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Printing.PrinterSettings">
+      <Item value="PrinterName" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.NotifyIcon">
+      <Item value="Visible" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:object">
+      <Item value="ToString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StreamReader">
+      <Item value="Peek" priority="0" />
+      <Item value="ReadLine" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.common.PrintJob">
+      <Item value="DataFile" priority="2" />
+      <Item value="ControlFile" priority="1" />
+      <Item value="Owner" priority="0" />
+      <Item value="Size" priority="0" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DateTime">
+      <Item value="ToString" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.Queues">
+      <Item value="removeJobEvent" priority="0" />
+      <Item value="removeAllJobsEvent" priority="0" />
+      <Item value="createQueue" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.queue.PrintQueue">
+      <Item value="Name" priority="0" />
+      <Item value="LockPad" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceProcess.ServiceBase">
+      <Item value="Run" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToChar" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:byte[]">
+      <Item value="Length" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.IList">
+      <Item value="RemoveAt" priority="1" />
+      <Item value="Add" priority="0" />
+      <Item value="Count" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@lpdnet.core.queue.Queues.log">
+      <Item value="Debug" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="ToString" priority="0" />
+      <Item value="Append" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.common.ControlFile">
+      <Item value="JobNumber" priority="0" />
+      <Item value="ControlFileCommands" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Graphics">
+      <Item value="DrawString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.IEnumerator">
+      <Item value="Current" priority="0" />
+      <Item value="MoveNext" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListViewItem">
+      <Item value="SubItems" priority="1" />
+      <Item value="Text" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:lpdnet.handler.PrintRedirectHandler">
+      <Item value="setPrinter" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:long">
+      <Item value="ToString" priority="2" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

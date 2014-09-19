@@ -9,3 +9,67 @@
 	font-size: 18px;
 	padding: 2px 25px;
 }
+
+#myStyle.navbarClock{
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#myStyle.myFont{
+
+	font-size: 14px;
+}
+
+@media(min-width: 768px){
+
+  .navbarCenter{
+  
+    margin-left: auto;
+	margin-right: auto;
+  }
+}
+
+.panel-purple {
+    border-color: #8c78f0;
+}
+
+.panel-purple .panel-heading {
+    border-color: #8c78f0;
+    color: #fff;
+    background-color: #8c78f0;
+    text-shadow: -1px 0 #5940d6, 0 1px #5940d6, 1px 0 #5940d6, 0 -1px #5940d6;
+}
+
+.panel-purple a {
+    color: #8c78f0;
+}
+
+.panel-purple a:hover {
+    color: #df8a13;
+}
+
+.panel-yellow {
+    border-color: #f0f082;
+}
+
+.panel-yellow .panel-heading {
+    border-color: #f0f082;
+    color: #fff;
+    background-color: #f0f082;
+    text-shadow: -1px 0 #d6d649, 0 1px #d6d649, 1px 0 #d6d649, 0 -1px #d6d649;
+}
+
+.panel-yellow a {
+    color: #f0f082;
+}
+
+.panel-yellow a:hover {
+    color: #f0f082;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+

@@ -1,46 +1,48 @@
-package dashnet;
+package dashnet; 
 
-import java.io.*;
-import java.net.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 class Client{
-	
-    public void sendInfo(String message){ //throws IOException, InterruptedException{
-	
-        int tries = 0;
-        Socket socket = null;
+
+    String host = "";
+    int port = 0;
+    String data = "";
+    
+    public Client(String host, int port, String data) throws Exception{
+        this.host = host;
+        this.port = port;
+        this.data = data;
+        openConnection(host, port, data);
+    }
         
-        while(true){
-            try{
-                socket = new Socket("txssc-top", 10000);
-                
-                if(socket != null){
-                    InputStream in = socket.getInputStream();
-                    BufferedReader inReader = new BufferedReader(new InputStreamReader(in));
-                    OutputStream out = socket.getOutputStream();
-        
-                    out.write(message.getBytes());
-                    out.flush();
-        
-                    String data = inReader.readLine();
+    private void openConnection(String host, int port, String data) throws Exception{
+           
+        try{
+            InetAddress hostname = InetAddress.getByName(host);
+            Socket socket = new Socket(hostname.getHostName(), port);
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             
-                    in.close();
-                    inReader.close();
-                    out.close();
-                    socket.close();
-                    break;
-                }
-            }catch(IOException ex){
-                if(tries++ < 5){
-                    try{
-                        Thread.sleep(100);
-                    }catch(InterruptedException ex1){
-                        Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex1);
-                    }
-                }
-            }
+            out.writeBytes(String.valueOf(data.length()));
+            out.writeBytes("~");
+            
+            out.writeBytes(data);
+            out.writeBytes("~~");
+            out.close();
+            
+        }catch(UnknownHostException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
         }
     }
 }

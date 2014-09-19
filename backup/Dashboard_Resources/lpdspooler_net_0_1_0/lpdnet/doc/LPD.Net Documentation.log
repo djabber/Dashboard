@@ -1,0 +1,17 @@
+Microsoft HTML Help Compiler 4.74.8702
+
+Compiling c:\usr\projects\lpdnet\lpdnet\doc\ndoc_msdn_temp\LPD.Net Documentation.chm
+
+HHC4006: Warning: The file "lpdnet.queue.QueuedObject.Id.html" is already listed in the [FILES] section of the project file.
+HHC4006: Warning: The file "lpdnet.queue.QueuedObject.Obj.html" is already listed in the [FILES] section of the project file.
+HHC4006: Warning: The file "lpdnet.queue.QueuedObject.TimeStamp.html" is already listed in the [FILES] section of the project file.
+
+Compile time: 0 minutes, 8 seconds
+392	Topics
+2,367	Local links
+0	Internet links
+9	Graphics
+
+
+Created c:\usr\projects\lpdnet\lpdnet\doc\ndoc_msdn_temp\LPD.Net Documentation.chm, 196,399 bytes
+Compression decreased file by 1,238,224 bytes.

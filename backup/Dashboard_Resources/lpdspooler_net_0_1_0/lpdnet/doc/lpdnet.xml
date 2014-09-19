@@ -1,0 +1,1835 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>lpdnet</name>
+    </assembly>
+    <members>
+        <member name="T:lpdnet.command.CommandHandler">
+            <summary>
+            This class is the super class for any class that handles a lpd command.
+            There will be several subclasses for each top level command of the lpd deamon.
+            </summary>
+        </member>
+        <member name="F:lpdnet.command.CommandHandler.command">
+            <summary>
+            The command received. This is an octect.
+            </summary>
+        </member>
+        <member name="F:lpdnet.command.CommandHandler.reader">
+            <summary>
+            The connection stream reader
+            </summary>
+        </member>
+        <member name="F:lpdnet.command.CommandHandler.writer">
+            <summary>
+            The connection stream writer
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.CommandHandler.#ctor(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+        </member>
+        <member name="M:lpdnet.command.CommandHandler.execute">
+            <summary>
+            Processes the command in the concrete subclass.  When a command
+            is sent by the user a concrete class such as CommandReceiveJob
+            runs its execute method to handle the command.
+            <exception>Throws an LPDException if an Error occurs.</exception>
+            </summary>
+        </member>
+        <member name="T:lpdnet.command.CommandPrintJob">
+            <summary>
+            This class handles the Print any waiting jobs Command in RFC1179.
+            The RFC description is below:
+            <br></br>
+            <br></br>
+            5.1 01 - Print any waiting jobs
+            <br></br>
+            <br></br>
+            +----+-------+----+<br></br>
+            | 01 | Queue | LF |<br></br>
+            +----+-------+----+<br></br>
+            <br></br>
+            Command code - 01<br></br>
+            Operand - Printer queue name<br></br>
+            <p>
+            This command starts the printing process if it not already running.
+            NOTE: This is not implemented since we intend to hold the print job
+            </p>
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.CommandPrintJob.#ctor(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+        </member>
+        <member name="M:lpdnet.command.CommandPrintJob.execute">
+            <summary>
+            Parse the command and do nothing since we intend to hold the print job
+            </summary>
+        </member>
+        <member name="T:lpdnet.command.CommandReceiveJob">
+            <summary>
+            This class handles the Receive a printer job Command in RFC1179.
+            The RFC description is below:
+            <br></br>
+            <br></br>
+            5.2 02 - Receive a printer job
+            <br></br>
+            <br></br>
+            +----+-------+----+<br></br>
+            | 02 | Queue | LF |<br></br>
+            +----+-------+----+<br></br>
+            <br></br>
+            Command code - 02<br></br>
+            Operand - Printer queue name<br></br>
+            <p>
+            Receiving a job is controlled by a second level of commands.  The
+            daemon is given commands by sending them over the same connection.
+            The commands are described in the next section (6).
+            </p>
+            <P>
+            After this command is sent, the client must read an acknowledgement
+            octet from the daemon.  A positive acknowledgement is an octet of
+            zero bits ('\0x').  A negative acknowledgement is an octet of any other
+            pattern.
+            </P>
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.CommandReceiveJob.#ctor(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+        </member>
+        <member name="M:lpdnet.command.CommandReceiveJob.execute">
+            <summary>
+            Executes command
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.CommandReceiveJob.receivePrintJob(System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Does the work of receiving the print job.
+            </summary>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+            <returns>PrintJob</returns>
+        </member>
+        <member name="M:lpdnet.command.CommandReceiveJob.setControlFile(System.IO.StreamReader,System.IO.StreamWriter,System.Collections.IList)">
+            <summary>
+            Does the work of receiving the control file
+            </summary>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+            <param name="cmd">A list containing the information extracted from the command octet</param>
+            <returns>ControlFile object populated</returns>
+            <exception cref="T:lpdnet.exception.LPDException">
+            If the control file can not be read or parsed
+            </exception>
+        </member>
+        <member name="M:lpdnet.command.CommandReceiveJob.setDataFile(System.IO.StreamReader,System.IO.StreamWriter,System.Collections.IList)">
+            <summary>
+            Does the work of receiving the data file
+            </summary>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+            <param name="cmd">A list containing the information extracted from the command octet</param>
+            <returns>DataFile object populated</returns>
+            <exception cref="T:lpdnet.exception.LPDException">
+            If the data file can not be read or parsed
+            </exception>
+            
+        </member>
+        <member name="T:lpdnet.command.CommandRemovePrintJob">
+            <summary>
+            This class handles the Remove jobs Command in RFC1179.
+            The RFC description is below:
+            <br></br>
+            <br></br>
+            5.5 05 - Remove jobs
+            <br></br>
+            <br></br>
+            +----+-------+----+-------+----+------+----+<br></br>
+            | 05 | Queue | SP | Agent | SP | List | LF |<br></br>
+            +----+-------+----+-------+----+------+----+<br></br>
+            <br></br>
+            Command code - 05<br></br>
+            Operand 1 - Printer queue name<br></br>
+            Operand 2 - User name making request (the agent)<br></br>
+            Other operands - User names or job numbers<br></br>
+            <p>
+            This command deletes the print jobs from the specified queue which
+            are listed as the other operands.  If only the agent is given, the
+            command is to delete the currently active job.  Unless the agent is
+            "root", it is not possible to delete a job which is not owned by the
+            user.  This is also the case for specifying user names instead of
+            numbers.  That is, agent "root" can delete jobs by user name but no
+            other agents can.
+            </p>
+            <p>
+            NOTE: If user is Administrator or root they can delete any job.
+            </p>
+            </summary>
+            
+        </member>
+        <member name="M:lpdnet.command.CommandRemovePrintJob.#ctor(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+        </member>
+        <member name="M:lpdnet.command.CommandRemovePrintJob.execute">
+            <summary>
+            Removes the print jobs specified by the parameters passed in.
+            The queue and user need to be set.  The final parameter needs
+            to be a print job number.
+            </summary>
+            <exception cref="T:lpdnet.exception.LPDException"></exception>
+        </member>
+        <member name="T:lpdnet.command.CommandReportQueueStateLong">
+            <summary>
+            This class handles the Send queue state (long) Command in RFC1179.
+            The RFC description is below:
+            <br></br>
+            <br></br>
+            5.4 04 - Send queue state (long)
+            <br></br>
+            <br></br>
+            +----+-------+----+------+----+<br></br>
+            | 04 | Queue | SP | List | LF |<br></br>
+            +----+-------+----+------+----+<br></br>
+            <br></br>
+            Command code - 04<br></br>
+            Operand 1 - Printer queue name<br></br>
+            Other operands - User names or job numbers<br></br>
+            <p>
+            If the user names or job numbers or both are supplied then only those
+            jobs for those users or with those numbers will be sent.
+            </p>
+            <p>
+            The response is an ASCII stream which describes the printer queue.
+            The stream continues until the connection closes.  Ends of lines are
+            indicated with ASCII LF control characters.  The lines may also
+            contain ASCII HT control characters.
+            </p>
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.CommandReportQueueStateLong.#ctor(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+        </member>
+        <member name="M:lpdnet.command.CommandReportQueueStateLong.execute">
+            <summary>
+            Writes a text table that displays the current print jobs.  This
+            is invoked by the commands: lpq or lpstat.  A queue name must
+            be specified by the client.
+            </summary>
+            <exception cref="T:lpdnet.exception.LPDException"></exception>
+        </member>
+        <member name="T:lpdnet.command.CommandReportQueueStateShort">
+            <summary>
+             This class handles the Send queue state (short) Command in RFC1179.
+            The RFC description is below:
+            <br></br>
+            <br></br>
+            5.3 03 - Send queue state (short)
+            <br></br>
+            <br></br>
+            +----+-------+----+------+----+<br></br>
+            | 03 | Queue | SP | List | LF |<br></br>
+            +----+-------+----+------+----+<br></br>
+            <br></br>
+            Command code - 03<br></br>
+            Operand 1 - Printer queue name<br></br>
+            Other operands - User names or job numbers<br></br>
+            <p>
+            If the user names or job numbers or both are supplied then only those
+            jobs for those users or with those numbers will be sent.
+            </p>
+            <p>
+            The response is an ASCII stream which describes the printer queue.
+            The stream continues until the connection closes.  Ends of lines are
+            indicated with ASCII LF control characters.  The lines may also
+            contain ASCII HT control characters.
+            </p>
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.CommandReportQueueStateShort.#ctor(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+        </member>
+        <member name="M:lpdnet.command.CommandReportQueueStateShort.execute">
+            <summary>
+            Writes a breif text table that displays the current print jobs.  This
+            is invoked by the commands: lpq or lpstat.  A queue name must
+            be specified by the client.
+            </summary>
+            <exception cref="T:lpdnet.exception.LPDException"></exception>
+        </member>
+        <member name="T:lpdnet.command.LPDCommands">
+            <summary>
+            Class to handle all the commands defined in the RFC1179
+            </summary>
+        </member>
+        <member name="M:lpdnet.command.LPDCommands.handleCommand(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Creates the concrete instance of the command class required.
+            Then it calls that class' execute() method.
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+            <exception cref="T:lpdnet.exception.LPDException">
+            If the command is not suppoerted or something went wrong during the command excecution
+            </exception>
+        </member>
+        <member name="M:lpdnet.command.LPDCommands.createCommandHandler(System.Byte[],System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Creates a command handler depending on the command code. All LPD commands defined in the RFC1179
+            are implemented here.
+            </summary>
+            <param name="command">Command received from client connection</param>
+            <param name="reader">Stream reader</param>
+            <param name="writer">Stream writer</param>
+            <returns>CommandHandler object</returns>
+        </member>
+        <member name="T:lpdnet.common.ControlFile">
+            <summary>
+            Holds control information
+            </summary>
+        </member>
+        <member name="T:lpdnet.common.PrintFile">
+            <summary>
+            The abstract super-class that represents the 2 files sent to us from the CommandReceiveJob.
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintFile.JobNumber">
+            <summary>
+            Job number
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintFile.HostName">
+            <summary>
+            Host name
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintFile.Size">
+            <summary>
+            Print file size
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintFile.Contents">
+            <summary>
+            Print file content
+            </summary>
+        </member>
+        <member name="M:lpdnet.common.ControlFile.#ctor">
+            <summary>
+            Control file class
+            </summary>
+        </member>
+        <member name="M:lpdnet.common.ControlFile.setControlFileCommands(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="P:lpdnet.common.ControlFile.ControlFileCommands">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lpdnet.common.ControlFileCommands">
+            <summary>
+            Control file commands
+            </summary>
+        </member>
+        <member name="M:lpdnet.common.ControlFileCommands.#ctor(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+        </member>
+        <member name="M:lpdnet.common.ControlFileCommands.processCommand(System.Collections.IList)">
+            <summary>
+            
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="M:lpdnet.common.ControlFileCommands.setAttribute(System.String,System.String)">
+            <summary>
+            Switches on the command code and sets the appropriate attribute.
+            </summary>
+            <param name="commandcode">The flag describing what the attribute is</param>
+            <param name="operand">The attribute</param>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.ClassForBannerPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.Host">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.IndentCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.JobName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.UserId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.SymbolicLinkData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToUnlink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.WidthCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.TroffRFontFileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.TroffIFontName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.TroffBFontName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.TroffSFontName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.PlotCifFileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.PrintDviFileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPlot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsTextRaw">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsDitroff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsPostscript">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsPr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintFortran">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsTroff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.ControlFileCommands.FileToPrintAsRaster">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lpdnet.common.DataFile">
+            <summary>
+            Holds the data of a print job
+            </summary>
+        </member>
+        <member name="M:lpdnet.common.DataFile.#ctor">
+            <summary>
+            Data file class
+            </summary>
+        </member>
+        <member name="T:lpdnet.common.Lock">
+            <summary>
+            Used to lock queues between threads
+            </summary>
+        </member>
+        <member name="M:lpdnet.common.Lock.#ctor(System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="lockName"></param>
+        </member>
+        <member name="P:lpdnet.common.Lock.LockName">
+            <summary>
+            Lock name
+            </summary>
+        </member>
+        <member name="T:lpdnet.common.PrintJob">
+            <summary>
+            Print job
+            </summary>
+        </member>
+        <member name="F:lpdnet.common.PrintJob.JOB_ID_LENGTH">
+            <summary>
+            Job id default length
+            </summary>
+        </member>
+        <member name="F:lpdnet.common.PrintJob.JOB_NAME_LENGTH">
+            <summary>
+            Job name default length
+            </summary>
+        </member>
+        <member name="F:lpdnet.common.PrintJob.JOB_OWNER_LENGTH">
+            <summary>
+            Job owner default length
+            </summary>
+        </member>
+        <member name="F:lpdnet.common.PrintJob.JOB_DATE_LENGTH">
+            <summary>
+            Job date default length
+            </summary>
+        </member>
+        <member name="F:lpdnet.common.PrintJob.JOB_SIZE_LENGTH">
+            <summary>
+            Job size default length
+            </summary>
+        </member>
+        <member name="M:lpdnet.common.PrintJob.#ctor(lpdnet.common.ControlFile,lpdnet.common.DataFile)">
+            <summary>
+            Constructor requires a ControlFile and a DataFile.
+            </summary>
+            <param name="controlFile"></param>
+            <param name="dataFile"></param>
+            <exception cref="T:lpdnet.exception.LPDException"></exception>
+        </member>
+        <member name="P:lpdnet.common.PrintJob.Name">
+            <summary>
+            Job name
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintJob.Size">
+            <summary>
+            Job size
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintJob.Owner">
+            <summary>
+            Job owner
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintJob.ControlFile">
+            <summary>
+            job control file
+            </summary>
+        </member>
+        <member name="P:lpdnet.common.PrintJob.DataFile">
+            <summary>
+            job data file
+            </summary>
+        </member>
+        <member name="T:lpdnet.exception.CloneNotSupportedException">
+            <summary>
+            Summary description for CloneNotSupportedException.
+            </summary>
+        </member>
+        <member name="M:lpdnet.exception.CloneNotSupportedException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lpdnet.exception.CloneNotSupportedException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:lpdnet.exception.CloneNotSupportedException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:lpdnet.exception.HandlerException">
+            <summary>
+            Handler exception
+            </summary>
+        </member>
+        <member name="M:lpdnet.exception.HandlerException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:lpdnet.exception.HandlerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message</param>
+            <param name="innerException">Inner exception</param>
+        </member>
+        <member name="T:lpdnet.exception.LPDException">
+            <summary>
+            Summary description for LPDException.
+            </summary>
+        </member>
+        <member name="M:lpdnet.exception.LPDException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:lpdnet.exception.LPDException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:lpdnet.exception.ObjectNotFoundException">
+            <summary>
+            Summary description for ObjectNotFoundException.
+            </summary>
+        </member>
+        <member name="M:lpdnet.exception.ObjectNotFoundException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:lpdnet.exception.QueueException">
+            <summary>
+            Summary description for QueueException.
+            </summary>
+        </member>
+        <member name="M:lpdnet.exception.QueueException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:lpdnet.exception.QueueException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:lpdnet.handler.HandlerFactory">
+            <summary>
+            Creates the concrete implementation of the Handler we
+            will use to process PrintJobs based on the
+            properties file.  The default if there are problems is FILE.
+            </summary>
+        </member>
+        <member name="M:lpdnet.handler.HandlerFactory.getInstance">
+            <summary>
+            This class is a singleton.
+            </summary>
+            <returns>The only instance of HandlerFactory</returns>
+        </member>
+        <member name="M:lpdnet.handler.HandlerFactory.getPrintHandler">
+            <summary>
+            Returns the concrete implementation of the HandlerInterface based
+            on the settings in the properties file.
+            </summary>
+            <returns>HandlerInterface the concrete implementation of the HandlerInterface</returns>
+        </member>
+        <member name="M:lpdnet.handler.HandlerFactory.getPrintHandler(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="handlerClassName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lpdnet.handler.HandlerInterface">
+            <summary>
+            Defines the interface for any class looking to process
+            printJobs that are in the PrintQueue.  The QueueMonitor
+            passes work to this Interface.
+            </summary>
+        </member>
+        <member name="M:lpdnet.handler.HandlerInterface.process(lpdnet.common.PrintJob)">
+            <summary>
+            Processes the PrintJob in some manner.
+            </summary>
+            <param name="printJob">The PrintJob to process</param>
+            <returns>The result of the processing</returns>
+        </member>
+        <member name="T:lpdnet.handler.PrintRedirectHandler">
+            <summary>
+            Handler that redirect print job data to a system printer
+            </summary>
+        </member>
+        <member name="M:lpdnet.handler.PrintRedirectHandler.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:lpdnet.handler.PrintRedirectHandler.setRedirectionPrinter(System.Drawing.Printing.PrinterSettings)">
+            <summary>
+            Sets the printer to use
+            </summary>
+            <param name="printerSettings">Printer settings</param>
+        </member>
+        <member name="M:lpdnet.handler.PrintRedirectHandler.setRedirectionPrinter(System.String)">
+            <summary>
+            Sets the printer to use
+            </summary>
+            <param name="printerName">Printer name</param>
+        </member>
+        <member name="M:lpdnet.handler.PrintRedirectHandler.getRedirectinPrinter">
+            <summary>
+            Gets the redirection printer name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.handler.PrintRedirectHandler.process(lpdnet.common.PrintJob)">
+            <summary>
+            Redirect the print job to a specified printer
+            </summary>
+            <param name="printJob"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lpdnet.handler.SaveToFileHandler">
+            <summary>
+            Handler that saves the print job data into a specified directory
+            </summary>
+        </member>
+        <member name="M:lpdnet.handler.SaveToFileHandler.process(lpdnet.common.PrintJob)">
+            <summary>
+            Saves the print job data into a file
+            </summary>
+            <param name="printJob"></param>
+            <returns></returns>
+        </member>
+        <member name="P:lpdnet.handler.SaveToFileHandler.OutputDirectory">
+            <summary>
+            Directory where the print job is going to be saved
+            </summary>
+        </member>
+        <member name="P:lpdnet.handler.SaveToFileHandler.Extension">
+            <summary>
+            File extension
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.PrintQueue">
+            <summary>
+            The PrintQueue is just a queue that only accepts print jobs.
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.#ctor(System.String,lpdnet.handler.HandlerInterface)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="name">Name of the print queue</param>
+            <param name="handler">Queue handler class name</param>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.add(lpdnet.common.PrintJob)">
+            <summary>
+            Add print job to queue.
+            </summary>
+            <param name="printJob">The print job</param>
+            <returns>The unique identifier of the print job in the queue.</returns>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.remove(System.Int64)">
+            <summary>
+            Remove print job from queue.
+            </summary>
+            <param name="id"></param>
+            <returns>PrintJob from the queue or null if it was not found.</returns>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.getNextPrintJob">
+            <summary>
+            Gets the next PrintJob without removing it.
+            </summary>
+            <returns>The next printJob in the queue or null if theres an Error.</returns>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.removeAll">
+            <summary>
+            Remove all print jobs from queue.
+            </summary>
+            <returns>Number of jobs removed, or -1 if this failed</returns>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.size">
+            <summary>
+            Size of the print queue.
+            </summary>
+            <returns>Size of the print queue.</returns>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.list">
+            <summary>
+            List items in queue.
+            </summary>
+            <returns>List of queue items</returns>
+        </member>
+        <member name="M:lpdnet.queue.PrintQueue.closeQueue">
+            <summary>
+            Close the queue
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.PrintQueue.LockPad">
+            <summary>
+            Queeu job lock.
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.PrintQueue.Name">
+            <summary>
+            Queue name
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.PrintQueue.Handler">
+            <summary>
+            Queue job handler
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.Queue">
+            <summary>
+            Queue of objects
+            </summary>
+        </member>
+        <member name="F:lpdnet.queue.Queue.INVALID_ID">
+            <summary>
+            Invalid queue id
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.Queue.#ctor(System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:lpdnet.queue.Queue.add(System.Object)">
+            <summary>
+            Add method.
+            </summary>
+            <param name="obj">Object to add</param>
+            <returns>Unique identifier of the queued object.</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queue.remove(System.Int64)">
+            <summary>
+            Remove by unique identifier.
+            </summary>
+            <param name="id">Unique identifier of the queued object.</param>
+            <returns>Object matching the identifier</returns>
+            <exception cref="T:lpdnet.exception.ObjectNotFoundException">If the object is not found in the queue</exception>
+        </member>
+        <member name="M:lpdnet.queue.Queue.size">
+            <summary>
+            Size of the queue.
+            </summary>
+            <returns>Size of the queue.</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queue.removeAll">
+            <summary>
+            Remove all items from queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.queue.Queue.list">
+            <summary>
+            List of the items in the queue.
+            </summary>
+            <returns>List of queue items</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queue.getNext">
+            <summary>
+            Gets the last Object in the Queue without removing it
+            </summary>
+            <returns>The last QueuedObject in the queue</returns>
+        </member>
+        <member name="P:lpdnet.queue.Queue.Name">
+            <summary>
+            Queue name
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.QueuedObject">
+            <summary>
+            Encapsulates any Object that is stored in a Queue
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.QueuedObject.#ctor(System.Int64,System.DateTime,System.Object)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="id">Unique identifier for this queued object.</param>
+            <param name="timeStamp">Timestamp of when the queued object was queued.</param>
+            <param name="obj">Object that is queued.</param>
+        </member>
+        <member name="M:lpdnet.queue.QueuedObject.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.queue.QueuedObject.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:lpdnet.queue.QueuedObject.Id">
+            <summary>
+            Object id
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedObject.TimeStamp">
+            <summary>
+            Object date/time
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedObject.Obj">
+            <summary>
+            Object
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.QueuedPrintJob">
+            <summary>
+            A copy of a printJob plus the jobId used by the PrintQueue to store the opriginal copy of this PrintJob.
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.QueuedPrintJob.#ctor(System.Int64,lpdnet.common.PrintJob)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="id">Id the PrintQueue id of the PrintJob</param>
+            <param name="printJob">A copy of the original PrintJob stored in the PrintQueue</param>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJob.Id">
+            <summary>
+            Job id
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJob.PrintJob">
+            <summary>
+            Print job
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.QueuedPrintJobInfo">
+            <summary>
+            Encapsulates the PrintJob that is stored in the Queue.
+            A copy of the actual stored PrintJob is returned.  This class
+            makes it easy to expose more attibutes of the Print Job
+            as necessary.
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.QueuedPrintJobInfo.#ctor(lpdnet.queue.QueuedObject)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="queuedObject">A queued print job.</param>
+        </member>
+        <member name="M:lpdnet.queue.QueuedPrintJobInfo.getShortDescription">
+            <summary>
+            Returns a short description of the print job
+            </summary>
+            <returns>Short description of the print job</returns>
+        </member>
+        <member name="M:lpdnet.queue.QueuedPrintJobInfo.getLongDescription">
+            <summary>
+            Returns a long description of the print job
+            </summary>
+            <returns>Long description of the print job</returns>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJobInfo.Id">
+            <summary>
+            Job Id
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJobInfo.TimeStamp">
+            <summary>
+            Job date/time
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJobInfo.Size">
+            <summary>
+            Job data file size
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJobInfo.Name">
+            <summary>
+            Job data file name
+            </summary>
+        </member>
+        <member name="P:lpdnet.queue.QueuedPrintJobInfo.Owner">
+            <summary>
+            Job owner
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.QueueMonitor">
+            <summary>
+            Monitors a single print queue and process all queued jobs using the queue job handler.
+            A new QueueMonitor should be defined for each <see cref="T:lpdnet.queue.PrintQueue"/>. 
+            </summary>
+        </member>
+        <member name="T:lpdnet.thread.Runnable">
+            <summary>
+            The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread. 
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.Runnable.run">
+            <summary>
+            Starts the thread
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.Runnable.stop">
+            <summary>
+            Stops the thread
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.Runnable.isRunning">
+            <summary>
+            Indicates if the thread is running or not
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.queue.QueueMonitor.#ctor(lpdnet.queue.PrintQueue)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="queue">Print queue</param>
+        </member>
+        <member name="M:lpdnet.queue.QueueMonitor.run">
+            <summary>
+            Starts monitoring the queue
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.QueueMonitor.stop">
+            <summary>
+            Stop monitoring the queue
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.QueueMonitor.isRunning">
+            <summary>
+            Indicates if the queue monitor is running or not
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:lpdnet.queue.Queues">
+            <summary>
+            This class maintains all of the Print queues and contains all of the logic
+            for performing operations on them.
+            </summary>
+        </member>
+        <member name="M:lpdnet.queue.Queues.getInstance">
+            <summary>
+            This class is a singleton.
+            </summary>
+            <returns>The only instance of Queues.</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.getQueue(System.String)">
+            <summary>
+            Gets a print queue from the queues collection
+            </summary>
+            <param name="queueName"></param>
+            <returns>PrintQueue</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.createQueue(System.String,lpdnet.handler.HandlerInterface)">
+            <summary>
+            Creates a Print Queue with the name passed in
+            </summary>
+            <param name="queueName">The name of the print queue</param>
+            <param name="handler"></param>
+            <returns>New created queue</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.addPrintJob(System.String,lpdnet.common.PrintJob)">
+            <summary>
+            Adds a printJob to the queue specified by queueName.
+            </summary>
+            <param name="queueName">The name of the print queue</param>
+            <param name="printJob">The printJob added to the print queue</param>
+            <exception cref="T:lpdnet.exception.QueueException"></exception>
+            
+        </member>
+        <member name="M:lpdnet.queue.Queues.removePrintJob(System.String,System.String,System.String)">
+            <summary>
+            Removes a printJob based on queueName and the jobNumber.
+            </summary>
+            <param name="queueName">The name of the print queue</param>
+            <param name="user">The user trying to delete the print job</param>
+            <param name="jobNumber">The print job number assigned by the Queue</param>
+            <exception cref="T:lpdnet.exception.QueueException"></exception>
+        </member>
+        <member name="M:lpdnet.queue.Queues.removeAllPrintJobs(System.String)">
+            <summary>
+            Deletes all printJobs for this queue.
+            </summary>
+            <param name="queueName">The name of the print queue</param>
+            <exception cref="T:lpdnet.exception.QueueException"></exception>
+        </member>
+        <member name="M:lpdnet.queue.Queues.listAllPrintJobs(System.String)">
+            <summary>
+            Returns a IList of all print jobs in the Queue.
+            </summary>
+            <param name="queueName">The name of the queue we are wanting to list</param>
+            <returns>IList of all print jobs in the Queue</returns>
+            <exception cref="T:lpdnet.exception.QueueException">If we have problems getting the queue list</exception>
+        </member>
+        <member name="M:lpdnet.queue.Queues.getQueueSize(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="queueName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.queueIsEmpty(System.String)">
+            <summary>
+            Returns true if the queue is empty
+            </summary>
+            <param name="queueName">Queue name</param>
+            <returns>True if empty, otherwise false</returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.getQueueLock(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="queueName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.getNextPrintJob(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="queueName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.queue.Queues.onAddJob(System.String,lpdnet.queue.QueuedPrintJobInfo)">
+            <summary>
+            Fires an event when a new job is 
+            </summary>
+            <param name="job"></param>
+            <param name="queue"></param>
+        </member>
+        <member name="M:lpdnet.queue.Queues.onRemoveJob(System.String,System.Int64)">
+            <summary>
+            Fires an event when a job is removed from queue 
+            </summary>
+            <param name="queue"></param>
+            <param name="jobId"></param>
+        </member>
+        <member name="M:lpdnet.queue.Queues.onRemoveJobsAll(System.String)">
+            <summary>
+            Fires an event when all jobs are removed from queue 
+            </summary>
+            <param name="queue"></param>
+        </member>
+        <member name="E:lpdnet.queue.Queues.addJobEvent">
+            <summary>
+            Event that is fired when a new print job is added to queue
+            </summary>
+        </member>
+        <member name="E:lpdnet.queue.Queues.removeJobEvent">
+            <summary>
+            Event that is fired when a print job is removed from queue
+            </summary>
+        </member>
+        <member name="E:lpdnet.queue.Queues.removeAllJobsEvent">
+            <summary>
+            Event that is fired when a all print jobs are removed from queue
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.Queues.addJobDelegate">
+            <summary>
+            Delegate for adding a new print job
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.Queues.removeJobDelegate">
+            <summary>
+            Delegate for removing a job from queue
+            </summary>
+        </member>
+        <member name="T:lpdnet.queue.Queues.removeAllJobsDelegate">
+            <summary>
+            Delegate for removing all print jobs from queue
+            </summary>
+        </member>
+        <member name="T:lpdnet.thread.LPDThread">
+            <summary>
+            Wrapper class for creating and manipulating threads.
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThread.#ctor(lpdnet.thread.Runnable)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="runnable">Runnable object</param>
+        </member>
+        <member name="M:lpdnet.thread.LPDThread.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThread.start">
+            <summary>
+            Starts the thread
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThread.run">
+            <summary>
+            Excecutes the runnable class
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThread.stop">
+            <summary>
+            Stops the thread
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThread.isRunning">
+            <summary>
+            Indicates if the thread is running
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:lpdnet.thread.LPDThread.innerThread">
+            <summary>
+            Returns the inner thread
+            </summary>
+        </member>
+        <member name="T:lpdnet.thread.LPDThreadPool">
+            <summary>
+            Pool of threads. This class is experimental.
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPool.#ctor(System.Int32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="n">Number of threads to initialize</param>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPool.add(lpdnet.thread.Runnable)">
+            <summary>
+            Adds a new worker to the thread pool
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPool.close">
+            <summary>
+            Closes the pool
+            </summary>
+        </member>
+        <member name="P:lpdnet.thread.LPDThreadPool.Size">
+            <summary>
+            Gets the queue size
+            </summary>
+        </member>
+        <member name="P:lpdnet.thread.LPDThreadPool.Workers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lpdnet.thread.LPDThreadPoolThread">
+            <summary>
+            Pool thread
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPoolThread.#ctor(lpdnet.thread.LPDThreadPool,System.Int32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="pool">Reference to the thread pool</param>
+            <param name="i">thread id</param>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPoolThread.run">
+            <summary>
+            Waits for a worker object to be queued and executes it
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPoolThread.stop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.LPDThreadPoolThread.isRunning">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:lpdnet.thread.LPDThreadPoolThread.EventsStillFiring">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lpdnet.thread.ThreadPoolRequest">
+            <summary>
+            Class for holding a thread request
+            </summary>
+        </member>
+        <member name="M:lpdnet.thread.ThreadPoolRequest.#ctor(lpdnet.thread.Runnable)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="target">Thread object</param>
+        </member>
+        <member name="P:lpdnet.thread.ThreadPoolRequest.Target">
+            <summary>
+            Thread object
+            </summary>
+        </member>
+        <member name="T:lpdnet.utils.ByteUtil">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.ByteUtil.parseCommand(System.Byte[])">
+            <summary>
+            Creates a list of byte arrays from the command passed in.
+            </summary>
+            <param name="command">command octet</param>
+            <returns>IList object</returns>
+        </member>
+        <member name="M:lpdnet.utils.ByteUtil.listToByteArray(System.Collections.IList)">
+            <summary>
+            Converts a list into an array of bytes
+            </summary>
+            <param name="list">List to convert</param>
+            <returns>list as byte[]</returns>
+        </member>
+        <member name="T:lpdnet.utils.ConfigUtil">
+            <summary>
+            Provides methods to read from the configuration file in a safe way.
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.ConfigUtil.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.ConfigUtil.getString(System.String)">
+            <summary>
+            Gets the value of a key from the configuration file as string
+            </summary>
+            <param name="key">Key to read</param>
+            <returns>Key value as string</returns>
+        </member>
+        <member name="M:lpdnet.utils.ConfigUtil.getInteger(System.String)">
+            <summary>
+            Gets the value of the key from the configuration file as integer
+            </summary>
+            <param name="key">Key to read</param>
+            <returns>Key value as integer</returns>
+        </member>
+        <member name="M:lpdnet.utils.ConfigUtil.getBoolean(System.String)">
+            <summary>
+            Gets the value of the key from the configuration file as boolean
+            </summary>
+            <param name="key">Key to read</param>
+            <returns>Key value as boolean</returns>
+        </member>
+        <member name="T:lpdnet.utils.DateUtil">
+            <summary>
+            Utility class for manipulating Dates
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.DateUtil.createDateString(System.DateTime)">
+            <summary>
+            Creates a String that represents the Date passed in. 
+            If the date passed in is null the null is returned.
+            </summary>
+            <param name="dateTime"></param>
+            <returns>A string representation of dateTime</returns>
+        </member>
+        <member name="T:lpdnet.utils.FileUtil">
+            <summary>
+            Class for manipulating files
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.FileUtil.writeFile(System.Byte[],System.String)">
+            <summary>
+            Writes the byte[] data to a file named filename.
+            </summary>
+            <param name="data">A byte[] that will be written to file</param>
+            <param name="filename">The file that the inputStream will be written to</param>
+        </member>
+        <member name="T:lpdnet.utils.LogUtil">
+            <summary>
+            Class for manipulating the system logger. The logger is configurated on the
+            App.config file located at the same directory of the assembly. For configuration
+            details visit <a href="log4net.sourceforge.net">log4net</a> web page.
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.LogUtil.getLogger(System.Type)">
+            <summary>
+            Gets the system logger
+            </summary>
+            <param name="type">Type of the logger</param>
+            <returns>A new system logger</returns>
+        </member>
+        <member name="T:lpdnet.utils.NetUtil">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lpdnet.utils.NetUtil.GOOD_ACK">
+            <summary>
+            Good acknowledge value defined by the RFC1179
+            </summary>
+        </member>
+        <member name="F:lpdnet.utils.NetUtil.BAD_ACK">
+            <summary>
+            Bad acknowledge value defined by the RFC1179
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.NetUtil.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.NetUtil.readCommand(System.IO.StreamReader)">
+            <summary>
+            Reads a command defined by the RFC1179 spec.  
+            Basically the command is all the data until we see 0x10.
+            </summary>
+            <param name="reader">The StreamReader providing us with a command from the client.</param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.NetUtil.readNextInput(System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Used by CommandReceiveJob to read the headers of the
+            ControlFile or the DataFile from the client.
+            Please see section 6 of the RFC1179 specification for more details.
+            </summary>
+            <param name="reader">StreamReader from the client sending us the print job</param>
+            <param name="writer">StreamWriter to the client we are writing reponses to</param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.NetUtil.readControlFile(System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Reads the ControlFile and retunrs it as a byte[]
+            </summary>
+            <param name="reader">StreamReader from the client sending us the control file</param>
+            <param name="writer">StreamReader to the client we are writing reponses to</param>
+            <returns>A byte[] from the InputStream holding the ControlFile</returns>
+        </member>
+        <member name="M:lpdnet.utils.NetUtil.readPrintFile(System.IO.StreamReader,System.IO.StreamWriter)">
+            <summary>
+            Reads the DataFile and returns it as a byte[]
+            </summary>
+            <param name="reader">StreamReader from the client sending us the data file</param>
+            <param name="writer">StreamReader to the client we are writing reponses to</param>
+            <returns>A byte[] from the InputStream holding the DataFile</returns>
+        </member>
+        <member name="M:lpdnet.utils.NetUtil.readPrintFile(System.IO.StreamReader,System.IO.StreamWriter,System.Int32)">
+            <summary>
+            Reads the DataFile and returns it as a byte[]
+            </summary>
+            <param name="reader">StreamReader from the client sending us the data file</param>
+            <param name="writer">StreamWriter to the client we are writing reponses to</param>
+            <param name="size">Size the number of bytes to read from the stream</param>
+            <returns>A byte[] from the InputStream holding the DataFile</returns>
+        </member>
+        <member name="T:lpdnet.utils.ObjectUtil">
+            <summary>
+            .NET framework does not support support object.clone() as java does. This class tries to
+            clone an object using reflection. It will fail if the object to clone does not suppoert argumentless constructors.
+            In order for the object be cloned successfully each object public fields must implement the IClonable interface.
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.ObjectUtil.cloneObject(System.Object)">
+            <summary>
+            Tries to make a deep copy of an object. The object to clone must support argumentless constructors.
+            All object public feilds must implemet IClonable interface.
+            </summary>
+            <param name="obj">Object to clone</param>
+            <returns>Clone copy</returns>
+        </member>
+        <member name="T:lpdnet.utils.PrintUtil">
+            <summary>
+            Prints RAW data directly to a printer
+            Source taken from http://support.microsoft.com/?kbid=322091#kb1
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.OpenPrinter(System.String,System.IntPtr@,System.Int64)">
+            <summary>
+            Opens Win32 printer
+            </summary>
+            <param name="printerName"></param>
+            <param name="printer"></param>
+            <param name="pd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.ClosePrinter(System.IntPtr)">
+            <summary>
+            Close Win32 printer
+            </summary>
+            <param name="printer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.StartDocPrinter(System.IntPtr,System.Int32,lpdnet.utils.PrintUtil.DocInfo)">
+            <summary>
+            Starts a new print document
+            </summary>
+            <param name="printer"></param>
+            <param name="level"></param>
+            <param name="docInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.EndDocPrinter(System.IntPtr)">
+            <summary>
+            Ends a print documet
+            </summary>
+            <param name="printer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.StartPagePrinter(System.IntPtr)">
+            <summary>
+            Starts a new print page
+            </summary>
+            <param name="printer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.EndPagePrinter(System.IntPtr)">
+            <summary>
+            Ends a print page
+            </summary>
+            <param name="printer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.WritePrinter(System.IntPtr,System.IntPtr,System.Int32,System.Int32@)">
+            <summary>
+            Writes to the printer
+            </summary>
+            <param name="printer"></param>
+            <param name="bytes"></param>
+            <param name="count"></param>
+            <param name="written"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.sendFileToPrinter(System.String,System.String)">
+            <summary>
+            Sends a file directly to the printer
+            </summary>
+            <param name="printerName"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.PrintUtil.sendStringToPrinter(System.String,System.String)">
+            <summary>
+            Sends a string directly to a printer
+            </summary>
+            <param name="printerName"></param>
+            <param name="stringToSend"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lpdnet.utils.PrintUtil.DocInfo">
+            <summary>
+            Class holding document information
+            </summary>
+        </member>
+        <member name="P:lpdnet.utils.PrintUtil.DocInfo.Name">
+            <summary>
+            Document name
+            </summary>
+        </member>
+        <member name="P:lpdnet.utils.PrintUtil.DocInfo.OutputFile">
+            <summary>
+            Document output file
+            </summary>
+        </member>
+        <member name="P:lpdnet.utils.PrintUtil.DocInfo.DataType">
+            <summary>
+            Document data type
+            </summary>
+        </member>
+        <member name="T:lpdnet.utils.StringUtil">
+            <summary>
+            Class for manipulating strings
+            </summary>
+        </member>
+        <member name="M:lpdnet.utils.StringUtil.parsePrintFileName(System.String)">
+            <summary>
+            This parses the "name" field passed in the header of the control file
+            or the data files.
+            </summary>
+            <param name="header"></param>
+            <returns></returns>
+            <example>
+            <p>Control File header = cfa001MyComputer</p>
+            <p>Data File header = dfa001MyComputer</p>
+            </example>
+        </member>
+        <member name="M:lpdnet.utils.StringUtil.createFixedLengthString(System.String,System.Int32)">
+            <summary>
+            Constructs a String of the fixed length given.
+            If the string passed in is greater than length,
+            then the string is truncated to length.
+            If the string is greater than length then the string
+            If s is empty or null, then an empty string of spaces is returned.
+            is padded with spaces.
+            </summary>
+            <param name="s">String to operate on</param>
+            <param name="length">Desired length</param>
+            <returns>Fixed length String</returns>
+        </member>
+        <member name="M:lpdnet.utils.StringUtil.isEmpty(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.StringUtil.parse(System.Collections.IList)">
+            <summary>
+            
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.StringUtil.parse(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lpdnet.utils.StringUtil.parseHumanRead(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lpdnet.BootLoader">
+            <summary>
+            When lpdnet is compiled as an executable(exe) this class will be the main application entry point.
+            It will start a new lpd deamon, creates and monitors a new queue instance called "TEXT".
+            The created queue will use SaveToFile handler to handle all its jobs saving each job as a 
+            plaint text file on the same directory where the application is running.
+            </summary>
+        </member>
+        <member name="M:lpdnet.BootLoader.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:lpdnet.BootLoader.OnShutdown">
+            <summary>
+            Excecutes when the service receives a shutdown message
+            </summary>
+        </member>
+        <member name="M:lpdnet.BootLoader.OnStart(System.String[])">
+            <summary>
+            Excecutes when the service receives a start message
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:lpdnet.BootLoader.OnStop">
+            <summary>
+            Excecutes when the service receives a stop message
+            </summary>
+        </member>
+        <member name="T:lpdnet.ConnectionHandler">
+            <summary>
+            Handles all requests received by a single connection
+            </summary>
+            
+        </member>
+        <member name="M:lpdnet.ConnectionHandler.#ctor(System.Net.Sockets.Socket)">
+            <summary>
+            Default constructor. It will start a new thread to handle connection requests.
+            </summary>
+            <param name="connection">
+            The client connection
+            </param>
+        </member>
+        <member name="M:lpdnet.ConnectionHandler.run">
+            <summary>
+            Reads and handles all commands from a connection.
+            </summary>
+        </member>
+        <member name="M:lpdnet.ConnectionHandler.stop">
+            <summary>
+            Stops the connection handling process
+            </summary>
+        </member>
+        <member name="M:lpdnet.ConnectionHandler.isRunning">
+            <summary>
+            Indicates if the connection handling process is running
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:lpdnet.LPD">
+            <summary>
+            The Line Printer Deamon (LPD). Sets up all of the network communication to run our LPD.
+            Multithreaded class that handles each client connection on a different thread.
+            <p>
+            Two different threads are initiated internaly during execution:
+            <list type="bullet">
+              <item>
+                 <term>New connections thread</term>
+                 <description>
+                 This thread will open a new server socket connection on the localhost using the port specified in the 
+                 configuration file <b>(lpdnet.exe.config</b> or <b>lpdnet.manager.exe.config)</b>. It will listen for new client connections
+                 until lpd is stopped. 
+                 Once a new connection is accepted a new thread is started to handle the connection requests.
+                 </description>
+              </item>
+              <item>
+                 <term>Request handling thread</term>
+                 <description>
+                 This thread will handle all requests made by a single connection. If an exception occurrs during the request 
+                 handling the thread will be terminated safely.
+                 </description>
+              </item>
+            </list>
+            </p>
+            </summary>
+        </member>
+        <member name="M:lpdnet.LPD.#ctor">
+            <summary>
+            Constructor for LPD
+            </summary>
+        </member>
+        <member name="M:lpdnet.LPD.getInstance">
+            <summary>
+            This class is a singleton, meaning that only one instance of LPD can be created.
+            </summary>
+            <returns>The only instance of LPD</returns>
+        </member>
+        <member name="M:lpdnet.LPD.run">
+            <summary>
+            Starts LPD server
+            </summary>
+        </member>
+        <member name="M:lpdnet.LPD.stop">
+            <summary>
+            Stops LPD server
+            </summary>
+        </member>
+        <member name="M:lpdnet.LPD.isRunning">
+            <summary>
+            Indicates if the server is running
+            </summary>
+            <returns>True if the LPD server is running, False if not</returns>
+        </member>
+        <member name="M:lpdnet.LPD.acceptConnectionsThread">
+            <summary>
+            Accept new client connections
+            </summary>
+        </member>
+        <member name="M:lpdnet.LPD.onServerStart(System.Object)">
+            <summary>
+            Fires when the LPD server is started
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="M:lpdnet.LPD.onServerStop(System.Object)">
+            <summary>
+            Fires when the LPD server is stopped
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="E:lpdnet.LPD.startServerEvent">
+            <summary>
+            Event that is fired when the lpd server is started
+            </summary>
+        </member>
+        <member name="E:lpdnet.LPD.stopServerEvent">
+            <summary>
+            Event that is fired when the lpd server is stopped
+            </summary>
+        </member>
+        <member name="T:lpdnet.LPD.startServerDelegate">
+            <summary>
+            Use this delegate if you want to receive OnStartServer events
+            </summary>
+        </member>
+        <member name="T:lpdnet.LPD.stopServerDelegate">
+            <summary>
+            Use this delegate if you want to receive OnStopServer events
+            </summary>
+        </member>
+        <member name="T:lpdnet.LPDServiceInstaller">
+            <summary>
+            Installs LPD as a service. Call "installUtil.exe lpdnet.exe" to install the service.
+            InstallUtill.exe is provided with the .Net Framework.
+            
+            </summary>
+        </member>
+        <member name="M:lpdnet.LPDServiceInstaller.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+    </members>
+</doc>

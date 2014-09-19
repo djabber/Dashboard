@@ -1,0 +1,36 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>CommandReportQueueStateShort Class</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">LPD.Net Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">CommandReportQueueStateShort Class</h1>
+      </div>
+    </div>
+    <div id="nstext"> This class handles the Send queue state (short) Command in RFC1179. The RFC description is below: <br />
+            <br /> 5.3 03 - Send queue state (short) <br />
+            <br /> +----+-------+----+------+----+<br /> | 03 | Queue | SP | List | LF |<br /> +----+-------+----+------+----+<br />
+            <br /> Command code - 03<br /> Operand 1 - Printer queue name<br /> Other operands - User names or job numbers<br />
+            <p> If the user names or job numbers or both are supplied then only those jobs for those users or with those numbers will be sent. </p>
+            <p> The response is an ASCII stream which describes the printer queue. The stream continues until the connection closes. Ends of lines are indicated with ASCII LF control characters. The lines may also contain ASCII HT control characters. </p>
+            <p>For a list of all members of this type, see <a href="lpdnet.command.CommandReportQueueStateShortMembers.html">CommandReportQueueStateShort Members</a>.</p><p><a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemObjectClassTopic.htm">System.Object</a><br />   <a href="lpdnet.command.CommandHandler.html">lpdnet.command.CommandHandler</a><br />      <b>lpdnet.command.CommandReportQueueStateShort</b></p><div class="syntax"><div>public class CommandReportQueueStateShort<b> : <a href="lpdnet.command.CommandHandler.html">CommandHandler</a></b></div></div><H4 class="dtH4">Thread Safety</H4><P>Public static (<b>Shared</b> in Visual Basic) members of this type are 
+				safe for multithreaded operations. Instance members are <b>not</b> guaranteed to be 
+				thread-safe.</P><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="lpdnet.command.html">lpdnet.command</a></p><p><b>Assembly: </b>lpdnet (in lpdnet.dll)
+					</p><h4 class="dtH4">See Also</h4><p><a href="lpdnet.command.CommandReportQueueStateShortMembers.html">CommandReportQueueStateShort Members</a> | <a href="lpdnet.command.html">lpdnet.command Namespace</a></p></div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>lpdnet.command</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">LPD.Net Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">lpdnet.command Namespace</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>
+        <a href="lpdnet.commandHierarchy.html">Namespace hierarchy</a>
+      </p>
+      <h3 class="dtH3">Classes</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Class</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.CommandHandler.html">CommandHandler</a>
+            </td>
+            <td width="50%"> This class is the super class for any class that handles a lpd command. There will be several subclasses for each top level command of the lpd deamon. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.CommandPrintJob.html">CommandPrintJob</a>
+            </td>
+            <td width="50%"> This class handles the Print any waiting jobs Command in RFC1179. The RFC description is below: <br />
+            <br /> 5.1 01 - Print any waiting jobs <br />
+            <br /> +----+-------+----+<br /> | 01 | Queue | LF |<br /> +----+-------+----+<br />
+            <br /> Command code - 01<br /> Operand - Printer queue name<br />
+            <p> This command starts the printing process if it not already running. NOTE: This is not implemented since we intend to hold the print job </p>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.CommandReceiveJob.html">CommandReceiveJob</a>
+            </td>
+            <td width="50%"> This class handles the Receive a printer job Command in RFC1179. The RFC description is below: <br />
+            <br /> 5.2 02 - Receive a printer job <br />
+            <br /> +----+-------+----+<br /> | 02 | Queue | LF |<br /> +----+-------+----+<br />
+            <br /> Command code - 02<br /> Operand - Printer queue name<br />
+            <p> Receiving a job is controlled by a second level of commands. The daemon is given commands by sending them over the same connection. The commands are described in the next section (6). </p>
+            <P> After this command is sent, the client must read an acknowledgement octet from the daemon. A positive acknowledgement is an octet of zero bits ('\0x'). A negative acknowledgement is an octet of any other pattern. </P>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.CommandRemovePrintJob.html">CommandRemovePrintJob</a>
+            </td>
+            <td width="50%"> This class handles the Remove jobs Command in RFC1179. The RFC description is below: <br />
+            <br /> 5.5 05 - Remove jobs <br />
+            <br /> +----+-------+----+-------+----+------+----+<br /> | 05 | Queue | SP | Agent | SP | List | LF |<br /> +----+-------+----+-------+----+------+----+<br />
+            <br /> Command code - 05<br /> Operand 1 - Printer queue name<br /> Operand 2 - User name making request (the agent)<br /> Other operands - User names or job numbers<br />
+            <p> This command deletes the print jobs from the specified queue which are listed as the other operands. If only the agent is given, the command is to delete the currently active job. Unless the agent is "root", it is not possible to delete a job which is not owned by the user. This is also the case for specifying user names instead of numbers. That is, agent "root" can delete jobs by user name but no other agents can. </p>
+            <p> NOTE: If user is Administrator or root they can delete any job. </p>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.CommandReportQueueStateLong.html">CommandReportQueueStateLong</a>
+            </td>
+            <td width="50%"> This class handles the Send queue state (long) Command in RFC1179. The RFC description is below: <br />
+            <br /> 5.4 04 - Send queue state (long) <br />
+            <br /> +----+-------+----+------+----+<br /> | 04 | Queue | SP | List | LF |<br /> +----+-------+----+------+----+<br />
+            <br /> Command code - 04<br /> Operand 1 - Printer queue name<br /> Other operands - User names or job numbers<br />
+            <p> If the user names or job numbers or both are supplied then only those jobs for those users or with those numbers will be sent. </p>
+            <p> The response is an ASCII stream which describes the printer queue. The stream continues until the connection closes. Ends of lines are indicated with ASCII LF control characters. The lines may also contain ASCII HT control characters. </p>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.CommandReportQueueStateShort.html">CommandReportQueueStateShort</a>
+            </td>
+            <td width="50%"> This class handles the Send queue state (short) Command in RFC1179. The RFC description is below: <br />
+            <br /> 5.3 03 - Send queue state (short) <br />
+            <br /> +----+-------+----+------+----+<br /> | 03 | Queue | SP | List | LF |<br /> +----+-------+----+------+----+<br />
+            <br /> Command code - 03<br /> Operand 1 - Printer queue name<br /> Other operands - User names or job numbers<br />
+            <p> If the user names or job numbers or both are supplied then only those jobs for those users or with those numbers will be sent. </p>
+            <p> The response is an ASCII stream which describes the printer queue. The stream continues until the connection closes. Ends of lines are indicated with ASCII LF control characters. The lines may also contain ASCII HT control characters. </p>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="lpdnet.command.LPDCommands.html">LPDCommands</a>
+            </td>
+            <td width="50%"> Class to handle all the commands defined in the RFC1179 </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
