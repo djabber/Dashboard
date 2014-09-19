@@ -18,8 +18,6 @@ class SysInfoProcessor:
 
 		s = Server()
 		data = s.startServer()
-		#c = Client()
-		#c.startClient("localhost", 10000)
 
 	def decodeJson(self):
 			

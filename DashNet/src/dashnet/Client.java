@@ -31,12 +31,16 @@ class Client{
             InetAddress hostname = InetAddress.getByName(host);
             Socket socket = new Socket(hostname.getHostName(), port);
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            Thread.sleep(1000);
             
-            out.writeBytes(String.valueOf(data.length()));
-            out.writeBytes("~");
+            System.out.println("Sending size...");
+            out.writeBytes(String.valueOf(data.length()) + "~");
             
+            //out.writeBytes("");
+            Thread.sleep(3000);
             out.writeBytes(data);
-            out.writeBytes("~~");
+            out.flush();
+            System.out.println("Closing connection...");
             out.close();
             
         }catch(UnknownHostException e){
