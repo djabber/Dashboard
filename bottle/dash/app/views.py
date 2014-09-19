@@ -5,8 +5,8 @@ import json
 
 app = Bottle()
 
-s = SysInfoProcessor()
-s.decodeJson()
+#s = SysInfoProcessor()
+#s.decodeJson()
     
 @route('/css/<filepath:path>')
 def server_static_css(filepath = None):
