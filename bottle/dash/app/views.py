@@ -66,8 +66,6 @@ def sysInfo(host = "localhost"):
 	
 	return output
 	
-
-	
 @error(404)
 def error404(error):
     return template('app/static/index')

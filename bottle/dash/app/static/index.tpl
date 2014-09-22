@@ -75,6 +75,48 @@
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<div class="row">
+									<div class="huge">Test VM</div>
+									<div class="col-xs-3">
+										<i class="fa fa-tasks fa-5x"></i>
+									</div>
+									<div id="myStyle" class="myFont col-xs-9 text-right">
+										<div>Status:</div>
+									</div>
+								</div>
+							</div>
+							<a href="sys_info/txssc-dj-ol-vm">
+								<div class="panel-footer">
+									<span class="pull-right">View Details</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="huge">Test Server</div>
+									<div class="col-xs-3">
+										<i class="fa fa-tasks fa-5x"></i>
+									</div>
+									<div id="myStyle" class="myFont col-xs-9 text-right">
+										<div>Status:</div>
+									</div>
+								</div>
+							</div>
+							<a href="sys_info/WIN-CEMGLVN74PK">
+								<div class="panel-footer">
+									<span class="pull-right">View Details</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<div class="row">
 									<div class="huge">File Server</div>
 									<div class="col-xs-3">
 										<i class="fa fa-tasks fa-5x"></i>
