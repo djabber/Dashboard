@@ -4,3 +4,15 @@
 /DashNet/src/dashnet/knock/KnockClient/nbproject/private/
 /DashNet/src/dashnet/knock/KnockServer/build/
 /DashNet/src/dashnet/knock/KnockServer/nbproject/private/
+/SnmpAgent/nbproject/private/
+/SnmpAgent/build/
+/SnmpAgent/dist/
+/DashNet/src/SnmpManager/Server/build/
+/DashNet/src/SnmpManager/Server/dist/
+/DashNet/src/SnmpManager/Server/nbproject/private/
+/DashNet/src/SnmpManager/Client/build/
+/DashNet/src/SnmpManager/Client/dist/
+/DashNet/src/SnmpManager/Client/nbproject/private/
+/SnmpAgent/src/SnmpAgent/Client/build/
+/SnmpAgent/src/SnmpAgent/Client/dist/
+/SnmpAgent/src/SnmpAgent/Client/nbproject/private/
