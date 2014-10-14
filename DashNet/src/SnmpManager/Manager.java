@@ -1,6 +1,7 @@
 package SnmpManager;
 
 import java.io.IOException;
+import static java.lang.System.exit;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
@@ -20,39 +21,32 @@ public class Manager {
 
     Snmp snmp = null;
     String address = null;
-
+    PDU pdu = null;
+    OID oids[] = new OID[999999];
+    int oidCnt = 0;
+    int depth = 0; 
+    
     public Manager(String add){
 
         address = add;
     }
 
-    /* Start the Snmp session. If you forget the listen() method you will not
-        * get any answers because the communication is asynchronous
-        * and the listen() method listens for answers.
-        * @throws IOException */
     public void start() throws IOException {
 
         TransportMapping transport = new DefaultUdpTransportMapping();
         snmp = new Snmp(transport);
         transport.listen();
     }
-    /* Method which takes a single OID and returns the response from the agent as a String.
-        * @param oid
-        * @return
-        * @throws IOException */
+   
     public String getAsString(OID oid) throws IOException {
 
         ResponseEvent event = get(new OID[] { oid });
         return event.getResponse().get(0).getVariable().toString();
     }
     
-    /* This method is capable of handling multiple OIDs
-        * @param oids
-        * @return
-        * @throws IOException */
     public ResponseEvent get(OID oids[]) throws IOException {
         
-        PDU pdu = new PDU();
+        pdu = new PDU();
         
         for (OID oid : oids){
             pdu.add(new VariableBinding(oid));
@@ -66,9 +60,76 @@ public class Manager {
         throw new RuntimeException("GET timed out");
     }
     
-    /* This method returns a Target, which contains information about
-        * where the data should be fetched and how.
-        * @return */
+    public void walk(String start, int d){
+       
+        depth = d;
+        walkHelper(start, -1);
+        
+        System.out.println("***** OIDS *****");
+        for(int i = 0; i < oidCnt; i++){
+            System.out.println(oids[i].toString());
+        }   
+    }
+    
+    private void walkHelper(String str, int i){
+                
+        System.out.println("depth = " + depth);
+        if(depth >= 0){
+            // Get end number from string
+            String s = getNumString(str, "");
+            System.out.println("1: s=" + s);
+        
+            // Remove end number from string
+            str = str.substring(0, (str.length() - s.length()));
+            i = Integer.parseInt(s);
+      
+            System.out.println("2: str=" + str + ", i = " + i);
+       
+            if(i >= 9){    
+                str = str.concat((i + "."));
+                str = str.concat(("" + 0));
+                System.out.println("3: str=" + str);
+                depth--;
+                walkHelper(str, 1);
+            }else{
+                str = str.concat(String.valueOf(++i));
+                oids[oidCnt++] = new OID(str);
+                walkHelper(str, i);
+            }
+        }
+    }
+    
+    private String getNumString(String str, String hold){
+        
+        // Get last character
+        String c = Character.toString(str.charAt(str.length()-1));
+        
+        // Remove character from end
+        str = str.substring(0, str.length()-1);
+            
+        if(c.equals(".")){
+            return hold;
+        }else{
+            return getNumString(str, (c + hold));
+        }
+    }
+    
+    public PDU getResponse(OID[] oids) throws IOException{
+       
+        ResponseEvent event = get(oids);
+        return event.getResponse();
+    }
+    
+    public void printResponse(PDU pdu){
+        
+        int i = 0;
+        VariableBinding[] vbArr = pdu.toArray();
+        
+        for (VariableBinding vb : vbArr) {
+            System.out.println("Response" + i++ + ": " + vb.toString());
+        }
+    }
+    
     private Target getTarget() {
         
         Address targetAddress = GenericAddress.parse(address);
@@ -78,6 +139,12 @@ public class Manager {
         target.setRetries(5);
         target.setTimeout(3000);
         target.setVersion(SnmpConstants.version2c);
+        
         return target;
+    }
+    
+    class WalkCounts{
+        public int requests;
+        public int objects;
     }
 }
