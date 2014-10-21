@@ -1,4 +1,4 @@
-package SnmpManager;
+package Snmp;
 
 import java.io.IOException;
 import java.util.HashMap;

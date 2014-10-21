@@ -1,4 +1,4 @@
-package SnmpManager;
+package Snmp;
 
 import java.io.IOException;
 import static java.lang.System.exit;
@@ -69,7 +69,7 @@ public class Manager {
         }
         
         pdu.setType(PDU.GET);
-        ResponseEvent event = snmp.send(pdu, getTarget(), null);
+        ResponseEvent event = snmp.send(pdu, getTarget()); //, null);
         
         if(event != null){
             return event;

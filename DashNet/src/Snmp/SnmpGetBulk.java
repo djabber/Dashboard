@@ -1,4 +1,4 @@
-package SnmpManager;
+package Snmp;
 
 import com.agentpp.smiparser.SMIParser;
 import java.io.BufferedWriter;
