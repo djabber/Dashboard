@@ -12,7 +12,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-class Client{
+public class Client{
 
     String host = "";
     int port = 0;
