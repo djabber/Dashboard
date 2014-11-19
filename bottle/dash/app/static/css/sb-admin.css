@@ -177,7 +177,6 @@ ul.alert-dropdown {
     border-color: #5cb85c;
     color: #fff;
     background-color: #5cb85c;
-    text-shadow: -1px 0 #2f9f2f, 0 1px #2f9f2f, 1px 0 #2f9f2f, 0 -1px #2f9f2f;
 }
 
 .panel-green a {
@@ -196,8 +195,6 @@ ul.alert-dropdown {
     border-color: #d9534f;
     color: #fff;
     background-color: #d9534f;
-    text-shadow: -1px 0 #c06f6c, 0 1px #c06f6c, 1px 0 #c06f6c, 0 -1px #c06f6c;
-}
 }
 
 .panel-red a {
@@ -205,25 +202,23 @@ ul.alert-dropdown {
 }
 
 .panel-red a:hover {
-    color: #d9534f;
+    color: #b52b27;
 }
 
-/* Orange Banner */
-.panel-orange {
+.panel-yellow {
     border-color: #f0ad4e;
 }
 
-.panel-orange .panel-heading {
+.panel-yellow .panel-heading {
     border-color: #f0ad4e;
     color: #fff;
     background-color: #f0ad4e;
-    text-shadow: -1px 0 #d6ac70, 0 1px #d6ac70, 1px 0 #d6ac70, 0 -1px #d6ac70;
 }
 
-.panel-orange a {
+.panel-yellow a {
     color: #f0ad4e;
 }
 
-.panel-orange a:hover {
+.panel-yellow a:hover {
     color: #df8a13;
 }

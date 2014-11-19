@@ -3,21 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
-
+	
 		<title>Dashboard</title>
 
-		<!-- Bootstrap core CSS -->
+		<!-- CSS -->
 		<link rel="stylesheet" href="/css/bootstrap.css">
-
-		<!-- Add custom CSS here -->
 		<link rel="stylesheet" href="/css/sb-admin.css">
 		<link rel="stylesheet" rel="font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/myStyle.css">
-		
-		<!-- Page Specific CSS -->
-		<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 	</head>
 
 	<body>
@@ -28,15 +21,14 @@
 				
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 					<a class="navbar-brand" href="index.tpl">TxSSC Admin</a>
-				</div>
-	
+				</div>		
+				<ul class="nav navbar-right top-nav">
+					<li id="myStyle" class="nav navbarClock navbarCenter top-nav">
+						<iframe src="http://free.timeanddate.com/clock/i4bpvr9a/n400/fs18/fcfff/tct/pct/pa14/tt0/tb1" frameborder="0" width="448" height="49" allowTransparency="true"></iframe>
+					</li>
+				</ul>
+				
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
@@ -52,7 +44,7 @@
 						<h1>System Information <small> </small></h1>
 						<ol class="breadcrumb">
 							<li><a href="index"><i class="icon-dashboard"></i> Dashboard</a></li>
-							<li class="active"><i class="icon-file-alt"></i> System Information</li>
+							<li class="active"><a href="sys_info"><i class="icon-file-alt"></i> System Information</a></li>
 						</ol>
 						<table>	
 							%for list in info:
@@ -84,17 +76,7 @@
 		</div><!-- /#wrapper -->
 
 		<!-- JavaScript -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		
-		<!-- <script src="js/jquery-1.10.2.js"></script> -->
+		<script src="js/jquery-1.10.2.js"></script>
 		<script src="js/bootstrap.js"></script>
-
-		<!-- Page Specific Plugins -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-		<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-		<script src="js/morris/chart-data-morris.js"></script>
-		<script src="js/tablesorter/jquery.tablesorter.js"></script>
-		<script src="js/tablesorter/tables.js"></script>
-
 	</body>
 </html>

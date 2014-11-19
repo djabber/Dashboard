@@ -20,7 +20,7 @@ def server_static_css(filepath = None):
     print filepath
 
     if filepath is not None and filepath in css_paths:
-        return static_file(filename= filepath, root='/home/likewise-open/TXSTATE/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/css/')
+        return static_file(filename= filepath, root='/home/local/TXSTATE/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/css/')
 
 @route('/js/<filepath:path>')
 def server_static_js(filepath = None):
