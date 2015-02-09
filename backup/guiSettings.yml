@@ -1,0 +1,7 @@
+h: 768 			# GUI window height
+w: 1024			# GUI window width
+bg_0: 255		# Background rgb color
+bg_1: 255
+bg_2: 255
+B: #BE8			# Border color
+t: "TxSSC Timesheet" 	# Window title

@@ -9,7 +9,7 @@
 		<!-- CSS -->
 		<link rel="stylesheet" href="/css/bootstrap.css">
 		<link rel="stylesheet" href="/css/sb-admin.css">
-		<link rel="stylesheet" rel="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" rel="/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/myStyle.css">
 	</head>
 
@@ -21,7 +21,7 @@
 				
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index.tpl">TxSSC Admin</a>
+					<a class="navbar-brand" href="/index.tpl">TxSSC Admin</a>
 				</div>		
 				<ul class="nav navbar-right top-nav">
 					<li id="myStyle" class="nav navbarClock navbarCenter top-nav">
@@ -32,8 +32,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
-						<li class="active"><a href="index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-						<li><a href="sys_info"><i class="fa fa-file"></i> System Information</a></li>
+						<li><a href="/index"><i class="fa fa-file"></i> Dashboard</a></li>
+						<li class="active"><a href="/sys_info"><i class="fa fa-dashboard"></i> System Information</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -43,8 +43,8 @@
 					<div class="col-lg-12">
 						<h1>System Information <small> </small></h1>
 						<ol class="breadcrumb">
-							<li><a href="index"><i class="icon-dashboard"></i> Dashboard</a></li>
-							<li class="active"><a href="sys_info"><i class="icon-file-alt"></i> System Information</a></li>
+							<li><a href="/index"><i class="icon-dashboard"></i> Dashboard</a></li>
+							<li class="active"><a href="/sys_info"><i class="icon-file-alt"></i> System Information</a></li>
 						</ol>
 						<table>	
 							%for list in info:
@@ -76,7 +76,7 @@
 		</div><!-- /#wrapper -->
 
 		<!-- JavaScript -->
-		<script src="js/jquery-1.10.2.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<script src="/js/jquery-1.10.2.js"></script>
+		<script src="/js/bootstrap.js"></script>
 	</body>
 </html>

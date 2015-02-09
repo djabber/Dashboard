@@ -17,3 +17,8 @@
 /SnmpAgent/src/SnmpAgent/Client/dist/
 /SnmpAgent/src/SnmpAgent/Client/nbproject/private/
 /bottle/dash/app/DashNet/dist/
+/bottle/dash/app/SysMonitor/nbproject/private/
+/bottle/dash/app/SysMonitor/build/
+/bottle/dash/app/RuntimeCalc/nbproject/private/
+/bottle/dash/app/RuntimeCalc/dist/
+/bottle/dash/app/RuntimeCalc/build/

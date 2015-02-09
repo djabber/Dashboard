@@ -9,7 +9,7 @@
 		<!-- CSS -->
 		<link rel="stylesheet" href="/css/bootstrap.css">
 		<link rel="stylesheet" href="/css/sb-admin.css">
-		<link rel="stylesheet" rel="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" rel="/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/myStyle.css">
 	</head>
 
@@ -32,8 +32,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
-						<li class="active"><a href="index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-						<li><a href="sys_info"><i class="fa fa-file"></i> System Information</a></li>
+						<li class="active"><a href="/index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+						<li><a href="/sys_info"><i class="fa fa-file"></i> System Information</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -50,11 +50,12 @@
 				
 				<!-- /.row -->
 				<div class="row">
+					%for tup in servers: 
 					<div class="col-lg-3 col-md-6">
 						<div class="panel panel-color">
 							<div class="panel-heading">
 								<div class="row">
-									<div class="huge">File Server</div>
+										<div class="huge">{{tup[0]}}</div>
 									<div class="col-xs-3">
 										<i class="fa fa-tasks fa-5x"></i>
 									</div>
@@ -63,7 +64,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="sys_info/txssc-fileserv1">
+							<a href={{tup[1]}}>
 								<div class="panel-footer">
 									<span class="pull-right">View Details</span>
 									<div class="clearfix"></div>
@@ -71,167 +72,13 @@
 							</a>
 						</div>
 					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Database Server</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>									
-								</div>
-							</div>
-							<a href="sys_info/txssc-dbserv1">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Print Server</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>									
-								</div>
-							</div>
-							<a href="sys_info/txssc-prntserv1">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Fax Server</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>									
-								</div>
-							</div>
-							<a href="sys_info/txssc-faxserv1">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Cloud Server 1</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>									
-								</div>
-							</div>
-							<a href="sys_info/txssc-cloud1">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Cloud Server 2</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>									
-								</div>
-							</div>
-							<a href="sys_info/txssc-cloud2">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Test VM</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>
-								</div>
-							</div>
-							<a href="sys_info/txssc-dj-ol-vm">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">Test Server</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
-									</div>
-								</div>
-							</div>
-							<a href="sys_info/WIN-CEMGLVN74PK">
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					
+					%end
 				</div><!-- /.row -->
 			</div><!-- /#page-wrapper -->
 		</div><!-- /#wrapper -->
 	
 		<!-- JavaScript -->
-		<script src="js/jquery-1.10.2.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<script src="/js/jquery-1.10.2.js"></script>
+		<script src="/js/bootstrap.js"></script>
 	</body>
 </html>

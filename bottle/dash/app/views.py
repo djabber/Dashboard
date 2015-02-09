@@ -1,7 +1,10 @@
+import json, os, sys, socket
 from bottle import Bottle, route, run, template, get, post, request, static_file, error
-from server import Server
-from sys_info_processor import SysInfoProcessor
-import json
+from src.sys_info_processor import SysInfoProcessor
+from settings.settings_processor import SettingsProcessor
+from src.server import Server
+from src.my_ping import MyPing
+
 
 app = Bottle()
 
@@ -20,7 +23,7 @@ def server_static_css(filepath = None):
     print filepath
 
     if filepath is not None and filepath in css_paths:
-        return static_file(filename= filepath, root='/home/local/TXSTATE/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/css/')
+        return static_file(filename= filepath, root='/home/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/css/')
 
 @route('/js/<filepath:path>')
 def server_static_js(filepath = None):
@@ -46,7 +49,29 @@ def server_static_images(filepath = None):
 @route('/myapp/index/')
 def home():
 	
-    return template('app/static/index')
+	p = MyPing()
+	s = SettingsProcessor()
+	serverDict = s.getSettings('app/settings/servers.yml')
+	ipDict = s.getSettings('app/settings/ips.yml')
+		
+	servers = serverDict.items()
+	ips = ipDict.items()
+	
+	for ip in ips:	
+		print ip
+		result = p.ping(ip[1])
+
+		if result:
+			print "Success!"
+		else:
+			print "Failed..."
+		print "\n\n"
+	
+		
+	output = template('app/static/index', servers=servers)
+	
+	return output
+ 
 
 def getInfo(host):
 	
@@ -54,9 +79,6 @@ def getInfo(host):
 	
 	return s.decodeJson()
 	
-@route('/hello/<name>')
-def greet(name='Stranger'):
-    return template('Hello {{name}}, how are you?', name=name)	
 		
 @route("/sys_info/<host>") 
 def sysInfo(host = "localhost"):
