@@ -3,7 +3,9 @@ from bottle import Bottle, route, run, template, get, post, request, static_file
 from src.sys_info_processor import SysInfoProcessor
 from settings.settings_processor import SettingsProcessor
 from src.server import Server
+from settings.mysql_connector import MySqlConnector
 from src.my_ping import MyPing
+from collections import deque
 
 
 app = Bottle()
@@ -41,35 +43,59 @@ def server_static_js(filepath = None):
 def server_static_images(filepath = None):
 
     if filepath is not None:
-        return static_file( filename = filepath, root='./views/images/')
+        return static_file(filename= filepath, root='/home/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/images/')
         
 
 @route('/')
-@route('/index/')
-@route('/myapp/index/')
+@route('/index')
+@route('/myapp/index')
 def home():
-	
+
+	myList = []
+	db = MySqlConnector()
 	p = MyPing()
 	s = SettingsProcessor()
-	serverDict = s.getSettings('app/settings/servers.yml')
+	#serverDict = s.getSettings('app/settings/servers.yml')
 	ipDict = s.getSettings('app/settings/ips.yml')
-		
-	servers = serverDict.items()
+
+	# Convert dictionaries to list of tuples
+	#servers = serverDict.items()
 	ips = ipDict.items()
 	
-	for ip in ips:	
-		print ip
-		result = p.ping(ip[1])
+	cnt = 1
+	while cnt < 8:
+		queue = []
+		query = ("SELECT name,ip FROM servers WHERE id=%i" % cnt)
+		#query = ("SELECT name,ip FROM servers")
+		result = db.myQuery("localhost", "root", "a", "dashboard", query)
+		#print "%i: %s" % (cnt, name[0])
+		#print "%s, %s" % (result[0][0], result[0][1])
+		pingResult = p.ping(result[0][1])
+		update = ("UPDATE servers SET status=%s WHERE id=%i" % (pingResult, cnt))
+		db.myUpdate("localhost", "root", "a", "dashboard", update) 
+		queue.append(result[0][0])
+		queue.append(result[0][1])
+		queue.append(pingResult)
+		myList.append(queue)	
 
-		if result:
-			print "Success!"
-		else:
-			print "Failed..."
-		print "\n\n"
+		cnt += 1
+
+	for item in myList:
+		print "%s" % item[0]
+		print "%s" % item[1]
+		print "%s" % item[2]
+	#for server in servers:
+	#	print "Server = %s" % server[0]
+	#	queue.append(server[0])
+	#	queue.append(server[1])
 	
-		
-	output = template('app/static/index', servers=servers)
-	
+	#	ip = ips.pop()
+	#	queue.append(ip[1])
+	#	result = p.ping(ip[1])
+	#	queue.append(result)
+
+	output = template('app/static/index', servers=myList) #, statusList=statusList)
+
 	return output
  
 
@@ -88,9 +114,9 @@ def sysInfo(host = "localhost"):
 	
 	return output
 	
-@error(404)
-def error404(error):
-    return template('app/static/index')
+#@error(404)
+#def error404(error):
+#    return template('app/static/index')
 
 
 run(host='localhost', port=8082, debug=True)

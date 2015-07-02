@@ -97,10 +97,11 @@ class Ping(object):
             # FIXME: Use destination only for display this line here? see: https://github.com/jedie/python-ping/issues/3
             self.dest_ip = socket.gethostbyname(self.destination)
         except socket.gaierror as e:
-            self.print_unknown_host(e)
+            #self.print_unknown_host(e)
             sys.exit(-1)
         else:
-            self.print_start()
+			print ""
+            #self.print_start()
 
         self.seq_number = 0
         self.send_count = 0
@@ -190,7 +191,7 @@ class Ping(object):
             if (MAX_SLEEP > delay):
                 time.sleep((MAX_SLEEP - delay) / 1000.0)
 
-        self.print_exit()
+       # self.print_exit()
 
     def do(self):
         """
@@ -225,10 +226,10 @@ class Ping(object):
             if self.max_time < delay:
                 self.max_time = delay
 
-            self.print_success(delay, ip, packet_size, ip_header, icmp_header)
+            #self.print_success(delay, ip, packet_size, ip_header, icmp_header)
             return delay
         else:
-            self.print_failed()
+            #self.print_failed()
             return -1
 
     def send_one_ping(self, current_socket):

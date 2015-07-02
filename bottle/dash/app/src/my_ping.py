@@ -11,12 +11,12 @@ class MyPing:
 		try:
 			p = Ping(host)
 			result = p.do()
-			print "Result = %s" % result
+#			print "Result = %s" % result
 		
 			if result > 0:
-				return True
+				return 1
 			else:
-				return False
+				return 0
 				
 		except socket.error, e:
 			print "Ping Error:", e

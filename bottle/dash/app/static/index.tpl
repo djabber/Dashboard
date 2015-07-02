@@ -50,21 +50,25 @@
 				
 				<!-- /.row -->
 				<div class="row">
-					%for tup in servers: 
+					%for item in servers: 
 					<div class="col-lg-3 col-md-6">
 						<div class="panel panel-color">
 							<div class="panel-heading">
 								<div class="row">
-										<div class="huge">{{tup[0]}}</div>
+										<div class="huge">{{item[0]}}</div>
 									<div class="col-xs-3">
 										<i class="fa fa-tasks fa-5x"></i>
 									</div>
 									<div id="myStyle" class="myFont col-xs-9 text-right">
-										<div>Status:</div>
+											%if item[2] == 1:
+												<div>Status: <img id="status_image" src="/images/green.svg" height="14" width="14"/> </div>
+											%else:
+												<div>Status: <img id="status_image" src="/images/red.svg" height="14" width="14"/> </div>
+											%end
 									</div>
 								</div>
 							</div>
-							<a href={{tup[1]}}>
+							<a href=sys_info/{{item[1]}}>
 								<div class="panel-footer">
 									<span class="pull-right">View Details</span>
 									<div class="clearfix"></div>
