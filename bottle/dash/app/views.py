@@ -10,9 +10,6 @@ from collections import deque
 
 app = Bottle()
 
-#s = SysInfoProcessor()
-#s.decodeJson()
-    
 @route('/css/<filepath:path>')
 def server_static_css(filepath = None):
 
@@ -52,24 +49,26 @@ def server_static_images(filepath = None):
 def home():
 
 	myList = []
+	getServerList(myList)
+	
+	aList = indexPrinterHelper()
+
+	output = template('app/static/index', servers=myList, printers=aList)
+
+	return output
+
+
+def getServerList(myList):
+
 	db = MySqlConnector()
 	p = MyPing()
 	s = SettingsProcessor()
-	#serverDict = s.getSettings('app/settings/servers.yml')
-	ipDict = s.getSettings('app/settings/ips.yml')
-
-	# Convert dictionaries to list of tuples
-	#servers = serverDict.items()
-	ips = ipDict.items()
 	
 	cnt = 1
 	while cnt < 8:
 		queue = []
 		query = ("SELECT name,ip FROM servers WHERE id=%i" % cnt)
-		#query = ("SELECT name,ip FROM servers")
 		result = db.myQuery("localhost", "root", "a", "dashboard", query)
-		#print "%i: %s" % (cnt, name[0])
-		#print "%s, %s" % (result[0][0], result[0][1])
 		pingResult = p.ping(result[0][1])
 		update = ("UPDATE servers SET status=%s WHERE id=%i" % (pingResult, cnt))
 		db.myUpdate("localhost", "root", "a", "dashboard", update) 
@@ -80,24 +79,8 @@ def home():
 
 		cnt += 1
 
-	for item in myList:
-		print "%s" % item[0]
-		print "%s" % item[1]
-		print "%s" % item[2]
-	#for server in servers:
-	#	print "Server = %s" % server[0]
-	#	queue.append(server[0])
-	#	queue.append(server[1])
-	
-	#	ip = ips.pop()
-	#	queue.append(ip[1])
-	#	result = p.ping(ip[1])
-	#	queue.append(result)
+	return myList
 
-	output = template('app/static/index', servers=myList) #, statusList=statusList)
-
-	return output
- 
 
 def getInfo(host):
 	
@@ -114,6 +97,61 @@ def sysInfo(host = "localhost"):
 	
 	return output
 	
+
+@route("/prnt_info/<host>") 
+def sysInfo(host = "localhost"):
+	
+	output = template('app/static/prnt_info', host=host)
+	
+	return output
+
+
+@route("/servers")
+def servers():
+	
+	myList = []
+	getServerList(myList)
+	
+	output = template('app/static/servers', servers=myList)
+	
+	return output
+
+
+@route("/printers")
+def printers():
+	
+	aList = indexPrinterHelper()
+
+	output = template('app/static/printers', printers=aList)
+	
+	return output
+
+
+def indexPrinterHelper():
+	
+	myList = []
+	db = MySqlConnector()
+	p = MyPing()
+	s = SettingsProcessor()
+
+	cnt = 1
+	while cnt < 6:
+		queue = []
+		query = ("SELECT name,ip FROM printers WHERE id=%i" % cnt)
+		result = db.myQuery("localhost", "root", "a", "dashboard", query)
+		pingResult = p.ping(result[0][1])
+		update = ("UPDATE printers SET status=%s WHERE id=%i" % (pingResult, cnt))
+		db.myUpdate("localhost", "root", "a", "dashboard", update)
+		queue.append(result[0][0])
+		queue.append(result[0][1])
+		queue.append(pingResult)
+		myList.append(queue)
+
+		cnt += 1
+	
+	return myList
+
+
 #@error(404)
 #def error404(error):
 #    return template('app/static/index')

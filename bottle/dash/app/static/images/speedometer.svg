@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 512.00001 512.00001"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="speedometer.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="399.92298"
+     inkscape:cy="261.516"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer7"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1161"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4868" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="black_Bkgrd">
+    <rect
+       style="fill:#000000;fill-opacity:1"
+       id="rect4161"
+       width="520"
+       height="520"
+       x="-2.1428571"
+       y="-2.2857149" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="White_Circle">
+    <circle
+       style="fill:#ffffff;fill-opacity:1"
+       id="path4140"
+       cx="257"
+       cy="257"
+       r="230" />
+  </g>
+  <g
+     inkscape:label="Black_Circle"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-540.36216)">
+    <circle
+       style="fill:#000000;fill-opacity:1"
+       id="path4138"
+       cx="257.7146"
+       cy="796.64795"
+       r="225" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="Speed_Markers1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889"
+       width="6.4915104"
+       height="431.20569"
+       x="-297.79807"
+       y="181.15402"
+       transform="matrix(-0.88027054,0.4744721,0,1,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-8"
+       width="6.4915104"
+       height="431.20569"
+       x="-290.98196"
+       y="-336.2229"
+       transform="matrix(-0.4744721,-0.88027054,-1,0,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-1"
+       width="6.4915104"
+       height="431.20569"
+       x="-413.92584"
+       y="-25.060844"
+       transform="matrix(-0.95536784,-0.29541884,-0.71334389,0.70081416,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-1-6"
+       width="6.4915104"
+       height="431.20569"
+       x="-4.1457963"
+       y="147.88028"
+       transform="matrix(-0.29541884,0.95536784,0.70081416,0.71334389,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-1-69"
+       width="4.1503448"
+       height="409.71161"
+       x="-368.29907"
+       y="66.685104"
+       transform="matrix(-0.99985536,-0.01700765,-0.40204254,0.91562099,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-1-69-9"
+       width="4.1503448"
+       height="409.71161"
+       x="143.29591"
+       y="74.62767"
+       transform="matrix(-0.01700765,0.99985536,0.91562099,0.40204254,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-1-69-7"
+       width="4.1503448"
+       height="409.71161"
+       x="143.75581"
+       y="75.260376"
+       transform="matrix(0.99985536,-0.01700765,0.40204254,0.91562099,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-1-69-9-5"
+       width="4.1503448"
+       height="409.71161"
+       x="364.23196"
+       y="-478.73541"
+       transform="matrix(0.01700765,0.99985536,-0.91562099,0.40204254,0,0)" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1"
+       id="path5019"
+       cx="175"
+       cy="427"
+       rx="15"
+       ry="25" />
+    <circle
+       style="fill:#000000;fill-opacity:1"
+       id="path5021"
+       cx="260"
+       cy="456"
+       r="20" />
+    <circle
+       style="fill:#000000;fill-opacity:1"
+       id="path5023"
+       cx="335"
+       cy="437"
+       r="15" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Speed_Markers"
+     style="display:none">
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4791"
+       width="4.2857151"
+       height="25.714285"
+       x="332.24774"
+       y="225.70566"
+       transform="matrix(0.784385,0.62027427,-0.62027427,0.784385,0,0)"
+       inkscape:transform-center-x="11.397682"
+       inkscape:transform-center-y="13.96756" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4791-7"
+       width="4.2857151"
+       height="25.714285"
+       x="49.837929"
+       y="546.72406"
+       transform="matrix(0.77015111,-0.63786148,0.63786148,0.77015111,0,0)"
+       inkscape:transform-center-x="-11.284952"
+       inkscape:transform-center-y="14.058808" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4791-0"
+       width="4.2857151"
+       height="25.714285"
+       x="256.78506"
+       y="51.661289"
+       transform="matrix(0.99937734,-0.03528371,0.03528371,0.99937734,0,0)"
+       inkscape:transform-center-x="-0.35973229"
+       inkscape:transform-center-y="18.024168" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4791-1-9"
+       width="4.2857151"
+       height="25.714285"
+       x="252.21481"
+       y="-68.14608"
+       transform="matrix(0.00592556,0.99998244,-0.99998244,0.00592556,0,0)"
+       inkscape:transform-center-x="18.026952"
+       inkscape:transform-center-y="-0.16963663" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4791-1-9-6"
+       width="4.2857151"
+       height="25.714285"
+       x="255.42287"
+       y="-469.19608"
+       transform="matrix(0.00592556,0.99998244,-0.99998244,0.00592556,0,0)"
+       inkscape:transform-center-x="18.026952"
+       inkscape:transform-center-y="-0.16963663" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Speed_Marker_Circle"
+     style="display:inline">
+    <circle
+       style="fill:#000000;fill-opacity:1"
+       id="path4886"
+       cx="256.14285"
+       cy="255.42856"
+       r="185" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Needle">
+    <path
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 247.85714,256.28571 49.28572,-135 -30.71429,137.85715 z"
+       id="path4772"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Needle_Center">
+    <circle
+       style="fill:#ffffff;fill-opacity:1"
+       id="path4164"
+       cx="256.55844"
+       cy="259.96692"
+       r="10" />
+  </g>
+</svg>

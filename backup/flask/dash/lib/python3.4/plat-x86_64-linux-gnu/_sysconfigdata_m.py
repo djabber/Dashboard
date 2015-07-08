@@ -11,7 +11,7 @@ build_time_vars = {'ABIFLAGS': 'm',
  'AST_C_DIR': 'Python',
  'AST_H': 'Include/Python-ast.h',
  'AST_H_DIR': 'Include',
- 'BASECFLAGS': '-Wno-unused-result -Werror=declaration-after-statement',
+ 'BASECFLAGS': '-Wno-unused-result',
  'BASECPPFLAGS': '',
  'BASEMODLIBS': '',
  'BINDIR': '/usr/bin',
@@ -25,15 +25,17 @@ build_time_vars = {'ABIFLAGS': 'm',
  'BYTESTR_DEPS': '\\',
  'CC': 'x86_64-linux-gnu-gcc -pthread',
  'CCSHARED': '-fPIC',
- 'CFLAGS': '-Wno-unused-result -Werror=declaration-after-statement -DNDEBUG '
-           '-g -fwrapv -O2 -Wall -Wstrict-prototypes -g -fstack-protector '
-           '--param=ssp-buffer-size=4 -Wformat -Werror=format-security  -g '
-           '-flto -fuse-linker-plugin',
+ 'CFLAGS': '-Wno-unused-result -DNDEBUG -g -fwrapv -O2 -Wall '
+           '-Wstrict-prototypes -g -fstack-protector-strong -Wformat '
+           '-Werror=format-security  -g -flto -fuse-linker-plugin '
+           '-ffat-lto-objects',
  'CFLAGSFORSHARED': '-fPIC',
+ 'CFLAGS_NODIST': '',
  'CONFIGFILES': 'configure configure.ac acconfig.h pyconfig.h.in '
                 'Makefile.pre.in',
- 'CONFIGURE_CFLAGS': '-g -fstack-protector --param=ssp-buffer-size=4 '
-                     '-Wformat -Werror=format-security',
+ 'CONFIGURE_CFLAGS': '-g -fstack-protector-strong -Wformat '
+                     '-Werror=format-security',
+ 'CONFIGURE_CFLAGS_NODIST': '-Werror=declaration-after-statement',
  'CONFIGURE_CPPFLAGS': '-D_FORTIFY_SOURCE=2',
  'CONFIGURE_LDFLAGS': '-Wl,-Bsymbolic-functions -Wl,-z,relro',
  'CONFIG_ARGS': "'--enable-shared' '--prefix=/usr' '--enable-ipv6' "
@@ -42,14 +44,14 @@ build_time_vars = {'ABIFLAGS': 'm',
                 "'--without-ensurepip' '--with-system-expat' "
                 "'--with-system-libmpdec' '--with-system-ffi' "
                 "'--with-fpectl' 'CC=x86_64-linux-gnu-gcc' 'CFLAGS=-g "
-                '-fstack-protector --param=ssp-buffer-size=4 -Wformat '
-                "-Werror=format-security ' 'LDFLAGS=-Wl,-Bsymbolic-functions "
-                "-Wl,-z,relro' 'CPPFLAGS=-D_FORTIFY_SOURCE=2'",
+                "-fstack-protector-strong -Wformat -Werror=format-security ' "
+                "'LDFLAGS=-Wl,-Bsymbolic-functions -Wl,-z,relro' "
+                "'CPPFLAGS=-D_FORTIFY_SOURCE=2'",
  'CONFINCLUDEDIR': '/usr/include',
  'CONFINCLUDEPY': '/usr/include/python3.4m',
  'COREPYTHONPATH': ':plat-x86_64-linux-gnu',
- 'COVERAGE_INFO': '/build/buildd/python3.4-3.4.0/build-shared/coverage.info',
- 'COVERAGE_REPORT': '/build/buildd/python3.4-3.4.0/build-shared/lcov-report',
+ 'COVERAGE_INFO': '/build/buildd/python3.4-3.4.3/build-shared/coverage.info',
+ 'COVERAGE_REPORT': '/build/buildd/python3.4-3.4.3/build-shared/lcov-report',
  'COVERAGE_REPORT_OPTIONS': '--no-branch-coverage --title "CPython lcov '
                             'report"',
  'CPPFLAGS': '-I. -IInclude -I../Include -D_FORTIFY_SOURCE=2',
@@ -181,6 +183,7 @@ build_time_vars = {'ABIFLAGS': 'm',
  'HAVE_GCC_UINT128_T': 1,
  'HAVE_GETADDRINFO': 1,
  'HAVE_GETC_UNLOCKED': 1,
+ 'HAVE_GETENTROPY': 0,
  'HAVE_GETGROUPLIST': 1,
  'HAVE_GETGROUPS': 1,
  'HAVE_GETHOSTBYNAME': 0,
@@ -294,6 +297,7 @@ build_time_vars = {'ABIFLAGS': 'm',
  'HAVE_PTY_H': 1,
  'HAVE_PUTENV': 1,
  'HAVE_PWRITE': 1,
+ 'HAVE_RAND_EGD': 1,
  'HAVE_READLINK': 1,
  'HAVE_READLINKAT': 1,
  'HAVE_READV': 1,
@@ -574,14 +578,15 @@ build_time_vars = {'ABIFLAGS': 'm',
  'PYTHON_FOR_BUILD': './python -E',
  'PYTHON_HEADERS': '\\',
  'PYTHON_OBJS': '\\',
- 'PY_CFLAGS': '-Wno-unused-result -Werror=declaration-after-statement '
-              '-DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -g '
-              '-fstack-protector --param=ssp-buffer-size=4 -Wformat '
-              '-Werror=format-security  ',
- 'PY_CORE_CFLAGS': '-Wno-unused-result -Werror=declaration-after-statement '
-                   '-DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -g '
-                   '-fstack-protector --param=ssp-buffer-size=4 -Wformat '
-                   '-Werror=format-security   '
+ 'PY_CFLAGS': '-Wno-unused-result -DNDEBUG -g -fwrapv -O2 -Wall '
+              '-Wstrict-prototypes -g -fstack-protector-strong -Wformat '
+              '-Werror=format-security  -g -flto -fuse-linker-plugin '
+              '-ffat-lto-objects',
+ 'PY_CFLAGS_NODIST': '-Werror=declaration-after-statement',
+ 'PY_CORE_CFLAGS': '-Wno-unused-result -DNDEBUG -g -fwrapv -O2 -Wall '
+                   '-Wstrict-prototypes -g -fstack-protector-strong -Wformat '
+                   '-Werror=format-security  -g -flto -fuse-linker-plugin '
+                   '-ffat-lto-objects -Werror=declaration-after-statement '
                    '-I. -IInclude -I../Include -D_FORTIFY_SOURCE=2 -fPIC '
                    '-DPy_BUILD_CORE',
  'PY_CPPFLAGS': '-I. -IInclude -I../Include -D_FORTIFY_SOURCE=2',
@@ -596,7 +601,7 @@ build_time_vars = {'ABIFLAGS': 'm',
  'READELF': 'readelf',
  'RESSRCDIR': 'Mac/Resources/framework',
  'RETSIGTYPE': 'void',
- 'RUNSHARED': 'LD_LIBRARY_PATH=/build/buildd/python3.4-3.4.0/build-shared:',
+ 'RUNSHARED': 'LD_LIBRARY_PATH=/build/buildd/python3.4-3.4.3/build-shared',
  'SCRIPTDIR': '/usr/lib',
  'SETPGRP_HAVE_ARG': 0,
  'SGI_ABI': '',
@@ -638,10 +643,10 @@ build_time_vars = {'ABIFLAGS': 'm',
  'TCLTK_LIBS': '',
  'TESTOPTS': '',
  'TESTPATH': '',
- 'TESTPYTHON': 'LD_LIBRARY_PATH=/build/buildd/python3.4-3.4.0/build-shared: '
+ 'TESTPYTHON': 'LD_LIBRARY_PATH=/build/buildd/python3.4-3.4.3/build-shared '
                './python',
  'TESTPYTHONOPTS': '',
- 'TESTRUNNER': 'LD_LIBRARY_PATH=/build/buildd/python3.4-3.4.0/build-shared: '
+ 'TESTRUNNER': 'LD_LIBRARY_PATH=/build/buildd/python3.4-3.4.3/build-shared '
                './python ../Tools/scripts/run_tests.py',
  'TESTTIMEOUT': 3600,
  'THREADOBJ': 'Python/thread.o',
@@ -667,8 +672,8 @@ build_time_vars = {'ABIFLAGS': 'm',
  'WITH_VALGRIND': 0,
  'X87_DOUBLE_ROUNDING': 0,
  'XMLLIBSUBDIRS': 'xml xml/dom xml/etree xml/parsers xml/sax',
- 'abs_builddir': '/build/buildd/python3.4-3.4.0/build-shared',
- 'abs_srcdir': '/build/buildd/python3.4-3.4.0/build-shared/..',
+ 'abs_builddir': '/build/buildd/python3.4-3.4.3/build-shared',
+ 'abs_srcdir': '/build/buildd/python3.4-3.4.3/build-shared/..',
  'datarootdir': '/usr/share',
  'exec_prefix': '/usr',
  'prefix': '/usr',

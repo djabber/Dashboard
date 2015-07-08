@@ -10,6 +10,12 @@
 	padding: 2px 25px;
 }
 
+#myStyle.mySubHead2{
+
+	font-size: 30px;
+	padding-left: 25px;
+}
+
 #myStyle.navbarClock{
 
   margin-left: auto;
@@ -19,6 +25,12 @@
 #myStyle.myFont{
 
 	font-size: 14px;
+}
+
+#myStyle.myIframe{
+
+	height: 700px;
+	line-height: 700px;
 }
 
 @media(min-width: 768px){
@@ -64,3 +76,4 @@
 
 	font-weight: bold;
 }
+

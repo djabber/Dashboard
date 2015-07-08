@@ -38,7 +38,6 @@ public class SysMonitorData{
         sys_mon_stmt = sys_mon.connect();
         server_stmt = server.connect();
         
-
         getUsageStats();
         //writeUsageStats()        
     }
@@ -81,23 +80,12 @@ public class SysMonitorData{
                 
                 if(server_stmt != null){
                     
-                    System.out.println("Getting result set...");
-                    ResultSet rs = server_stmt.executeQuery("Select * from servers;");
-                    List<String> results = server.convertToList(rs);
-                    
-                    int cnt = 0;
-                    System.out.println("\n\n****** Show Tables Results ******");
-                    for(String item : results){
-                        
-                        System.out.println(cnt + " " + item);
-                        cnt++;
-                    }
-                    System.out.println("\n\n");
-                    
-                    
+                    List<String> results = getServerList();
+                    printServerList(results);
                 }
-                
-                String insert="INSERT INTO sys_monitor (error name, value, unit) VALUES('" + name + "','" + dval + "','" + unit + "');";
+                String errors = "none";
+                int server_id = 4;
+                String insert="INSERT INTO sys_monitor (errors, name, value, unit, server_id) VALUES('" + errors + "','" + name + "','" + dval + "','" + unit + "','" + server_id + "');";
                 //String insert="insert into dashboard.sys_monitor (name,value,unit) VALUES ('test2',2.0,'testUnit2');";
                 //System.out.println(insert);
                
@@ -107,6 +95,25 @@ public class SysMonitorData{
                 list.add(s);
             } 
        }
+        sys_mon_stmt.close();
+    }
+    
+    public List getServerList() throws SQLException{
+        
+        System.out.println("Getting result set...");
+        ResultSet rs = server_stmt.executeQuery("Select * from servers;");
+        return server.convertToList(rs);
+    }
+    
+    public void printServerList(List<String> results){
+        
+        int cnt = 0;
+        System.out.println("\n\n****** Show Tables Results ******");
+            for(String item : results){
+                System.out.println(cnt + " " + item);
+                cnt++;
+            }
+            System.out.println("\n\n");
     }
     
     public List convertToList(ResultSet rs) {

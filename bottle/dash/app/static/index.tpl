@@ -33,7 +33,8 @@
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
 						<li class="active"><a href="/index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-						<li><a href="/sys_info"><i class="fa fa-file"></i> System Information</a></li>
+						<li><a href="/servers"><i class="fa fa-dashboard"></i> Servers</a></li>
+						<li><a href="/printers"><i class="fa fa-dashboard"></i> Printers</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -48,14 +49,14 @@
 					</div>
 				</div>
 				
-				<!-- /.row -->
-				<div class="row">
+				<div class="row"><!-- /.row -->
+					<div id="myStyle" class="mySubHead2">Servers:</div>
 					%for item in servers: 
 					<div class="col-lg-3 col-md-6">
 						<div class="panel panel-color">
 							<div class="panel-heading">
 								<div class="row">
-										<div class="huge">{{item[0]}}</div>
+									<div class="huge">{{item[0]}}</div>
 									<div class="col-xs-3">
 										<i class="fa fa-tasks fa-5x"></i>
 									</div>
@@ -69,6 +70,36 @@
 								</div>
 							</div>
 							<a href=sys_info/{{item[1]}}>
+								<div class="panel-footer">
+									<span class="pull-right">View Details</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+						</div>
+					</div>
+					%end
+				</div><!-- /.row -->
+				<div class="row">
+					<div id="myStyle" class="mySubHead2">Printers:</div>
+				%for item in printers: 
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-color">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="huge">{{item[0]}}</div>
+									<div class="col-xs-3">
+										<i class="fa fa-tasks fa-5x"></i>
+									</div>
+									<div id="myStyle" class="myFont col-xs-9 text-right">
+											%if item[2] == 1:
+												<div>Status: <img id="status_image" src="/images/green.svg" height="14" width="14"/> </div>
+											%else:
+												<div>Status: <img id="status_image" src="/images/red.svg" height="14" width="14"/> </div>
+											%end
+									</div>
+								</div>
+							</div>
+							<a href=prnt_info/{{item[1]}}>
 								<div class="panel-footer">
 									<span class="pull-right">View Details</span>
 									<div class="clearfix"></div>

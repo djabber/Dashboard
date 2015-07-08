@@ -33,7 +33,8 @@
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
 						<li><a href="/index"><i class="fa fa-file"></i> Dashboard</a></li>
-						<li class="active"><a href="/sys_info"><i class="fa fa-dashboard"></i> System Information</a></li>
+						<li><a href="/servers"><i class="fa fa-file"></i> Servers</a></li>
+						<li><a href="/printers"><i class="fa fa-file"></i> Printers</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -44,7 +45,7 @@
 						<h1>System Information <small> </small></h1>
 						<ol class="breadcrumb">
 							<li><a href="/index"><i class="icon-dashboard"></i> Dashboard</a></li>
-							<li class="active"><a href="/sys_info"><i class="icon-file-alt"></i> System Information</a></li>
+							<li class="active"><i class="icon-file-alt"></i> System Information</a></li>
 						</ol>
 						<table>	
 							%for list in info:
@@ -57,19 +58,6 @@
 								%end
 							%end
 						</table>		
-						<div class="panel panel-info">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-6">
-										<i class="fa fa-comments fa-5x"></i>
-									</div>
-									<div class="col-xs-6 text-right">
-										<p class="announcement-heading">1</p>
-										<p class="announcement-text">My Announcement!</p>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div><!-- /.row -->
 			</div><!-- /#page-wrapper -->
