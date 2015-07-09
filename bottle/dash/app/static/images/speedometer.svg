@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="speedometer.svg">
+   sodipodi:docname="speedometer.svg"
+   inkscape:export-filename="/home/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/images/speedometer.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -29,7 +32,7 @@
      inkscape:cx="399.92298"
      inkscape:cy="261.516"
      inkscape:document-units="px"
-     inkscape:current-layer="layer7"
+     inkscape:current-layer="layer2"
      showgrid="true"
      units="px"
      inkscape:window-width="1920"
@@ -49,14 +52,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="black_Bkgrd">
+     inkscape:label="black_Bkgrd"
+     style="display:none">
     <rect
        style="fill:#000000;fill-opacity:1"
        id="rect4161"
@@ -68,25 +72,27 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="White_Circle">
+     inkscape:label="White_Circle"
+     style="display:inline">
     <circle
        style="fill:#ffffff;fill-opacity:1"
        id="path4140"
-       cx="257"
-       cy="257"
-       r="230" />
+       cx="257.5"
+       cy="256.5"
+       r="256.5" />
   </g>
   <g
      inkscape:label="Black_Circle"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-540.36216)">
+     transform="translate(0,-540.36216)"
+     style="display:inline">
     <circle
        style="fill:#000000;fill-opacity:1"
        id="path4138"
        cx="257.7146"
-       cy="796.64795"
-       r="225" />
+       cy="795.93365"
+       r="215" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -95,86 +101,73 @@
     <rect
        style="fill:#ffffff;fill-opacity:1"
        id="rect4889"
-       width="6.4915104"
-       height="431.20569"
-       x="-297.79807"
-       y="181.15402"
-       transform="matrix(-0.88027054,0.4744721,0,1,0,0)" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1"
-       id="rect4889-8"
-       width="6.4915104"
-       height="431.20569"
-       x="-290.98196"
-       y="-336.2229"
-       transform="matrix(-0.4744721,-0.88027054,-1,0,0,0)" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1"
-       id="rect4889-1"
-       width="6.4915104"
-       height="431.20569"
-       x="-413.92584"
-       y="-25.060844"
-       transform="matrix(-0.95536784,-0.29541884,-0.71334389,0.70081416,0,0)" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1"
-       id="rect4889-1-6"
-       width="6.4915104"
-       height="431.20569"
-       x="-4.1457963"
-       y="147.88028"
-       transform="matrix(-0.29541884,0.95536784,0.70081416,0.71334389,0,0)" />
+       width="23.688337"
+       height="329.07803"
+       x="-271.33911"
+       y="90.067421"
+       transform="matrix(-0.99506468,0.09922847,0,1,0,0)" />
     <rect
        style="fill:#ffffff;fill-opacity:1"
        id="rect4889-1-69"
-       width="4.1503448"
-       height="409.71161"
-       x="-368.29907"
-       y="66.685104"
-       transform="matrix(-0.99985536,-0.01700765,-0.40204254,0.91562099,0,0)" />
+       width="3.3954525"
+       height="327.06583"
+       x="-369.07965"
+       y="77.371109"
+       transform="matrix(-0.99986362,-0.0165147,-0.41203315,0.91116886,0,0)" />
     <rect
        style="fill:#ffffff;fill-opacity:1"
        id="rect4889-1-69-9"
-       width="4.1503448"
-       height="409.71161"
-       x="143.29591"
-       y="74.62767"
-       transform="matrix(-0.01700765,0.99985536,0.91562099,0.40204254,0,0)" />
+       width="3.9221601"
+       height="395.62512"
+       x="144.33389"
+       y="84.512314"
+       transform="matrix(-0.01744895,0.99984776,0.91934033,0.39346329,0,0)" />
     <rect
        style="fill:#ffffff;fill-opacity:1"
        id="rect4889-1-69-7"
-       width="4.1503448"
-       height="409.71161"
-       x="143.75581"
-       y="75.260376"
-       transform="matrix(0.99985536,-0.01700765,0.40204254,0.91562099,0,0)" />
+       width="3.7289076"
+       height="332.73901"
+       x="137.17415"
+       y="92.447464"
+       transform="matrix(0.99988692,-0.0150379,0.44479276,0.89563352,0,0)" />
     <rect
        style="fill:#ffffff;fill-opacity:1"
        id="rect4889-1-69-9-5"
-       width="4.1503448"
-       height="409.71161"
-       x="364.23196"
-       y="-478.73541"
-       transform="matrix(0.01700765,0.99985536,-0.91562099,0.40204254,0,0)" />
-    <ellipse
-       style="fill:#000000;fill-opacity:1"
-       id="path5019"
-       cx="175"
-       cy="427"
-       rx="15"
-       ry="25" />
-    <circle
-       style="fill:#000000;fill-opacity:1"
-       id="path5021"
-       cx="260"
-       cy="456"
-       r="20" />
+       width="3.8870349"
+       height="387.85904"
+       x="362.83575"
+       y="-466.02353"
+       transform="matrix(0.01722636,0.99985162,-0.91749432,0.39774888,0,0)" />
     <circle
        style="fill:#000000;fill-opacity:1"
        id="path5023"
        cx="335"
        cy="437"
        r="15" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-5"
+       width="14.888038"
+       height="387.94327"
+       x="-264.72543"
+       y="-403.79962"
+       transform="matrix(-0.18612417,-0.98252623,-1,0,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-5-8"
+       width="14.182917"
+       height="385.72772"
+       x="-8.3902178"
+       y="-557.60852"
+       transform="matrix(0.57390195,-0.81892402,-0.70507947,-0.7091283,0,0)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4889-5-8-4"
+       width="14.303994"
+       height="386.74094"
+       x="-379.79373"
+       y="-123.56593"
+       transform="matrix(-0.56033757,-0.82826434,0.69247265,-0.72144412,0,0)" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -237,20 +230,21 @@
      id="layer7"
      inkscape:label="Speed_Marker_Circle"
      style="display:inline">
-    <circle
+    <ellipse
        style="fill:#000000;fill-opacity:1"
        id="path4886"
-       cx="256.14285"
-       cy="255.42856"
-       r="185" />
+       cx="258.57144"
+       cy="262.85715"
+       rx="141.42857"
+       ry="141.07144" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Needle">
     <path
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 247.85714,256.28571 49.28572,-135 -30.71429,137.85715 z"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1.57454622px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 236.55398,240.64825 377.20034,125.11154 281.89606,250.07712 Z"
        id="path4772"
        inkscape:connector-curvature="0" />
   </g>
@@ -261,8 +255,8 @@
     <circle
        style="fill:#ffffff;fill-opacity:1"
        id="path4164"
-       cx="256.55844"
-       cy="259.96692"
-       r="10" />
+       cx="255.55844"
+       cy="252.96698"
+       r="25" />
   </g>
 </svg>

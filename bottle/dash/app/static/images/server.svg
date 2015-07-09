@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 511.99999 511.99999"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="server.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="249.55025"
+     inkscape:cy="293.20602"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer7"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1161"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Background 1"
+     style="display:none"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#000000;fill-opacity:1"
+       id="rect4387"
+       width="705"
+       height="705.71429"
+       x="-84.285713"
+       y="-104.42857"
+       rx="290.09415"
+       ry="299.32309" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Background"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4384"
+       width="509.14285"
+       height="512"
+       x="2.2857144"
+       y="0.57141936"
+       ry="39.571419"
+       rx="34.37851" />
+  </g>
+  <g
+     inkscape:label="Server_Frame"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-540.36219)">
+    <rect
+       style="fill:#000000;fill-opacity:1"
+       id="rect4138"
+       width="450"
+       height="110"
+       x="30.714287"
+       y="571.2193"
+       ry="34.335262" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Server_Button">
+    <circle
+       style="fill:#ffffff;fill-opacity:1"
+       id="path4143"
+       cx="68.928574"
+       cy="65.214287"
+       r="17.5" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Server_Grate">
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4389-2-4"
+       width="175"
+       height="20"
+       x="280.32141"
+       y="53.214279"
+       ry="10" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4389-8-2-8"
+       width="175"
+       height="20"
+       x="281.25"
+       y="98.642868"
+       ry="10" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Server2">
+    <rect
+       style="fill:#000000;fill-opacity:1"
+       id="rect4138-9"
+       width="450"
+       height="110"
+       x="29.714287"
+       y="172.28572"
+       ry="34.335262" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1"
+       id="path4143-7"
+       cx="67.928574"
+       cy="206.6429"
+       r="17.5" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4389-2-4-5"
+       width="175"
+       height="20"
+       x="279.32141"
+       y="194.64288"
+       ry="10" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4389-8-2-8-7"
+       width="175"
+       height="20"
+       x="280.25"
+       y="240.07147"
+       ry="10" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Server3">
+    <rect
+       style="fill:#000000;fill-opacity:1"
+       id="rect4138-6"
+       width="450"
+       height="110"
+       x="30.14286"
+       y="314.28571"
+       ry="34.335262" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1"
+       id="path4143-5"
+       cx="68.357147"
+       cy="348.64288"
+       r="17.5" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4389-2-4-6"
+       width="175"
+       height="20"
+       x="279.74997"
+       y="336.64288"
+       ry="10" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect4389-8-2-8-4"
+       width="175"
+       height="20"
+       x="280.67856"
+       y="382.07147"
+       ry="10" />
+  </g>
+</svg>

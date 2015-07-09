@@ -15,101 +15,143 @@
 
 	<body>
 		<div id="wrapper">
-
-			<!-- Sidebar -->
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				
-				<!-- Brand and toggle get grouped for better mobile display -->
+				<!---------- TOPBAR ---------->
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.tpl">TxSSC Admin</a>
 				</div>		
+				
+				<!----- TOPBAR - Clock ----->	
 				<ul class="nav navbar-right top-nav">
 					<li id="myStyle" class="nav navbarClock navbarCenter top-nav">
 						<iframe src="http://free.timeanddate.com/clock/i4bpvr9a/n400/fs18/fcfff/tct/pct/pa14/tt0/tb1" frameborder="0" width="448" height="49" allowTransparency="true"></iframe>
 					</li>
 				</ul>
 				
-				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!---------- SIDEBAR ---------->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					
+					<!----- SIDEBAR - Links ----->
 					<ul class="nav navbar-nav side-nav">
-						<li class="active"><a href="/index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-						<li><a href="/servers"><i class="fa fa-dashboard"></i> Servers</a></li>
-						<li><a href="/printers"><i class="fa fa-dashboard"></i> Printers</a></li>
+						<li class="active"><a href="/index"><img id="myStyle" class="myImage" src="/images/speedometer.svg"> Dashboard</img></a></li>
+						<li><a href="/servers"><img id="myStyle" class="myImage" src="/images/server.svg"> Servers</img></a></li>
+						<li><a href="/printers"><img id="myStyle" class="myImage" src="/images/printer.svg"> Printers</img></a></li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div><!-- End of SIDEBAR -->
 			</nav>
 	
+			<!---------- INNER PAGE ---------->
 			<div id="page-wrapper">
+				
+				<!----- INNER PAGE - Heading ----->
 				<div class="row">
+					
+					<!-- INNER PAGE - div 1 -->
 					<div class="col-lg-12">
 						<h1>Dashboard <small> </small></h1>
+						
+						<!-- INNER PAGE - SubHeading -->
 						<ol class="breadcrumb">
-							<li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+							<li class="active"><i class="fa fa-dashboard"></i><a href="/index"> Dashboard</li></a>
 						</ol>
-					</div>
-				</div>
+					</div><!-- End of INNER PAGE - div 1 -->
+				</div><!-- End of INNER PAGE - Heading -->
 				
-				<div class="row"><!-- /.row -->
+				<!----- INNER PAGE CONTENT ROW 1----->
+				<div class="row">
+					
+					<!-- INNER PAGE CONTENT ROW 1 - Server SubHeading -->
 					<div id="myStyle" class="mySubHead2">Servers:</div>
 					%for item in servers: 
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">{{item[0]}}</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
+					
+						<!-- INNER PAGE CONTENT ROW 1 - div 1 -->
+						<div class="col-lg-3 col-md-6">
+							
+							<!-- INNER PAGE CONTENT ROW 1 - div 2 -->
+							<div class="panel panel-color">
+								
+								<!-- INNER PAGE CONTENT ROW 1 - div 3 -->
+								<div class="panel-heading">
+									
+									<!-- INNER PAGE CONTENT ROW 1 - div 4 -->
+									<div class="row">
+										
+										<!-- Server Names -->
+										<div class="huge">{{item[0]}}</div>
+										<div class="col-xs-3">
+											<i class="fa fa-tasks fa-5x"></i>
+										</div>
+										
+										<!-- Server Status Image Conditions -->
+										<div id="myStyle" class="myFont col-xs-9 text-right">
 											%if item[2] == 1:
 												<div>Status: <img id="status_image" src="/images/green.svg" height="14" width="14"/> </div>
 											%else:
 												<div>Status: <img id="status_image" src="/images/red.svg" height="14" width="14"/> </div>
 											%end
+										</div><!-- End of Server Status Image Conditions -->
+									</div><!-- End of INNER PAGE CONTENT ROW 1 - div 4 -->
+								</div><!-- INNER PAGE CONTENT ROW 1 - div 3 -->
+									
+								<!-- Server Info Path and Link-->
+								<a href=sys_info/{{item[1]}}>
+									<div class="panel-footer">
+										<span class="pull-right">View Details</span>
+										<div class="clearfix"></div>
 									</div>
-								</div>
-							</div>
-							<a href=sys_info/{{item[1]}}>
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					%end
-				</div><!-- /.row -->
+								</a>
+							</div><!-- End of INNER PAGE CONTENT ROW 1 - div 2 -->
+						</div><!-- End of INNER PAGE CONTENT ROW 1 - div 1 -->
+					%end	
+				</div><!-- End of INNER PAGE CONTENT ROW 1-->
+				
+				<!----- INNER PAGE CONTENT ROW 2----->
 				<div class="row">
+					
+					<!-- INNER PAGE CONTENT ROW 2 - Printer SubHeading -->
 					<div id="myStyle" class="mySubHead2">Printers:</div>
-				%for item in printers: 
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">{{item[0]}}</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
-											%if item[2] == 1:
-												<div>Status: <img id="status_image" src="/images/green.svg" height="14" width="14"/> </div>
-											%else:
-												<div>Status: <img id="status_image" src="/images/red.svg" height="14" width="14"/> </div>
-											%end
-									</div>
+						%for item in printers: 
+						
+							<!-- INNER PAGE CONTENT ROW 2 - div 1 -->
+							<div class="col-lg-3 col-md-6">
+								<div class="panel panel-color">
+							
+									<!-- INNER PAGE CONTENT ROW 2 - div 2 -->
+									<div class="panel-heading">
+										<div class="row">
+									
+											<!-- Printer Names -->
+											<div class="huge">{{item[0]}}</div>
+											<div class="col-xs-3">
+												<i class="fa fa-tasks fa-5x"></i>
+											</div>
+									
+											<!-- Printer Status Image Conditions -->
+											<div id="myStyle" class="myFont col-xs-9 text-right">
+												%if item[2] == 1:
+													<div>Status: <img id="status_image" src="/images/green.svg" height="14" width="14"/> </div>
+												%else:
+													<div>Status: <img id="status_image" src="/images/red.svg" height="14" width="14"/> </div>
+												%end
+											</div><!-- End of Printer Status Image Conditions -->
+										</div>
+									</div><!-- INNER PAGE CONTENT ROW 2 - div 2 -->
+								
+									<!-- Printer Info Path and Link -->								
+									<a href=prnt_info/{{item[1]}}>
+										<div class="panel-footer">
+											<span class="pull-right">View Details</span>
+											<div class="clearfix"></div>
+										</div>
+									</a>
 								</div>
-							</div>
-							<a href=prnt_info/{{item[1]}}>
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					%end
-				</div><!-- /.row -->
-			</div><!-- /#page-wrapper -->
+							</div><!-- End of INNER PAGE CONTENT ROW 2 - div 1 -->
+						%end
+					</div><!-- End of INNER PAGE CONTENT ROW 2 - Printer SubHeading -->
+				</div><!-- End of INNER PAGE CONTENT ROW 2 -->
+				
+			</div><!-- End of INNER PAGE -->
 		</div><!-- /#wrapper -->
 	
 		<!-- JavaScript -->

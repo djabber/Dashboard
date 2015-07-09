@@ -33,6 +33,14 @@
 	line-height: 700px;
 }
 
+#myStyle.myImage{
+
+	display: inline-block;
+	padding-right: 5px;
+	height: 32px;
+	width: 32px;
+}
+
 @media(min-width: 768px){
 
   .navbarCenter{
@@ -76,4 +84,3 @@
 
 	font-weight: bold;
 }
-

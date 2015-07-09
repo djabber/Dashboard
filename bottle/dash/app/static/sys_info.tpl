@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-		<title>Dashboard</title>
+		<title>System Information</title>
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="/css/bootstrap.css">
@@ -15,37 +15,46 @@
 
 	<body>
 		<div id="wrapper">
-
-			<!-- Sidebar -->
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				
-				<!-- Brand and toggle get grouped for better mobile display -->
+				<!---------- TOPBAR ---------->
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/index.tpl">TxSSC Admin</a>
+					<a class="navbar-brand" href="index.tpl">TxSSC Admin</a>
 				</div>		
+				
+				<!----- TOPBAR - Clock ----->	
 				<ul class="nav navbar-right top-nav">
 					<li id="myStyle" class="nav navbarClock navbarCenter top-nav">
 						<iframe src="http://free.timeanddate.com/clock/i4bpvr9a/n400/fs18/fcfff/tct/pct/pa14/tt0/tb1" frameborder="0" width="448" height="49" allowTransparency="true"></iframe>
 					</li>
 				</ul>
 				
-				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!---------- SIDEBAR ---------->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					
+					<!----- SIDEBAR - Links ----->
 					<ul class="nav navbar-nav side-nav">
-						<li><a href="/index"><i class="fa fa-file"></i> Dashboard</a></li>
-						<li><a href="/servers"><i class="fa fa-file"></i> Servers</a></li>
-						<li><a href="/printers"><i class="fa fa-file"></i> Printers</a></li>
+						<li><a href="/index"><img id="myStyle" class="myImage" src="/images/speedometer.svg"> Dashboard</img></a></li>
+						<li class="active"><a href="/servers"><img id="myStyle" class="myImage" src="/images/server.svg"> Servers</img></a></li>
+						<li><a href="/printers"><img id="myStyle" class="myImage" src="/images/printer.svg"> Printers</img></a></li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div><!-- End of SIDEBAR -->
 			</nav>
 	
+			<!---------- INNER PAGE ---------->
 			<div id="page-wrapper">
+				
+				<!----- INNER PAGE - Heading ----->
 				<div class="row">
+					
+					<!-- INNER PAGE - div 1 -->
 					<div class="col-lg-12">
 						<h1>System Information <small> </small></h1>
+						
+						<!-- INNER PAGE - SubHeading -->
 						<ol class="breadcrumb">
-							<li><a href="/index"><i class="icon-dashboard"></i> Dashboard</a></li>
-							<li class="active"><i class="icon-file-alt"></i> System Information</a></li>
+							<li><i class="fa fa-dashboard"></i><a href="/index"> Dashboard</li></a>
+							<li class="active"><i class="fa fa-dashboard"></i><a href="/servers">Servers</li></a>
 						</ol>
 						<table>	
 							%for list in info:
@@ -58,9 +67,10 @@
 								%end
 							%end
 						</table>		
-					</div>
-				</div><!-- /.row -->
-			</div><!-- /#page-wrapper -->
+					</div><!-- End of INNER PAGE - div 1 -->
+				</div><!-- End of INNER PAGE - Heading -->
+				
+			</div><!-- End of INNER PAGE -->
 		</div><!-- /#wrapper -->
 
 		<!-- JavaScript -->

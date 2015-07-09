@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-		<title>Dashboard</title>
+		<title>Servers</title>
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="/css/bootstrap.css">
@@ -15,69 +15,94 @@
 
 	<body>
 		<div id="wrapper">
-
-			<!-- Sidebar -->
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				
-				<!-- Brand and toggle get grouped for better mobile display -->
+				<!---------- TOPBAR ---------->
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.tpl">TxSSC Admin</a>
 				</div>		
+				
+				<!----- TOPBAR - Clock ----->	
 				<ul class="nav navbar-right top-nav">
 					<li id="myStyle" class="nav navbarClock navbarCenter top-nav">
 						<iframe src="http://free.timeanddate.com/clock/i4bpvr9a/n400/fs18/fcfff/tct/pct/pa14/tt0/tb1" frameborder="0" width="448" height="49" allowTransparency="true"></iframe>
 					</li>
 				</ul>
 				
-				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!---------- SIDEBAR ---------->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					
+					<!----- SIDEBAR - Links ----->
 					<ul class="nav navbar-nav side-nav">
-						<li class="active"><a href="/index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-						<li><a href="/printers"><i class="fa fa-dashboard"></i> Printers</a></li>
+						<li><a href="/index"><img id="myStyle" class="myImage" src="/images/speedometer.svg"> Dashboard</img></a></li>
+						<li class="active"><a href="/servers"><img id="myStyle" class="myImage" src="/images/server.svg"> Servers</img></a></li>
+						<li><a href="/printers"><img id="myStyle" class="myImage" src="/images/printer.svg"> Printers</img></a></li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div><!-- End of SIDEBAR -->
 			</nav>
 	
+			<!---------- INNER PAGE ---------->
 			<div id="page-wrapper">
-				<div class="row">
-					<div class="col-lg-12">
-						<h1>Dashboard <small> </small></h1>
-						<ol class="breadcrumb">
-							<li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
-						</ol>
-					</div>
-				</div>
 				
-				<div class="row"><!-- /.row -->
+				<!----- INNER PAGE - Heading ----->
+				<div class="row">
+					
+					<!-- INNER PAGE - div 1 -->
+					<div class="col-lg-12">
+						<h1>Servers <small> </small></h1>
+						
+						<!-- INNER PAGE - SubHeading -->
+						<ol class="breadcrumb">
+							<li><i class="fa fa-dashboard"></i><a href="/index"> Dashboard</li></a>
+							<li class="active"><i class="fa fa-dashboard"></i><a href="/servers">Servers</li></a>
+						</ol>
+					</div><!-- End of INNER PAGE - div 1 -->
+				</div><!-- End of INNER PAGE - Heading -->
+				
+				<!----- INNER PAGE CONTENT ROW 1----->
+				<div class="row">
 					%for item in servers: 
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-color">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="huge">{{item[0]}}</div>
-									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
-									</div>
-									<div id="myStyle" class="myFont col-xs-9 text-right">
+					
+						<!-- INNER PAGE CONTENT ROW 1 - div 1 -->
+						<div class="col-lg-3 col-md-6">
+							
+							<!-- INNER PAGE CONTENT ROW 1 - div 2 -->
+							<div class="panel panel-color">
+								
+								<!-- INNER PAGE CONTENT ROW 1 - div 3 -->
+								<div class="panel-heading">
+									
+									<!-- INNER PAGE CONTENT ROW 1 - div 4 -->
+									<div class="row">
+										
+										<!-- Server Names -->
+										<div class="huge">{{item[0]}}</div>
+										<div class="col-xs-3">
+											<i class="fa fa-tasks fa-5x"></i>
+										</div>
+										
+										<!-- Server Status Image Conditions -->
+										<div id="myStyle" class="myFont col-xs-9 text-right">
 											%if item[2] == 1:
 												<div>Status: <img id="status_image" src="/images/green.svg" height="14" width="14"/> </div>
 											%else:
 												<div>Status: <img id="status_image" src="/images/red.svg" height="14" width="14"/> </div>
 											%end
+										</div><!-- End of Server Status Image Conditions -->
+									</div><!-- End of INNER PAGE CONTENT ROW 1 - div 4 -->
+								</div><!-- INNER PAGE CONTENT ROW 1 - div 3 -->
+									
+								<!-- Server Info Path and Link-->
+								<a href=sys_info/{{item[1]}}>
+									<div class="panel-footer">
+										<span class="pull-right">View Details</span>
+										<div class="clearfix"></div>
 									</div>
-								</div>
-							</div>
-							<a href=sys_info/{{item[1]}}>
-								<div class="panel-footer">
-									<span class="pull-right">View Details</span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					%end
-				</div><!-- /.row -->
-			</div><!-- /#page-wrapper -->
+								</a>
+							</div><!-- End of INNER PAGE CONTENT ROW 1 - div 2 -->
+						</div><!-- End of INNER PAGE CONTENT ROW 1 - div 1 -->
+					%end				
+			</div><!-- End of INNER PAGE -->
 		</div><!-- /#wrapper -->
 	
 		<!-- JavaScript -->
