@@ -1,7 +1,0 @@
-srv1: "fileserv1"
-srv2: "dbserv1"
-srv3: "faxserv1"
-srv4: "prntserv1"
-srv5: "cloud1"
-srv6: "cloud2"
-srv7: "dj-ol-vm"

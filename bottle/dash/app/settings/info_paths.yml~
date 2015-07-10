@@ -1,7 +1,0 @@
-srv1: "/sys_info/txssc-fileserv1"
-srv2: "/sys_info/txssc-dbserv1"
-srv3: "/sys_info/txssc-faxserv1"
-srv4: "/sys_info/txssc-prntserv1"
-srv5: "/sys_info/txssc-cloud1"
-srv6: "/sys_info/txssc-cloud2"
-srv7: "/sys_info/txssc-dj-ol-vm"

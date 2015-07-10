@@ -1,7 +1,0 @@
-path1: "/sys_info/txssc-fileserv1"
-path2: "/sys_info/txssc-dbserv1"
-path3: "/sys_info/txssc-faxserv1"
-path4: "/sys_info/txssc-prntserv1"
-path5: "/sys_info/txssc-cloud1"
-path6: "/sys_info/txssc-cloud2"
-path7: "/sys_info/txssc-dj-ol-vm"
