@@ -1,5 +1,6 @@
 import yaml
 
+# Class processes settings in yaml files
 
 class SettingsProcessor:
 

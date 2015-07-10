@@ -1,7 +1,9 @@
 from server import Server
-#from client import Client
 import json, re, subprocess
 
+# Decodes json received by server into useable format 
+# Wrote my own json processor because the Python and Java json processors 
+#		didn't want to work together
 
 class SysInfoProcessor:
 	

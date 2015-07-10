@@ -1,5 +1,6 @@
 import socket, sys, time, select
 
+# Class creates a server that listens and accepts connections from clients
 
 class Server:
 	

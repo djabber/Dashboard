@@ -1,6 +1,8 @@
 import socket
 from ping import Ping
 
+# Uses ping class to make ping requests
+
 class MyPing:
 	
 	def __init__(self):
@@ -11,8 +13,8 @@ class MyPing:
 		try:
 			p = Ping(host)
 			result = p.do()
-#			print "Result = %s" % result
-		
+	
+			# Inverts results so that they make more sense
 			if result > 0:
 				return 1
 			else:
