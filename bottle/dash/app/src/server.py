@@ -1,59 +1,129 @@
 import socket, sys, time, select
 
-# Class creates a server that listens and accepts connections from clients
 
 class Server:
 	
+	HOST = ""; PORT = 10000; 
+	CNT = 0; BRK = False; DATA = ""; SIZE = ""; TMP = ""
 		
 	def __init__(self): pass
 	
-	
+
+	def chkConnection(self, s, chk):
+
+		print "Checking connection..."
+		print "Accepting connections..."
+		conn, addr = s.accept()
+		print 'Connected by', addr
+
+		print "addr = ", addr[0]
+		print "chk = ", chk
+
+		if addr[0] == chk:
+			print "Returned connection..."
+			return conn
+		else:
+			print "Returned none..."
+			return None
+
+
+	def makeConnection(self, s):
+
+		print "Accepting connections..."
+		conn, addr = s.accept()
+		print 'Connected by', addr
+
+		return conn
+
+
+	def getTsfSize(self, conn):
+
+		# Get transmission self.SIZE							
+		while True:							
+			self.TMP = conn.recv(10)
+				
+			for c in self.TMP:				
+				if c == "~": 
+					self.BRK = True
+					break				
+				self.SIZE += c
+				self.CNT += 1
+				
+			if self.BRK: break
+			
+		print "SIZE: " + self.SIZE
+		self.DATA = self.TMP[self.CNT + 1 : ]
+
+		return self.SIZE
+
+
+	def getData(self, conn):
+
+		# Get self.DATA
+		while True:
+			self.DATA += conn.recv(int(self.SIZE))
+			if len(self.DATA) == int(self.SIZE): 
+				self.BRK = True
+				break								
+			elif not self.TMP:	
+				self.BRK = True
+				break
+
+		return self.DATA
+					
+
+	def serverConnection(self):
+
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		s.bind((self.HOST, self.PORT))
+		s.listen(5)
+
+		return s
+
 	def startServer(self):
 		
-		HOST = ""; PORT = 10000; 
-		cnt = 0; brk = False; data = ""; size = ""; tmp = ""
 		
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-		s.bind((HOST, PORT))
+		s.bind((self.HOST, self.PORT))
 		s.listen(5)
 		
 		while True:
-			print "Accepting connections..."
-			conn, addr = s.accept()
-			print 'Connected by', addr
+
+			conn = self.makeConnection(s)
+
+			self.getTsfSize(conn)
+		
+			# Reset loop break value
+			self.BRK = False
 			
-			# Get transmission size							
-			while True:							
-				tmp = conn.recv(10)
-				
-				for c in tmp:				
-					if c == "~": 
-						brk = True
-						break				
-					size += c
-					cnt += 1
-				
-				if brk: break
+			self.getData(conn)
+
+			if self.BRK: break
 			
-			print "SIZE: " + size
-			data = tmp[cnt + 1 : ]
-			print "data = " + data
-			
-			brk = False
-			
-			# Get data
-			while True:
-				data += conn.recv(int(size))
-				if len(data) == int(size): 
-					brk = True
-					break								
-				elif not tmp:	
-					brk = True
-					break
-					
-			if brk: break
-			
-		print "DATA: " + data
+		print "DATA: " + self.DATA
 		conn.close()						
-		return data
+		return self.DATA
+
+
+	def standaloneServer(self):
+		
+		self.serverConnection()	
+		
+		while True:
+
+			conn = self.makeConnection(s)
+
+			self.getTsfSize(conn)
+		
+			# Reset loop break value
+			self.BRK = False
+			
+			self.getData(conn)
+
+			if self.BRK: break
+			
+		print "DATA: " + self.DATA
+		conn.close()						
+		return self.DATA

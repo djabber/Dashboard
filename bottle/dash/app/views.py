@@ -6,9 +6,11 @@ from src.server import Server
 from settings.mysql_connector import MySqlConnector
 from src.my_ping import MyPing
 from collections import deque
+from src.connection_mgr import ConnectionMgr
 
 
 app = Bottle()
+
 
 # Serves static css files for python Bottle
 @route('/css/<filepath:path>')
@@ -102,8 +104,11 @@ def getServerList(myList):
 
 # Calls the SysInfoProcessor class to get the latest system information
 def getInfo(host):
-	
+
 	s = SysInfoProcessor()
+	#cm = ConnectionMgr()		
+
+	#cm.myConnectionMgr()
 	
 	return s.decodeJson()
 	
@@ -120,7 +125,7 @@ def sysInfo(host = "localhost"):
 
 # Routes requests to prnt_info template and passes it the hostname or ip 
 @route("/prnt_info/<host>") 
-def sysInfo(host = "localhost"):
+def prntInfo(host = "localhost"):
 	
 	output = template('app/static/prnt_info', host=host)
 	

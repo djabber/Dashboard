@@ -18,8 +18,24 @@ class SysInfoProcessor:
 		
 		global data
 
+		#s = Server()
+		#data = s.startServer()
+
 		s = Server()
-		data = s.startServer()
+		c = s.serverConnection()
+		conn = s.chkConnection(c, "147.26.195.243")
+
+		if conn == None:
+			print "Couldn't connect..."
+		else:
+			print "Made connection..."
+
+			size = s.getTsfSize(conn)
+			data = s.getData(conn)
+
+			print "SysInfo Data: ", data
+			conn.close()
+
 
 	def decodeJson(self):
 			
