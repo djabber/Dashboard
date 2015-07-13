@@ -15,10 +15,6 @@ class SysInfoProcessor:
 	pattern = "(((\d{1,3}\.){3})((\d{1,3})))|(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})|\w"
 	
 	def __init__(self): pass
-		
-
-		#s = Server()
-		#data = s.startServer()
 
 
 	def getData(self, ip):
@@ -27,7 +23,7 @@ class SysInfoProcessor:
 
 		s = Server()
 		c = s.serverConnection()
-		conn = s.chkConnection(c, ip) #"147.26.195.243")
+		conn = s.chkConnection(c, ip)
 
 		if conn == None:
 			print "Couldn't connect..."

@@ -9,6 +9,8 @@ class Server:
 	def __init__(self): pass
 	
 
+	# Checks that the connection is to the requested ip.
+	# The ip is passed in chk
 	def chkConnection(self, s, chk):
 
 		print "Checking connection..."
@@ -26,7 +28,9 @@ class Server:
 			print "Returned none..."
 			return None
 
-
+	
+	# makeConnection is passed the socket, 's' as a parameter.
+	# It creates and returns the connection
 	def makeConnection(self, s):
 
 		print "Accepting connections..."
@@ -36,6 +40,7 @@ class Server:
 		return conn
 
 
+	# Gets the data transfer size in bytes, of the data that is expected from the client
 	def getTsfSize(self, conn):
 
 		# Get transmission self.SIZE							
@@ -56,7 +61,8 @@ class Server:
 
 		return self.SIZE
 
-
+	
+	# Gets the data from the client
 	def getData(self, conn):
 
 		# Get self.DATA
@@ -71,7 +77,7 @@ class Server:
 
 		return self.DATA
 					
-
+	# Creates and opens the network socket
 	def serverConnection(self):
 
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -81,6 +87,9 @@ class Server:
 
 		return s
 
+
+	# Does everything for you...
+	# Creates socket and connection. Gets size and data.
 	def startServer(self):
 		
 		
@@ -88,28 +97,6 @@ class Server:
 		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		s.bind((self.HOST, self.PORT))
 		s.listen(5)
-		
-		while True:
-
-			conn = self.makeConnection(s)
-
-			self.getTsfSize(conn)
-		
-			# Reset loop break value
-			self.BRK = False
-			
-			self.getData(conn)
-
-			if self.BRK: break
-			
-		print "DATA: " + self.DATA
-		conn.close()						
-		return self.DATA
-
-
-	def standaloneServer(self):
-		
-		self.serverConnection()	
 		
 		while True:
 
