@@ -4,7 +4,7 @@ import socket, sys, time, select
 class Server:
 	
 	HOST = ""; PORT = 10000; 
-	CNT = 0; BRK = False; DATA = ""; SIZE = ""; TMP = ""
+	CNT = 0; BRK = False; DATA = ""; SIZE = ""; TMP = ""; PORT_CNT = 0
 		
 	def __init__(self): pass
 	
@@ -80,9 +80,14 @@ class Server:
 	# Creates and opens the network socket
 	def serverConnection(self):
 
+		port = self.PORT + self.PORT_CNT
+		self.PORT_CNT += 1
+		
+		print "port = ", port
+
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-		s.bind((self.HOST, self.PORT))
+		s.bind((self.HOST, port))
 		s.listen(5)
 
 		return s

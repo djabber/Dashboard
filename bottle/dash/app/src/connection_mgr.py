@@ -1,33 +1,32 @@
 from sys_info_processor import SysInfoProcessor
 from server import Server
+from SimpleXMLRPCServer import SimpleXMLRPCServer
+from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler
 
 
 class ConnectionMgr:
 
-	def __init__(self):
-		pass
+	conn = None
 
-	def myConnectionMgr(self):
+	def __init__(self):
+	
+		while True:
+			self.makeConnection()
+
+
+	def makeConnection(self):
 
 		s = Server()
 		c = s.serverConnection()
-		#conn = s.makeConnection(c)
-		chk = s.chkConnection(c, "147.26.195.243")
-		
-		if chk == None:
-			print "Couldn't make connection!"
-		else:
-			print "Made connection to 147.26.195.243..."
-			
-			conn = chk
-			size = s.getTsfSize(conn)
-			data = s.getData(conn)
+		self.conn = s.makeConnection(c)
+		size = s.getTsfSize(self.conn)
+		data = s.getData(self.conn)
 
-			print "Connection Manager Data: " + data
-			conn.close()
+		print "Data = ", data
 
 
+	def closeConnection(self):
 
-		
+		conn.close()
 		
 
