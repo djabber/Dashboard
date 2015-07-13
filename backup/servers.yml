@@ -1,0 +1,7 @@
+File Server: "/sys_info/txssc-fileserv1"
+Database Server: "/sys_info/txssc-dbserv1"
+Fax Server: "/sys_info/txssc-faxserv1"
+Print Server: "/sys_info/txssc-prntserv1"
+Cloud 1: "/sys_info/txssc-cloud1"
+Cloud 2: "/sys_info/txssc-cloud2"
+DJ Outlook VM: "/sys_info/txssc-dj-ol-vm"
