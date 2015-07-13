@@ -1,4 +1,4 @@
-from app.src.connection_mgr import ConnectionMgr
+from connection_mgr import ConnectionMgr
 
 
 mgr = ConnectionMgr()
