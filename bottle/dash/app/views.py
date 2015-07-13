@@ -105,12 +105,19 @@ def getServerList(myList):
 # Calls the SysInfoProcessor class to get the latest system information
 def getInfo(host):
 
+	print "Host = ", host
 	s = SysInfoProcessor()
+	conn = s.getData(host)
+
+	if conn == None:
+		return None
+	else:
+		return s.decodeJson()
 	#cm = ConnectionMgr()		
 
 	#cm.myConnectionMgr()
 	
-	return s.decodeJson()
+	#return s.decodeJson()
 	
 # Routes requests to sys_info template and passes current system information
 #		from the local function getInfo
@@ -118,7 +125,11 @@ def getInfo(host):
 def sysInfo(host = "localhost"):
 	
 	info = getInfo(host)
-	output = template('app/static/sys_info', info=info)
+	if info == None:
+		print "info is none..."
+		output = template('app/static/no_sys_info')
+	else:
+		output = template('app/static/sys_info', info=info)
 	
 	return output
 	

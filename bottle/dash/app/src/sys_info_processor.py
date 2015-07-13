@@ -14,16 +14,20 @@ class SysInfoProcessor:
 	net = "Network_Info"
 	pattern = "(((\d{1,3}\.){3})((\d{1,3})))|(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})|\w"
 	
-	def __init__(self): 
+	def __init__(self): pass
 		
-		global data
 
 		#s = Server()
 		#data = s.startServer()
 
+
+	def getData(self, ip):
+		
+		global data
+
 		s = Server()
 		c = s.serverConnection()
-		conn = s.chkConnection(c, "147.26.195.243")
+		conn = s.chkConnection(c, ip) #"147.26.195.243")
 
 		if conn == None:
 			print "Couldn't connect..."
@@ -31,10 +35,12 @@ class SysInfoProcessor:
 			print "Made connection..."
 
 			size = s.getTsfSize(conn)
-			data = s.getData(conn)
+			self.data = s.getData(conn)
 
-			print "SysInfo Data: ", data
+			print "SysInfo Data: ", self.data
 			conn.close()
+
+		return conn
 
 
 	def decodeJson(self):
@@ -44,6 +50,7 @@ class SysInfoProcessor:
 		global user
 		global net
 		global pattern
+		global data
 
 		lod = []
 		osDict = []
@@ -51,7 +58,7 @@ class SysInfoProcessor:
 		userDict = []
 		netDict = []
 		
-		myStr = re.sub("\[|\]|\{|\}|\"|\"", "", data)
+		myStr = re.sub("\[|\]|\{|\}|\"|\"", "", self.data)
 		
 		cpuLoc = myStr.find(self.cpu)
 		userLoc = myStr.find(self.user)
