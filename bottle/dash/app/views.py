@@ -6,7 +6,6 @@ from src.server import Server
 from settings.mysql_connector import MySqlConnector
 from src.my_ping import MyPing
 from collections import deque
-from src.connection_mgr import ConnectionMgr
 
 
 app = Bottle()
@@ -105,19 +104,18 @@ def getServerList(myList):
 # Calls the SysInfoProcessor class to get the latest system information
 def getInfo(host):
 
-	print "Host = ", host
 	s = SysInfoProcessor()
 	conn = s.getData(host)
 
 	if conn == None:
-		return None
-	else:
-		return s.decodeJson()
-	#cm = ConnectionMgr()		
 
-	#cm.myConnectionMgr()
-	
-	#return s.decodeJson()
+		info = s.infoToList(host)
+		#print "info = ", info
+		ts = s.getTS(host)
+
+		return (0, ts, info)
+	else:
+		return (1, s.decodeJson())
 	
 # Routes requests to sys_info template and passes current system information
 #		from the local function getInfo
@@ -125,11 +123,16 @@ def getInfo(host):
 def sysInfo(host = "localhost"):
 	
 	info = getInfo(host)
-	if info == None:
-		print "info is none..."
-		output = template('app/static/no_sys_info')
+	if info[0] == 0:
+		ts = info[1]	
+		#print "ts = ", ts 
+		info = info[2]
+		#print "info = ", info
+		
+		output = template('app/static/no_sys_info', ts=ts, info=info)
 	else:
-		output = template('app/static/sys_info', info=info)
+		#print "info = ", info[1]
+		output = template('app/static/sys_info', info=info[1])
 	
 	return output
 	

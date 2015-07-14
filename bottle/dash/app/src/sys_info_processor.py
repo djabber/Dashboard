@@ -1,4 +1,5 @@
 from server import Server
+from ..settings.mysql_connector import MySqlConnector
 import json, re, subprocess
 
 # Decodes json received by server into useable format 
@@ -33,10 +34,48 @@ class SysInfoProcessor:
 			size = s.getTsfSize(conn)
 			self.data = s.getData(conn)
 
-			print "SysInfo Data: ", self.data
+			#print "SysInfo Data: ", self.data
 			conn.close()
 
 		return conn
+
+
+	def infoToList(self, host):
+
+		m = MySqlConnector()
+
+		q = ('SELECT id FROM servers WHERE ip="%s"' % host)
+		#print "q = ", q
+		r = m.myQuery("localhost", "root", "a", "dashboard", q)
+		#print "r = ", r
+		myID = r[0][0]
+		#print "myID = ", myID
+		query = ('SELECT name,value FROM sys_monitor WHERE servers_id=%i' % myID)
+		#print "query = ", query
+		result = m.myQuery("localhost", "root", "a", "dashboard", query)
+
+		return result 
+		
+
+	def getTS(self, host):
+
+		m = MySqlConnector()
+
+		q = ('SELECT id FROM servers WHERE ip="%s"' % host)
+		#print "q = ", q
+		r = m.myQuery("localhost", "root", "a", "dashboard", q)
+		#print "r = ", r
+		myID = r[0][0]
+		#print "myID = ", myID
+		query = ('SELECT ts FROM sys_monitor WHERE servers_id=%i' % myID)
+		#print "query = ", query
+		result = m.myQuery("localhost", "root", "a", "dashboard", query)
+	
+		result = result[0]
+		result = result[0]
+
+		return result 
+
 
 
 	def decodeJson(self):

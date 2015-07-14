@@ -10,6 +10,7 @@ from collections import deque
 
 app = Bottle()
 
+
 # Serves static css files for python Bottle
 @route('/css/<filepath:path>')
 def server_static_css(filepath = None):
@@ -102,10 +103,18 @@ def getServerList(myList):
 
 # Calls the SysInfoProcessor class to get the latest system information
 def getInfo(host):
-	
+
 	s = SysInfoProcessor()
-	
-	return s.decodeJson()
+	conn = s.getData(host)
+
+	if conn == None:
+
+		info = s.infoToList(host)
+		ts = s.getTS(host)
+
+		return (0, ts, info)
+	else:
+		return (1, s.decodeJson())
 	
 # Routes requests to sys_info template and passes current system information
 #		from the local function getInfo
@@ -113,14 +122,22 @@ def getInfo(host):
 def sysInfo(host = "localhost"):
 	
 	info = getInfo(host)
-	output = template('app/static/sys_info', info=info)
+	if info[0] == 0:
+		ts = info[1]	
+		print "ts = ", ts 
+		info = info[2]
+		print "info = ", info
+		output = template('app/static/no_sys_info', ts=ts)
+	else:
+		#print "info = ", info
+		output = template('app/static/sys_info', info=info)
 	
 	return output
 	
 
 # Routes requests to prnt_info template and passes it the hostname or ip 
 @route("/prnt_info/<host>") 
-def sysInfo(host = "localhost"):
+def prntInfo(host = "localhost"):
 	
 	output = template('app/static/prnt_info', host=host)
 	

@@ -13,19 +13,13 @@ class Server:
 	# The ip is passed in chk
 	def chkConnection(self, s, chk):
 
-		print "Checking connection..."
 		print "Accepting connections..."
 		conn, addr = s.accept()
 		print 'Connected by', addr
 
-		print "addr = ", addr[0]
-		print "chk = ", chk
-
 		if addr[0] == chk:
-			print "Returned connection..."
 			return conn
 		else:
-			print "Returned none..."
 			return None
 
 	
@@ -111,6 +105,6 @@ class Server:
 
 			if self.BRK: break
 			
-		print "DATA: " + self.DATA
+		#print "DATA: " + self.DATA
 		conn.close()						
 		return self.DATA

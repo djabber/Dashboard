@@ -56,6 +56,17 @@
 							<li><i class="fa fa-dashboard"></i><a href="/index"> Dashboard</li></a>
 							<li class="active"><i class="fa fa-dashboard"></i><a href="/servers">Servers</li></a>
 						</ol>
+						<table>
+							<div id="myStyle" class="myHeader">Current as of: {{ts}}</div>
+							%for tup in info:
+								%if tup[1] == "":
+									<br/><div id="myStyle" class="myHeader">{{tup[0]}}</div>
+								%else:
+									<div id="myStyle" class="mySubHead"><b>{{tup[0]}}:</b> {{tup[1]}}</div>
+								%end
+							%end
+							<div>{{info}}</div>
+						</table>
 					</div><!-- End of INNER PAGE - div 1 -->
 				</div><!-- End of INNER PAGE - Heading -->
 				

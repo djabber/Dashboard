@@ -16,6 +16,13 @@
 	padding-left: 25px;
 }
 
+#myStyle.myTsHeader{
+	
+	font-size: 24px;
+	padding-bottom: 5px;
+	vertical-align: middle;	
+}
+
 #myStyle.navbarClock{
 
   margin-left: auto;
