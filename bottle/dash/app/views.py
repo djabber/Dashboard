@@ -105,17 +105,17 @@ def getServerList(myList):
 def getInfo(host):
 
 	s = SysInfoProcessor()
-	conn = s.getData(host)
+	#conn = s.getData(host)
 
-	if conn == None:
+#	if conn == None:
 
-		info = s.infoToList(host)
-		#print "info = ", info
-		ts = s.getTS(host)
+	info = s.infoToList(host)
+	#print "info = ", info
+	ts = s.getTS(host)
 
-		return (0, ts, info)
-	else:
-		return (1, s.decodeJson())
+	return (0, ts, info)
+#	else:
+#		return (1, s.decodeJson())
 	
 # Routes requests to sys_info template and passes current system information
 #		from the local function getInfo

@@ -26,6 +26,7 @@ class SysInfoProcessor:
 		c = s.serverConnection()
 		conn = s.chkConnection(c, ip)
 
+
 		if conn == None:
 			print "Couldn't connect..."
 		else:

@@ -78,7 +78,7 @@ class Server:
 		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		s.bind((self.HOST, self.PORT))
 		s.listen(5)
-
+		
 		return s
 
 
@@ -100,11 +100,11 @@ class Server:
 		
 			# Reset loop break value
 			self.BRK = False
-			
+		
 			self.getData(conn)
 
 			if self.BRK: break
-			
+
 		#print "DATA: " + self.DATA
 		conn.close()						
 		return self.DATA
