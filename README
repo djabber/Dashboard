@@ -1,0 +1,74 @@
+Program: Dashboard
+Author(s): Dan Deckert
+Version: 1.0
+Release Date: 07-15-15
+
+ CONTENTS
+
+
+
+1. Minimum System Requirements
+
+	Server
+		OS: 
+		Processor:
+		Architecture:
+		Ram:
+		Browser:
+		Other:
+
+
+	Client:	
+		OS: 
+		Processor:
+		Architecture:
+		Ram:
+		Browser:
+		Other:
+
+
+2. Required Software/Packages
+
+	Package Name - Version built on
+	------------------------------
+
+	Python:
+		bottle - 0.12.8 
+		mysql-connector-python - 1.2.3
+		pycurl - 7.19.5
+		pyYAML - 3.11
+
+	Java:
+		JDK - 8.0_45
+
+
+ 3. Installation Instructions
+
+	Ubuntu:
+		sudo apt-get install python python-pip python-bottle python-mysql.connector python-pycurl python-yaml mysql-server
+
+		sudo pip install --allow-external -r dash_requirements_min.txt
+			or
+		sudo pip install --allow-external -r dash_requirements.txt
+			or
+		sudo pip install bottle
+		sudo pip install mysql-connector-python
+		sudo pip install pycurl
+		sudo pip install pyyaml
+ 
+ 
+ 4. Known Issues
+ 
+ 5. Bug Fixes
+
+ 6. Planned features
+ 		
+		Yellow status for errors.
+		Uptime stats on dashboard page.
+		Better dashboard layout.
+		SNMP data from printers.
+		SNMP from computers.
+		Cross platform support.
+		Remove/secure database password.
+ 
+

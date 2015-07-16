@@ -1,6 +1,6 @@
 from server import Server
 from ..settings.mysql_connector import MySqlConnector
-import json, re, subprocess
+import json, re, subprocess, datetime, time
 
 # Decodes json received by server into useable format 
 # Wrote my own json processor because the Python and Java json processors 
@@ -62,17 +62,24 @@ class SysInfoProcessor:
 		m = MySqlConnector()
 
 		q = ('SELECT id FROM servers WHERE ip="%s"' % host)
-		#print "q = ", q
+		print "q = ", q
 		r = m.myQuery("localhost", "root", "a", "dashboard", q)
-		#print "r = ", r
+		print "r = ", r
 		myID = r[0][0]
-		#print "myID = ", myID
+		print "myID = ", myID
 		query = ('SELECT ts FROM sys_monitor WHERE servers_id=%i' % myID)
-		#print "query = ", query
+		print "query = ", query
 		result = m.myQuery("localhost", "root", "a", "dashboard", query)
+		print "result = ", result 
 	
-		result = result[0]
-		result = result[0]
+		if result:
+			result = result[0]
+			print "result = ", result 
+			result = result[0]
+		else:
+			ts = time.time()
+			result = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %h:%M:%s') 
+			print "current result = ", result
 
 		return result 
 

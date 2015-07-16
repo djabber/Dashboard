@@ -123,6 +123,8 @@ def getInfo(host):
 def sysInfo(host = "localhost"):
 	
 	info = getInfo(host)
+	print "info = ", info
+
 	if info[0] == 0:
 		ts = info[1]	
 		#print "ts = ", ts 
@@ -212,7 +214,7 @@ def indexPrinterHelper():
 #    return template('app/static/index')
 
 
-run(host='localhost', port=8082, debug=True)
+run(host='0.0.0.0', port=8082, debug=True)
 
 if __name__ == '__main__':
 	app.run
