@@ -65,7 +65,6 @@
 									<div id="myStyle" class="mySubHead"><b>{{tup[0]}}:</b> {{tup[1]}}</div>
 								%end
 							%end
-							<div>{{info}}</div>
 						</table>
 					</div><!-- End of INNER PAGE - div 1 -->
 				</div><!-- End of INNER PAGE - Heading -->

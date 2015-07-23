@@ -13,8 +13,8 @@ public class Dash{
             
             //Snmp snmp = new Snmp();
             SysInfo sys = new SysInfo();
-            Client c = new Client("147.26.195.136", 10000, sys.getSysInfo());
-            //Client c = new Client("127.0.0.1", 10000, sys.getSysInfo());
+            //Client c = new Client("147.26.195.136", 10000, sys.getSysInfo());
+            Client c = new Client("147.26.195.243", 10000, sys.getSysInfo());
             
             /*
             if(args[0] == null){ args[0] = "127.0.0.1"; }

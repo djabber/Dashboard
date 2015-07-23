@@ -123,13 +123,13 @@ def getInfo(host):
 def sysInfo(host = "localhost"):
 	
 	info = getInfo(host)
-	print "info = ", info
+	#print "info = ", info
 
 	if info[0] == 0:
 		ts = info[1]	
 		#print "ts = ", ts 
 		info = info[2]
-		#print "info = ", info
+		print "info = ", info
 		
 		output = template('app/static/no_sys_info', ts=ts, info=info)
 	else:

@@ -63,24 +63,24 @@ class SysInfoProcessor:
 		m = MySqlConnector()
 
 		q = ('SELECT id FROM servers WHERE ip="%s"' % host)
-		print "q = ", q
+		#print "q = ", q
 		r = m.myQuery("localhost", "root", "a", "dashboard", q)
-		print "r = ", r
+		#print "r = ", r
 		myID = r[0][0]
-		print "myID = ", myID
+		#print "myID = ", myID
 		query = ('SELECT ts FROM sys_monitor WHERE servers_id=%i' % myID)
-		print "query = ", query
+		#print "query = ", query
 		result = m.myQuery("localhost", "root", "a", "dashboard", query)
-		print "result = ", result 
+		#print "result = ", result 
 	
 		if result:
 			result = result[0]
-			print "result = ", result 
+			#print "result = ", result 
 			result = result[0]
 		else:
 			ts = time.time()
 			result = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %h:%M:%s') 
-			print "current result = ", result
+			#print "current result = ", result
 
 		return result 
 

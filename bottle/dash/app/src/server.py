@@ -3,7 +3,7 @@ import socket, sys, time, select
 
 class Server:
 	
-	HOST = ""; PORT = 10000; 
+	HOST = ""; PORT = 10001; 
 	CNT = 0; BRK = False; DATA = ""; SIZE = ""; TMP = ""
 		
 	def __init__(self): pass
