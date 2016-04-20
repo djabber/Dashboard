@@ -24,7 +24,7 @@ def server_static_css(filepath = None):
     #print filepath
 
     if filepath is not None and filepath in css_paths:
-        return static_file(filename= filepath, root='/home/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/css/')
+        return static_file(filename= filepath, root='/home/txssc/Dashboard/bottle/dash/app/static/css/')
 
 
 # Serves static js files for python Bottle
@@ -46,7 +46,7 @@ def server_static_js(filepath = None):
 def server_static_images(filepath = None):
 
     if filepath is not None:
-        return static_file(filename= filepath, root='/home/dd27/Dropbox/Development/Projects/Dashboard/bottle/dash/app/static/images/')
+        return static_file(filename= filepath, root='/home/txssc/Dashboard/bottle/dash/app/static/images/')
         
 # Routes traffic to index page
 @route('/')
