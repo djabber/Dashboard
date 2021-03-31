@@ -27,7 +27,7 @@ kiki==0.5.6
 libvirt-python==1.2.12
 lockfile==0.8
 logilab-common==0.62.0
-lxml==3.4.2
+lxml==4.6.3
 MarkupSafe==0.23
 mock==0.7.2
 mysql-connector-python==1.2.3
