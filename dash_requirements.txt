@@ -75,7 +75,7 @@ urlgrabber==3.9.1
 urllib3==1.9.1
 vboxapi==1.0
 virtualenv==13.1.0
-Werkzeug==0.9.6
+Werkzeug==0.15.3
 wheel==0.24.0
 winpdb==1.4.8
 wxGlade==0.7.0
